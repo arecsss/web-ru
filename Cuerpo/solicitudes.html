@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solicitudes, Tickets y Chat - RU</title>
+    <!-- Vinculación al CSS centralizado (Buenas prácticas universitarias) -->
+    <link rel="stylesheet" href="../style/index.css" />
+    <!-- Carga de Supabase con 'defer' para optimizar la velocidad de carga inicial -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  </head>
+
+  <body class="dark-mode">
+    <!-- Barra de navegación principal -->
+    <nav class="nav-header">
+      <div class="nav-container">
+        <div class="logo-wrapper" onclick="location.href = 'index.html'">
+          <div class="rubik-cube">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+          </div>
+          <span class="brand-name"
+            >RU - <span class="highlight">REAL UTILITY</span></span
+          >
+        </div>
+
+        <!-- Menú hamburguesa para dispositivos móviles -->
+        <input type="checkbox" id="burger-toggle" class="burger-checkbox" />
+        <label for="burger-toggle" class="burger-label">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="Optimizaciones.html">Optimización</a></li>
+          <li><a href="Programas.html">Programas</a></li>
+          <li><a href="Sistemas.html">Sistemas</a></li>
+          <li><a href="Aprende.html">Aprende</a></li>
+          <li><a href="QuienSoy.html">¿Quién soy?</a></li>
+          <li><a href="solicitudes.html">Solicitudes</a></li>
+        </ul>
+
+        <div class="nav-actions" id="nav-actions-container">
+          <div
+            id="auth-buttons-nav"
+            style="display: flex; align-items: center; gap: 1.25rem"
+          >
+            <a href="login.html" class="btn-text">Acceder</a>
+            <a href="register.html" class="btn-primary">Registrarse</a>
+          </div>
+
+          <!-- Interruptor de modo oscuro/claro -->
+          <div class="theme-switch-wrapper">
+            <div class="toggle">
+              <input
+                type="checkbox"
+                id="dark-mode-toggle-nav"
+                aria-label="Alternar modo oscuro"
+              />
+              <label for="dark-mode-toggle-nav"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="ru-solicitudes-page">
+      <header class="ru-solicitudes-hero">
+        <h1 class="ru-solicitudes-title">
+          Solicitudes, <span class="ru-accent">Tickets</span> y Soporte
+        </h1>
+        <p class="ru-solicitudes-sub">
+          Envíame sugerencias, quejas o solicitudes. Y si inicias sesión, también puedes usar el chat en vivo.
+        </p>
+      </header>
+
+      <section class="ru-solicitudes-grid">
+        <!-- Formulario de envío de tickets/solicitudes -->
+        <div class="ru-card ru-card-form">
+          <h2 class="ru-card-title">Enviar un mensaje</h2>
+          <p class="ru-card-sub">
+            Todo llega ordenado por tipo. Responderé por los canales disponibles.
+          </p>
+
+          <form id="ru-ticket-form" class="ru-form">
+            <div class="ru-form-row">
+              <label class="ru-field">
+                <span class="ru-label">Tipo</span>
+                <select name="tipo" class="ru-input" required>
+                  <option value="Sugerencia">Sugerencia</option>
+                  <option value="Queja">Queja</option>
+                  <option value="Solicitud">Solicitud</option>
+                </select>
+              </label>
+
+              <label class="ru-field">
+                <span class="ru-label">Asunto</span>
+                <input
+                  name="asunto"
+                  class="ru-input"
+                  type="text"
+                  maxlength="90"
+                  placeholder="Ej: Optimización para Windows, error en Programas..."
+                  required
+                />
+              </label>
+            </div>
+
+            <label class="ru-field">
+              <span class="ru-label">Tu mensaje</span>
+              <textarea
+                name="mensaje"
+                class="ru-input ru-textarea"
+                rows="7"
+                maxlength="1200"
+                placeholder="Describe el problema/idea con el mayor detalle posible."
+                required
+              ></textarea>
+            </label>
+
+            <div class="ru-form-row">
+              <label class="ru-field">
+                <span class="ru-label">Correo (opcional)</span>
+                <input
+                  name="email"
+                  class="ru-input"
+                  type="email"
+                  maxlength="120"
+                  placeholder="tucorreo@ejemplo.com"
+                />
+              </label>
+
+              <label class="ru-field">
+                <span class="ru-label">Sistema (opcional)</span>
+                <input
+                  name="sistema"
+                  class="ru-input"
+                  type="text"
+                  maxlength="80"
+                  placeholder="Ej: Windows 11, Android, etc."
+                />
+              </label>
+            </div>
+
+            <div class="ru-form-actions">
+              <button type="submit" class="ru-btn-primary" id="ru-submit-btn">Enviar</button>
+              <button type="button" id="ru-clear-form" class="ru-btn-ghost">Limpiar</button>
+              <span id="ru-ticket-status" class="ru-status" aria-live="polite"></span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Panel lateral con recomendaciones -->
+        <aside class="ru-card ru-card-side">
+          <h2 class="ru-card-title">Recomendaciones</h2>
+          <ul class="ru-tips">
+            <li><strong>Detalles</strong>: versión de Windows, especificaciones y qué intentaste.</li>
+            <li><strong>Archivos</strong>: si algo falla, dime en qué sección y qué botón tocaste.</li>
+            <li><strong>Prioridad</strong>: marca “Queja” si es algo urgente o rompe una función.</li>
+          </ul>
+
+          <div class="ru-divider"></div>
+
+          <h3 class="ru-mini-title">Estado del chat</h3>
+          <p id="ru-chat-state" class="ru-muted">
+            Cargando...
+          </p>
+          <p class="ru-muted">
+            El chat es plegable y aparece en la esquina inferior derecha.
+          </p>
+        </aside>
+      </section>
+    </main>
+
+    <!-- Botón flotante para abrir el chat -->
+    <button class="ru-chat-fab" id="ru-chat-fab" aria-label="Abrir chat">
+      <span class="ru-chat-fab-dot"></span>
+      Chat
+    </button>
+
+    <!-- Sección del Chat en vivo -->
+    <section class="ru-chat" id="ru-chat" aria-hidden="true">
+      <div class="ru-chat__bar">
+        <div class="ru-chat__title">Chat</div>
+        <button class="ru-chat__close" id="ru-chat-close" aria-label="Cerrar chat">
+          <span class="ru-x-line ru-x-one"></span>
+          <span class="ru-x-line ru-x-two"></span>
+        </button>
+      </div>
+
+      <div class="ru-chat__body">
+        <!-- Mensaje de bloqueo si el usuario no ha iniciado sesión -->
+        <div id="ru-chat-locked" class="ru-chat__locked" hidden>
+          <p class="ru-chat__locked-title">Solo usuarios logueados</p>
+          <p class="ru-chat__locked-sub">
+            Inicia sesión para chatear con soporte.
+          </p>
+          <a class="ru-btn-primary ru-btn-inline" href="login.html?redirect=solicitudes.html">Acceder</a>
+        </div>
+
+        <!-- Contenedor donde se inyectan los mensajes dinámicamente -->
+        <div id="ru-chat-messages" class="ru-chat__messages" role="log" aria-live="polite">
+          <div class="ru-chat__msg ru-chat__msg--system">
+            Escribe tu mensaje y presiona Enter.
+          </div>
+        </div>
+      </div>
+
+      <!-- Área de entrada de mensajes con selector de emojis -->
+      <div class="ru-chat__sender">
+        <div class="ru-chat__inputwrap">
+          <!-- Selector de Emojis (Estilos movidos a index.css) -->
+          <div id="emoji-picker" class="emoji-picker">
+            <button class="emoji-btn">😀</button>
+            <button class="emoji-btn">😂</button>
+            <button class="emoji-btn">🤑</button>
+            <button class="emoji-btn">🤔</button>
+            <button class="emoji-btn">🤨</button>
+          </div>
+          <button id="emoji-trigger" class="emoji-trigger" title="Añadir emoji">😊</button>
+          <input
+            id="ru-chat-input"
+            placeholder="Enviar mensaje..."
+            class="ru-chat__input"
+            type="text"
+            maxlength="300"
+            autocomplete="off"
+          />
+          <button class="ru-chat__send" id="ru-chat-send" aria-label="Enviar">
+            <svg class="ru-chat__sendicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true">
+              <path fill="#6B6C7B" d="M481.508,210.336L68.414,38.926c-17.403-7.222-37.064-4.045-51.309,8.287C2.86,59.547-3.098,78.551,1.558,96.808 L38.327,241h180.026c8.284,0,15.001,6.716,15.001,15.001c0,8.284-6.716,15.001-15.001,15.001H38.327L1.558,415.193 c-4.656,18.258,1.301,37.262,15.547,49.595c14.274,12.357,33.937,15.495,51.31,8.287l413.094-171.409 C500.317,293.862,512,276.364,512,256.001C512,235.638,500.317,218.139,481.508,210.336z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pie de página con redes sociales -->
+    <footer>
+      <div class="footer-inner">
+        <div class="social-media">
+          <a
+            href="https://www.tiktok.com/@arecsss495"
+            target="_blank"
+            class="social-item"
+          >
+            <img src="../img/tiktok.webp" alt="TikTok" class="social-icon" loading="lazy" />
+            <span>@arecsss495</span>
+          </a>
+          <a
+            href="https://www.instagram.com/arecsss_495"
+            target="_blank"
+            class="social-item"
+          >
+            <img
+              src="../img/instagram.webp"
+              alt="Instagram"
+              class="social-icon"
+              loading="lazy"
+            />
+            <span>@arecsss_495</span>
+          </a>
+          <a
+            href="https://youtube.com/@arecsss495"
+            target="_blank"
+            class="social-item"
+          >
+            <img src="../img/youtube.webp" alt="YouTube" class="social-icon" loading="lazy" />
+            <span>@arecsss495</span>
+          </a>
+        </div>
+
+        <div class="linksitos">
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <span class="separator">|</span>
+          <a href="Descargo.html">Descargo de Responsabilidad</a>
+          <span class="separator">|</span>
+          <a href="Contacto.html">Contacto</a>
+        </div>
+
+        <div class="footer-copyright">
+          © 2026 Juan Rubio | Derechos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Carga del script unificado de tema y sesión -->
+    <script src="../JS/tema.js"></script>
+
+    <!-- LÓGICA DE FUNCIONAMIENTO (JavaScript) -->
+    <script type="module">
+      // Importación de funciones centralizadas de Supabase
+      import { supabase, cerrarSesion } from '../JS/supabase.js';
+
+      document.addEventListener("DOMContentLoaded", async function () {
+        // --- GESTIÓN DE SESIÓN (Manejo de Tickets y Chat) ---
+        var logged = localStorage.getItem("loggedIn") === "true";
+        var userEmail = localStorage.getItem("userEmail");
+        /* Obtener el nombre del usuario para mostrar en el chat */
+        var userName = localStorage.getItem("userName") || userEmail?.split('@')[0] || "Anónimo";
+
+        // --- ENVÍO DE FORMULARIO DE TICKETS ---
+        var form = document.getElementById("ru-ticket-form");
+        var clearBtn = document.getElementById("ru-clear-form");
+        var statusEl = document.getElementById("ru-ticket-status");
+        var submitBtn = document.getElementById("ru-submit-btn");
+
+        function setStatus(msg, type) {
+          if (!statusEl) return;
+          statusEl.textContent = msg || "";
+          statusEl.dataset.type = type || "";
+          statusEl.style.color = type === "ok" ? "#4caf50" : "#ff4d4d";
+        }
+
+        if (clearBtn && form) {
+          clearBtn.addEventListener("click", function () {
+            form.reset();
+            setStatus("");
+          });
+        }
+
+        if (form) {
+          form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            setStatus("Enviando...", "info");
+            submitBtn.disabled = true;
+
+            var fd = new FormData(form);
+            var payload = {
+              tipo: String(fd.get("tipo") || ""),
+              asunto: String(fd.get("asunto") || ""),
+              mensaje: String(fd.get("mensaje") || ""),
+              email: String(fd.get("email") || userEmail || ""),
+              sistema: String(fd.get("sistema") || ""),
+            };
+
+            // Inserción de datos en la tabla 'solicitudes' de Supabase
+            const { error } = await supabase.from('solicitudes').insert([payload]);
+
+            if (error) {
+              setStatus("Error al enviar. Intenta de nuevo.", "err");
+              submitBtn.disabled = false;
+            } else {
+              form.reset();
+              setStatus("Enviado con éxito. Gracias.", "ok");
+              submitBtn.disabled = false;
+              setTimeout(() => setStatus(""), 3500);
+            }
+          });
+        }
+
+        // --- LÓGICA DEL CHAT EN TIEMPO REAL ---
+        var chatFab = document.getElementById("ru-chat-fab");
+        var chat = document.getElementById("ru-chat");
+        var chatClose = document.getElementById("ru-chat-close");
+        var chatLocked = document.getElementById("ru-chat-locked");
+        var chatMessages = document.getElementById("ru-chat-messages");
+        var chatInput = document.getElementById("ru-chat-input");
+        var chatSend = document.getElementById("ru-chat-send");
+        var chatState = document.getElementById("ru-chat-state");
+        
+        // Elementos del selector de emojis
+        var emojiTrigger = document.getElementById("emoji-trigger");
+        var emojiPicker = document.getElementById("emoji-picker");
+        var emojiBtns = document.querySelectorAll(".emoji-btn");
+
+        // Abrir/Cerrar selector de emojis
+        if (emojiTrigger) {
+          emojiTrigger.addEventListener("click", (e) => {
+            e.stopPropagation();
+            emojiPicker.style.display = emojiPicker.style.display === "grid" ? "none" : "grid";
+          });
+        }
+
+        // Insertar emoji seleccionado en el campo de texto
+        emojiBtns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            chatInput.value += btn.textContent;
+            emojiPicker.style.display = "none";
+            chatInput.focus();
+          });
+        });
+
+        // Cerrar selector al hacer clic fuera de él
+        document.addEventListener("click", () => {
+          if (emojiPicker) emojiPicker.style.display = "none";
+        });
+
+        function setChatOpen(open) {
+          if (!chat) return;
+          chat.classList.toggle("ru-chat--open", !!open);
+          chat.setAttribute("aria-hidden", open ? "false" : "true");
+          if (open && chatInput && logged) chatInput.focus();
+        }
+
+        // Función para renderizar mensajes en la interfaz
+        function appendMsg(text, email, isMe, nombre) {
+          if (!chatMessages) return;
+          var div = document.createElement("div");
+          div.className = "ru-chat__msg " + (isMe ? "ru-chat__msg--me" : "ru-chat__msg--other");
+          
+          var userLabel = document.createElement("small");
+          userLabel.style.display = "block";
+          userLabel.style.fontSize = "0.7rem";
+          userLabel.style.opacity = "0.7";
+          userLabel.style.marginBottom = "2px";
+          /* Mostrar el nombre del usuario en lugar del email */
+          userLabel.textContent = nombre || email?.split('@')[0] || "Anónimo";
+          
+          var msgText = document.createElement("span");
+          msgText.textContent = text;
+          
+          div.appendChild(userLabel);
+          div.appendChild(msgText);
+          
+          chatMessages.appendChild(div);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Carga inicial de mensajes históricos
+        async function loadMessages() {
+          const { data, error } = await supabase
+            .from('mensajes_chat')
+            .select('*')
+            .order('created_at', { ascending: true })
+            .limit(50);
+          
+          if (data) {
+            chatMessages.innerHTML = ''; 
+            data.forEach(msg => {
+              /* Mostrar el nombre del usuario si está disponible */
+              appendMsg(msg.contenido, msg.usuario_email, msg.usuario_email === userEmail, msg.usuario_nombre);
+            });
+          }
+        }
+
+        // Envío de mensaje a la base de datos
+        async function handleSend() {
+          if (!logged || !userEmail) return;
+          var val = (chatInput.value || "").trim();
+          if (!val) return;
+          
+          chatInput.value = "";
+          /* Guardar el nombre del usuario junto con el mensaje */
+          const { error } = await supabase.from('mensajes_chat').insert([
+            { contenido: val, usuario_email: userEmail, usuario_nombre: userName }
+          ]);
+
+          if (error) console.error("Error al enviar mensaje:", error);
+        }
+
+        // Sincronización de la interfaz según el estado de logueo
+        function syncChatLockUI() {
+          if (chatLocked) chatLocked.hidden = logged;
+          if (chatInput) chatInput.disabled = !logged;
+          if (chatSend) chatSend.disabled = !logged;
+          if (emojiTrigger) emojiTrigger.style.display = logged ? "block" : "none";
+          if (chatState) chatState.textContent = logged ? "Disponible (logueado)." : "Bloqueado: inicia sesión para chatear.";
+        }
+
+        if (chatFab) chatFab.addEventListener("click", () => setChatOpen(true));
+        if (chatClose) chatClose.addEventListener("click", () => setChatOpen(false));
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") setChatOpen(false); });
+
+        if (chatSend) chatSend.addEventListener("click", handleSend);
+        if (chatInput) {
+          chatInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              handleSend();
+            }
+          });
+        }
+
+        syncChatLockUI();
+
+        if (logged) {
+          loadMessages();
+          // Suscripción en tiempo real a la tabla 'mensajes_chat'
+          supabase
+            .channel('public:mensajes_chat')
+            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'mensajes_chat' }, payload => {
+              const newMsg = payload.new;
+              /* Mostrar el nombre del usuario en los mensajes en tiempo real */
+              appendMsg(newMsg.contenido, newMsg.usuario_email, newMsg.usuario_email === userEmail, newMsg.usuario_nombre);
+            })
+            .subscribe();
+        }
+      });
+    </script>
+  </body>
+</html>

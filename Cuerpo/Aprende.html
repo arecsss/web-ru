@@ -1,0 +1,782 @@
+    <!-- GUARD DE SESIÓN: Si no ha iniciado sesión, redirige a login con retorno a esta página -->
+    <script>
+        if (localStorage.getItem('loggedIn') !== 'true') {
+            location.href = 'login.html?redirect=' + encodeURIComponent(location.href.split('/').pop());
+        }
+    </script>
+    <!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aprende - RU Academy</title>
+        <link rel="stylesheet" href="../style/index.css">
+    </head>
+
+    <!-- NAVEGACIÓN PRINCIPAL -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <!-- Logo interactivo que lleva al inicio -->
+            <div class="logo-wrapper" onclick="location.href='index.html'">
+                <div class="rubik-cube">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face left"></div>
+                    <div class="face right"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+                <span class="brand-name">RU - <span class="highlight">REAL UTILITY</span></span>
+            </div>
+
+            <!-- Menú hamburguesa para dispositivos móviles -->
+            <input type="checkbox" id="burger-toggle" class="burger-checkbox">
+            <label for="burger-toggle" class="burger-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Optimizaciones.html">Optimización</a></li>
+                <li><a href="Programas.html">Programas</a></li>
+                <li><a href="Sistemas.html">Sistemas</a></li>
+                <li><a href="Aprende.html">Aprende</a></li>
+                <li><a href="QuienSoy.html">¿Quién soy?</a></li>
+                <li><a href="solicitudes.html">Solicitudes</a></li>
+            </ul>
+
+            <!-- Acciones de navegación: Login/Logout y selector de tema -->
+            <div class="nav-actions" id="nav-actions-container">
+                <div id="auth-buttons-nav" style="display: flex; align-items: center; gap: 1.25rem;">
+                    <a href="login.html" class="btn-text">Acceder</a>
+                    <a href="register.html" class="btn-primary">Registrarse</a>
+                </div>
+
+                <div class="theme-switch-wrapper">
+                    <div class="toggle">
+                        <input type="checkbox" id="dark-mode-toggle-nav" aria-label="Alternar modo oscuro">
+                        <label for="dark-mode-toggle-nav"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO BANNER DE APRENDE -->
+    <section class="aprende-hero">
+        <div class="aprende-hero-content">
+            <h1 class="aprende-hero-title">🎓 RU Academy</h1>
+            <p class="aprende-hero-subtitle">Aprende sobre tecnología, optimización, hardware y mucho más</p>
+            <p class="aprende-hero-desc">Guías paso a paso, tutoriales prácticos y consejos de experto para dominar tu PC</p>
+        </div>
+    </section>
+
+    <!-- CONTENEDOR PRINCIPAL DE APRENDE -->
+    <div class="aprende-container">
+        
+        <!-- BUSCADOR Y FILTROS -->
+        <div class="aprende-filters">
+            <input type="text" id="aprende-search" class="aprende-search-input" placeholder="🔍 Buscar tutoriales...">
+            <div class="aprende-category-buttons">
+                <button class="aprende-filter-btn active" data-category="todos">Todos</button>
+                <button class="aprende-filter-btn" data-category="hardware">Hardware</button>
+                <button class="aprende-filter-btn" data-category="software">Software</button>
+                <button class="aprende-filter-btn" data-category="optimizacion">Optimización</button>
+                <button class="aprende-filter-btn" data-category="reparacion">Reparación</button>
+                <button class="aprende-filter-btn" data-category="seguridad">Seguridad</button>
+            </div>
+        </div>
+
+        <!-- GRID DE TARJETAS EDUCATIVAS -->
+        <div class="aprende-cards-grid">
+            
+            <!-- TARJETA 1: HARDWARE - Cuello de Botella -->
+            <div class="aprende-card" data-category="hardware">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category hardware">HARDWARE</span>
+                    <span class="aprende-card-time">⏱️ 8 min</span>
+                </div>
+                <div class="aprende-card-icon">⚖️</div>
+                <h3 class="aprende-card-title">¿Qué es el Cuello de Botella?</h3>
+                <p class="aprende-card-desc">Aprende a balancear tu CPU y GPU para evitar pérdida de rendimiento en juegos.</p>
+                <!-- Botón que abre el modal con la información completa -->
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-1')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 2: SOFTWARE - Mover Windows a NVMe -->
+            <div class="aprende-card" data-category="software">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category software">SOFTWARE</span>
+                    <span class="aprende-card-time">⏱️ 12 min</span>
+                </div>
+                <div class="aprende-card-icon">💾</div>
+                <h3 class="aprende-card-title">Migrar Windows a NVMe M.2</h3>
+                <p class="aprende-card-desc">Tutorial completo para mover tu SO a un disco SSD sin perder datos ni licencia.</p>
+                <!-- Botón que abre el modal con la información completa -->
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-2')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 3: REPARACIÓN - Pasta Térmica -->
+            <div class="aprende-card" data-category="reparacion">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category reparacion">REPARACIÓN</span>
+                    <span class="aprende-card-time">⏱️ 10 min</span>
+                </div>
+                <div class="aprende-card-icon">🔧</div>
+                <h3 class="aprende-card-title">Aplicar Pasta Térmica Correctamente</h3>
+                <p class="aprende-card-desc">Guía completa sobre cómo aplicar pasta térmica en CPU y GPU para máximo rendimiento.</p>
+                <!-- Botón que abre el modal con la información completa -->
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-3')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 4: OPTIMIZACIÓN - Limpieza de Registro -->
+            <div class="aprende-card" data-category="optimizacion">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category optimizacion">OPTIMIZACIÓN</span>
+                    <span class="aprende-card-time">⏱️ 6 min</span>
+                </div>
+                <div class="aprende-card-icon">🧹</div>
+                <h3 class="aprende-card-title">Limpiar Registro de Windows</h3>
+                <p class="aprende-card-desc">Aprende a limpiar el registro de Windows de forma segura para mejorar el rendimiento.</p>
+                <!-- Botón que abre el modal con la información completa -->
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-4')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 5: HARDWARE - Elegir RAM -->
+            <div class="aprende-card" data-category="hardware">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category hardware">HARDWARE</span>
+                    <span class="aprende-card-time">⏱️ 9 min</span>
+                </div>
+                <div class="aprende-card-icon">🧠</div>
+                <h3 class="aprende-card-title">Guía Completa: Elegir RAM</h3>
+                <p class="aprende-card-desc">Descubre qué RAM necesitas según tu uso: gaming, trabajo, streaming o todo en uno.</p>
+                <!-- Botón que abre el modal con la información completa -->
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-5')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 6: SOFTWARE - Instalar Drivers -->
+            <div class="aprende-card" data-category="software">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category software">SOFTWARE</span>
+                    <span class="aprende-card-time">⏱️ 7 min</span>
+                </div>
+                <div class="aprende-card-icon">📦</div>
+                <h3 class="aprende-card-title">Instalar Drivers Correctamente</h3>
+                <p class="aprende-card-desc">Guía paso a paso para instalar, actualizar y limpiar drivers de GPU, chipset y periféricos.</p>
+                <!-- Botón que abre el modal con la información completa -->
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-6')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 7: OPTIMIZACIÓN - Monitoreo de Temperatura -->
+            <div class="aprende-card" data-category="optimizacion">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category optimizacion">OPTIMIZACIÓN</span>
+                    <span class="aprende-card-time">⏱️ 5 min</span>
+                </div>
+                <div class="aprende-card-icon">🌡️</div>
+                <h3 class="aprende-card-title">Monitorear Temperatura de tu PC</h3>
+                <p class="aprende-card-desc">Aprende a monitorear y controlar las temperaturas de CPU, GPU y SSD para máxima durabilidad.</p>
+                <!-- Botón que abre el modal con la información completa -->
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-7')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 8: HARDWARE - Elegir SSD -->
+            <div class="aprende-card" data-category="hardware">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category hardware">HARDWARE</span>
+                    <span class="aprende-card-time">⏱️ 8 min</span>
+                </div>
+                <div class="aprende-card-icon">💿</div>
+                <h3 class="aprende-card-title">Guía: Elegir el Mejor SSD</h3>
+                <p class="aprende-card-desc">Comparativa entre SATA, NVMe y PCIe 5.0. ¿Cuál necesitas realmente? Velocidades y precios.</p>
+                <!-- Botón que abre el modal con la información completa -->
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-8')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 9: REPARACIÓN - Limpiar Polvo del PC -->
+            <div class="aprende-card" data-category="reparacion">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category reparacion">REPARACIÓN</span>
+                    <span class="aprende-card-time">⏱️ 6 min</span>
+                </div>
+                <div class="aprende-card-icon">🧽</div>
+                <h3 class="aprende-card-title">Limpiar Polvo y Mantener tu PC</h3>
+                <p class="aprende-card-desc">Guía completa de limpieza interna: herramientas necesarias, pasos seguros y frecuencia recomendada.</p>
+                <!-- Botón que abre el modal con la información completa -->
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-9')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 10: OPTIMIZACIÓN - Configurar BIOS -->
+            <div class="aprende-card" data-category="optimizacion">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category optimizacion">OPTIMIZACIÓN</span>
+                    <span class="aprende-card-time">⏱️ 10 min</span>
+                </div>
+                <div class="aprende-card-icon">⚙️</div>
+                <h3 class="aprende-card-title">Configurar BIOS para Máximo Rendimiento</h3>
+                <p class="aprende-card-desc">Aprende a configurar tu BIOS/UEFI correctamente: XMP, arranque rápido, virtualización y más.</p>
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-10')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 11: SOFTWARE - Servicios de Windows -->
+            <div class="aprende-card" data-category="software">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category software">SOFTWARE</span>
+                    <span class="aprende-card-time">⏱️ 8 min</span>
+                </div>
+                <div class="aprende-card-icon">🔄</div>
+                <h3 class="aprende-card-title">Servicios de Windows: Cuáles Desactivar</h3>
+                <p class="aprende-card-desc">Guía segura para deshabilitar servicios innecesarios que consumen RAM y CPU en segundo plano.</p>
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-11')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 12: SEGURIDAD - Proteger tu PC -->
+            <div class="aprende-card" data-category="seguridad">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category seguridad">SEGURIDAD</span>
+                    <span class="aprende-card-time">⏱️ 7 min</span>
+                </div>
+                <div class="aprende-card-icon">🛡️</div>
+                <h3 class="aprende-card-title">Proteger tu PC de Malware</h3>
+                <p class="aprende-card-desc">Consejos esenciales de seguridad: antivirus, firewall, navegación segura y detección de amenazas.</p>
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-12')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 13: HARDWARE - Overclocking Básico -->
+            <div class="aprende-card" data-category="hardware">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category hardware">HARDWARE</span>
+                    <span class="aprende-card-time">⏱️ 12 min</span>
+                </div>
+                <div class="aprende-card-icon">🚀</div>
+                <h3 class="aprende-card-title">Overclocking Básico: CPU y GPU</h3>
+                <p class="aprende-card-desc">Introducción al overclocking seguro: conceptos, herramientas, límites y cómo ganar rendimiento gratis.</p>
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-13')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 14: REPARACIÓN - Cable Management -->
+            <div class="aprende-card" data-category="reparacion">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category reparacion">REPARACIÓN</span>
+                    <span class="aprende-card-time">⏱️ 6 min</span>
+                </div>
+                <div class="aprende-card-icon">🔌</div>
+                <h3 class="aprende-card-title">Cable Management: Organiza tu PC</h3>
+                <p class="aprende-card-desc">Aprende a organizar los cables internos de tu PC para mejor flujo de aire y estética profesional.</p>
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-14')">Leer Más</button>
+            </div>
+
+            <!-- TARJETA 15: SEGURIDAD - Backups y Recuperación -->
+            <div class="aprende-card" data-category="seguridad">
+                <div class="aprende-card-header">
+                    <span class="aprende-card-category seguridad">SEGURIDAD</span>
+                    <span class="aprende-card-time">⏱️ 9 min</span>
+                </div>
+                <div class="aprende-card-icon">💾</div>
+                <h3 class="aprende-card-title">Backups: Protege tus Datos</h3>
+                <p class="aprende-card-desc">Guía completa sobre copias de seguridad: herramientas, estrategias 3-2-1 y recuperación ante desastres.</p>
+                <button class="aprende-card-btn" onclick="aprende_openModal('modal-15')">Leer Más</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL OVERLAY (Fondo oscuro que se muestra cuando se abre un modal) -->
+    <div id="aprende-modal-overlay" class="aprende-modal-overlay" onclick="aprende_closeModal()"></div>
+
+    <!-- MODALES INDIVIDUALES (Cada uno contiene la información completa de una tarjeta) -->
+    
+    <!-- MODAL 1: Cuello de Botella -->
+    <div id="modal-1" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>⚖️ ¿Qué es el Cuello de Botella?</h2>
+            <h4>¿Qué es exactamente el cuello de botella?</h4>
+            <p>El cuello de botella ocurre cuando uno de tus componentes (CPU o GPU) está mucho más potente que el otro, limitando el rendimiento general de tu sistema. Es como tener una autopista de 8 carriles que se reduce a 2 carriles: el tráfico se ralentiza.</p>
+            <h4>Ejemplo práctico:</h4>
+            <p>Si tienes una RTX 4090 (GPU potentísima) con un Ryzen 5 5600X (CPU más modesta), tu CPU será el cuello de botella porque no puede procesar suficientes instrucciones para mantener tu GPU al 100% de utilización. Resultado: tu GPU costosa no rinde al máximo.</p>
+            <h4>¿Cómo identificar un cuello de botella?</h4>
+            <ul>
+                <li>Abre un monitor como <strong>MSI Afterburner</strong> o <strong>HWiNFO</strong></li>
+                <li>Juega tu juego favorito</li>
+                <li>Si tu CPU está al 100% y tu GPU al 70-80%, tu CPU es el cuello de botella</li>
+                <li>Si tu GPU está al 100% y tu CPU al 50-70%, tu GPU es el cuello de botella</li>
+            </ul>
+            <h4>¿Cómo evitarlo?</h4>
+            <ul>
+                <li>Elige componentes de generaciones similares (CPU y GPU del mismo año)</li>
+                <li>Busca benchmarks antes de comprar (YouTube es tu amigo)</li>
+                <li>Considera tu resolución de juego: 1080p requiere más CPU, 4K más GPU</li>
+                <li>Equilibra tu presupuesto: no gastes 80% en GPU y 20% en CPU</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Migrar Windows a NVMe -->
+    <div id="modal-2" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>💾 Migrar Windows a NVMe M.2</h2>
+            <h4>¿Por qué migrar a NVMe?</h4>
+            <p>Los NVMe M.2 son hasta 10 veces más rápidos que los SSD SATA tradicionales. Tu Windows arrancará en segundos, los programas abrirán instantáneamente y los juegos cargarán mucho más rápido.</p>
+            <h4>Paso 1: Preparación</h4>
+            <p>Descarga <strong>Macrium Reflect Free</strong> o <strong>AOMEI Backupper</strong> (ambas son gratuitas). Estas herramientas permiten clonar tu disco actual al nuevo NVMe sin perder la licencia de Windows.</p>
+            <h4>Paso 2: Crear imagen de respaldo</h4>
+            <p>Abre la herramienta y selecciona "Clonar disco". Elige tu disco actual como origen y el NVMe como destino. Esto puede tomar 30-60 minutos dependiendo del tamaño.</p>
+            <h4>Paso 3: Configurar BIOS</h4>
+            <p>Reinicia tu PC, entra a BIOS (presiona DEL, F2 o F12 según tu placa madre), y cambia el orden de arranque para que el NVMe sea el primero.</p>
+            <h4>Paso 4: Verificación</h4>
+            <p>Reinicia y verifica que Windows arranca desde el nuevo disco. Una vez confirmado, puedes formatear el disco antiguo para usarlo como almacenamiento secundario.</p>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Pasta Térmica -->
+    <div id="modal-3" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>🔧 Aplicar Pasta Térmica Correctamente</h2>
+            <h4>¿Por qué es importante la pasta térmica?</h4>
+            <p>La pasta térmica rellena las microscópicas imperfecciones entre el chip y el disipador, permitiendo una transferencia de calor eficiente. Sin ella, tu CPU se sobrecalentaría en segundos.</p>
+            <h4>Cantidad correcta</h4>
+            <p>Usa una cantidad del tamaño de un <strong>grano de arroz</strong> en el centro del chip. Menos es más: demasiada pasta reduce la eficiencia térmica y puede causar derrames.</p>
+            <h4>Mejores marcas recomendadas</h4>
+            <ul>
+                <li><strong>Thermal Grizzly Kryonaut</strong> - Premium, excelente rendimiento (30-35°C mejor)</li>
+                <li><strong>Arctic MX-6</strong> - Buena relación precio-rendimiento</li>
+                <li><strong>Noctua NT-H1</strong> - Confiable, duradera y económica</li>
+            </ul>
+            <h4>Proceso de aplicación paso a paso</h4>
+            <p><strong>1. Limpieza:</strong> Limpia el chip y disipador con alcohol isopropílico al 90% y un paño sin pelusa.</p>
+            <p><strong>2. Aplicación:</strong> Aplica la pasta en el centro del chip en forma de punto pequeño.</p>
+            <p><strong>3. Colocación:</strong> Coloca el disipador presionando firmemente y de forma pareja.</p>
+            <p><strong>4. Fijación:</strong> Atornilla según las instrucciones del fabricante (no aprietes demasiado).</p>
+        </div>
+    </div>
+
+    <!-- MODAL 4: Limpiar Registro -->
+    <div id="modal-4" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>🧹 Limpiar Registro de Windows</h2>
+            <h4>¿Qué es el Registro de Windows?</h4>
+            <p>Es una base de datos jerárquica que almacena configuraciones del sistema, aplicaciones y preferencias del usuario. Con el tiempo, acumula entradas obsoletas de programas desinstalados que ralentizan el sistema.</p>
+            <h4>Método manual (Avanzado)</h4>
+            <p>Abre <strong>regedit</strong> (Win+R, escribe regedit). Busca entradas de programas desinstalados en <strong>HKEY_LOCAL_MACHINE\Software</strong> y elimínalas. ⚠️ Haz backup antes (Archivo > Exportar).</p>
+            <h4>Método automático (Recomendado)</h4>
+            <p>Usa herramientas como <strong>CCleaner</strong> o <strong>Wise Registry Cleaner</strong>. Estas analizan y limpian automáticamente entradas inválidas sin riesgo.</p>
+            <h4>Precauciones importantes</h4>
+            <ul>
+                <li>Siempre crea un punto de restauración antes (Sistema > Protección del sistema)</li>
+                <li>No elimines entradas que no reconozcas</li>
+                <li>Ejecuta como Administrador</li>
+                <li>Cierra todos los programas antes de limpiar</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MODAL 5: Elegir RAM -->
+    <div id="modal-5" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>🧠 Guía Completa: Elegir RAM</h2>
+            <h4>¿Cuánta RAM necesito?</h4>
+            <ul>
+                <li><strong>8 GB:</strong> Navegación básica, Office, YouTube</li>
+                <li><strong>16 GB:</strong> Gaming 1080p, edición de video ligera, multitarea</li>
+                <li><strong>32 GB:</strong> Gaming 4K, edición de video profesional, streaming</li>
+                <li><strong>64+ GB:</strong> Renderizado 3D, máquinas virtuales, servidores</li>
+            </ul>
+            <h4>Velocidad (MHz) y Latencia (CAS)</h4>
+            <p><strong>Velocidad:</strong> 3200 MHz es estándar, 3600+ MHz es mejor. <strong>Latencia:</strong> CAS 16 es bueno, CAS 14 es excelente. Busca "3600 MHz CAS 16" como referencia.</p>
+            <h4>Tipos de RAM</h4>
+            <ul>
+                <li><strong>DDR4:</strong> Estándar actual, compatible con placas AM4 e Intel 10-12 gen</li>
+                <li><strong>DDR5:</strong> Más rápida, para placas nuevas (AM5, Intel 13+ gen)</li>
+            </ul>
+            <h4>Marcas recomendadas</h4>
+            <p>Corsair, Kingston, G.Skill, Crucial. Todas tienen buena reputación y garantía.</p>
+        </div>
+    </div>
+
+    <!-- MODAL 6: Instalar Drivers -->
+    <div id="modal-6" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>📦 Instalar Drivers Correctamente</h2>
+            <h4>¿Qué son los drivers?</h4>
+            <p>Los drivers son programas que permiten que Windows comunique con tus componentes de hardware (GPU, chipset, sonido, red, etc.). Sin drivers actualizados, tu hardware no funciona correctamente.</p>
+            <h4>Drivers principales a actualizar</h4>
+            <ul>
+                <li><strong>GPU (NVIDIA/AMD):</strong> Descarga desde nvidia.com o amd.com</li>
+                <li><strong>Chipset:</strong> Descarga desde el sitio de tu placa madre</li>
+                <li><strong>Audio:</strong> Realtek o Conexant (según tu placa)</li>
+                <li><strong>Red:</strong> Ethernet o WiFi</li>
+            </ul>
+            <h4>Pasos para instalar drivers</h4>
+            <p><strong>1.</strong> Identifica tu hardware (GPU, chipset, etc.)</p>
+            <p><strong>2.</strong> Descarga el driver más reciente desde el sitio oficial</p>
+            <p><strong>3.</strong> Desinstala el driver antiguo (Panel de Control > Dispositivos)</p>
+            <p><strong>4.</strong> Instala el nuevo driver</p>
+            <p><strong>5.</strong> Reinicia tu PC</p>
+            <h4>Herramientas útiles</h4>
+            <p><strong>GPU-Z:</strong> Identifica tu GPU. <strong>CPU-Z:</strong> Identifica tu CPU y chipset. <strong>DriverBooster:</strong> Actualiza drivers automáticamente.</p>
+        </div>
+    </div>
+
+    <!-- MODAL 7: Monitoreo de Temperatura -->
+    <div id="modal-7" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>🌡️ Monitorear Temperatura de tu PC</h2>
+            <h4>Temperaturas seguras</h4>
+            <ul>
+                <li><strong>CPU:</strong> Hasta 80°C en carga, ideal 60-70°C</li>
+                <li><strong>GPU:</strong> Hasta 85°C en carga, ideal 65-75°C</li>
+                <li><strong>SSD:</strong> Hasta 70°C, ideal 40-50°C</li>
+            </ul>
+            <h4>Herramientas de monitoreo</h4>
+            <ul>
+                <li><strong>HWiNFO:</strong> La más completa y precisa (recomendada)</li>
+                <li><strong>MSI Afterburner:</strong> Excelente para GPU</li>
+                <li><strong>Core Temp:</strong> Ligera y simple para CPU</li>
+                <li><strong>CrystalDiskInfo:</strong> Monitorea salud del SSD</li>
+            </ul>
+            <h4>¿Qué hacer si la temperatura es alta?</h4>
+            <ul>
+                <li>Limpia el polvo del PC (especialmente disipadores)</li>
+                <li>Reaplica pasta térmica en CPU/GPU</li>
+                <li>Mejora la ventilación del case</li>
+                <li>Reduce overclocking si lo tienes activado</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MODAL 8: Elegir SSD -->
+    <div id="modal-8" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>💿 Guía: Elegir el Mejor SSD</h2>
+            <h4>Comparativa de tipos de SSD</h4>
+            <ul>
+                <li><strong>SATA:</strong> 550 MB/s, antiguo pero confiable, barato</li>
+                <li><strong>NVMe (PCIe 3.0):</strong> 3500 MB/s, estándar actual, buen precio</li>
+                <li><strong>NVMe (PCIe 4.0):</strong> 7000 MB/s, muy rápido, precio medio</li>
+                <li><strong>NVMe (PCIe 5.0):</strong> 14000+ MB/s, ultra rápido, caro y nuevo</li>
+            </ul>
+            <h4>¿Cuál necesitas?</h4>
+            <p><strong>Gaming:</strong> NVMe PCIe 3.0 o 4.0 (500 GB - 1 TB). <strong>Trabajo profesional:</strong> NVMe PCIe 4.0 (1-2 TB). <strong>Almacenamiento:</strong> SATA o NVMe 3.0 (2-4 TB).</p>
+            <h4>Marcas recomendadas</h4>
+            <ul>
+                <li><strong>Samsung 990 Pro:</strong> Premium, excelente rendimiento</li>
+                <li><strong>WD Black SN850X:</strong> Muy rápido, buena relación precio</li>
+                <li><strong>Crucial P5 Plus:</strong> Económico y confiable</li>
+                <li><strong>Kingston A3000:</strong> Presupuesto, funciona bien</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MODAL 9: Limpiar Polvo -->
+    <div id="modal-9" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>🧽 Limpiar Polvo y Mantener tu PC</h2>
+            <h4>¿Por qué es importante limpiar?</h4>
+            <p>El polvo obstruye los disipadores y ventiladores, reduciendo el flujo de aire. Esto causa temperaturas más altas, throttling (reducción de velocidad) y eventual fallo de componentes.</p>
+            <h4>Herramientas necesarias</h4>
+            <ul>
+                <li>Destornillador (Phillips o Torx)</li>
+                <li>Aire comprimido o soplador de aire</li>
+                <li>Paño sin pelusa</li>
+                <li>Alcohol isopropílico (opcional)</li>
+                <li>Pulsera antiestática (recomendado)</li>
+            </ul>
+            <h4>Pasos de limpieza</h4>
+            <p><strong>1.</strong> Apaga el PC y desconecta la fuente de poder.</p>
+            <p><strong>2.</strong> Abre el case (generalmente un panel lateral).</p>
+            <p><strong>3.</strong> Usa aire comprimido para soplar el polvo de ventiladores y disipadores.</p>
+            <p><strong>4.</strong> Limpia los filtros de aire si los tiene.</p>
+            <p><strong>5.</strong> Cierra el case y enciende.</p>
+            <h4>Frecuencia recomendada</h4>
+            <p>Cada 3-6 meses si tu PC está en un ambiente polvoriento, cada 6-12 meses en ambientes limpios.</p>
+        </div>
+    </div>
+
+    <!-- MODAL 10: Configurar BIOS -->
+    <div id="modal-10" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>⚙️ Configurar BIOS para Máximo Rendimiento</h2>
+            <h4>¿Qué es la BIOS/UEFI?</h4>
+            <p>La BIOS (Basic Input/Output System) o UEFI (su versión moderna) es el firmware que controla tu hardware antes de que Windows se cargue. Aquí puedes configurar parámetros críticos que afectan el rendimiento de todo tu sistema.</p>
+            <h4>Configuraciones esenciales</h4>
+            <ul>
+                <li><strong>XMP/EXPO:</strong> Activa este perfil para que tu RAM funcione a su velocidad real. Sin XMP, tu RAM de 3600 MHz probablemente esté funcionando a solo 2133 MHz.</li>
+                <li><strong>Arranque Rápido (Fast Boot):</strong> Acelera el tiempo de inicio saltando pruebas de hardware innecesarias.</li>
+                <li><strong>Virtualización (SVM/VT-x):</strong> Habilítalo si usas emuladores, máquinas virtuales o Windows Sandbox.</li>
+                <li><strong>Resizable BAR / Smart Access Memory:</strong> Mejora el rendimiento en juegos permitiendo al CPU acceder a toda la VRAM de tu GPU.</li>
+            </ul>
+            <h4>Cómo acceder a la BIOS</h4>
+            <p>Reinicia tu PC y presiona la tecla correspondiente según tu placa madre: <strong>DEL</strong> (ASUS, MSI, Gigabyte), <strong>F2</strong> (Acer, ASUS), <strong>F10</strong> (HP), <strong>F12</strong> (Dell, Lenovo).</p>
+            <h4>⚠️ Precaución</h4>
+            <p>No modifiques voltajes ni frecuencias del CPU si no sabes lo que haces. Un ajuste incorrecto puede causar inestabilidad o daño. Siempre toma foto de los valores originales antes de cambiar algo.</p>
+        </div>
+    </div>
+
+    <!-- MODAL 11: Servicios de Windows -->
+    <div id="modal-11" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>🔄 Servicios de Windows: Cuáles Desactivar</h2>
+            <h4>¿Qué son los servicios de Windows?</h4>
+            <p>Son programas que se ejecutan en segundo plano desde el arranque. Muchos son necesarios, pero otros consumen RAM y CPU innecesariamente. Windows 10/11 trae más de 200 servicios, de los cuales puedes desactivar varios sin problemas.</p>
+            <h4>Servicios seguros para desactivar</h4>
+            <ul>
+                <li><strong>SysMain (Superfetch):</strong> Precarga programas en RAM, pero en SSDs no aporta beneficio y consume recursos.</li>
+                <li><strong>Windows Search:</strong> Indexa archivos constantemente. Si no usas la búsqueda frecuentemente, desactívalo.</li>
+                <li><strong>Fax:</strong> Servicio obsoleto de envío de faxes por software.</li>
+                <li><strong>Print Spooler:</strong> Solo si NO usas impresora.</li>
+                <li><strong>Diagnostic Tracking Service:</strong> Envía telemetría a Microsoft.</li>
+                <li><strong>Connected User Experiences:</strong> Recopila datos de uso.</li>
+            </ul>
+            <h4>Cómo desactivar servicios</h4>
+            <p><strong>1.</strong> Presiona <strong>Win + R</strong>, escribe <strong>services.msc</strong> y presiona Enter.</p>
+            <p><strong>2.</strong> Busca el servicio en la lista.</p>
+            <p><strong>3.</strong> Clic derecho > Propiedades > Tipo de inicio: <strong>Deshabilitado</strong>.</p>
+            <p><strong>4.</strong> Clic en <strong>Detener</strong> si está en ejecución.</p>
+            <h4>⚠️ Importante</h4>
+            <p>Nunca desactives servicios que no reconozcas. Crea un punto de restauración antes de hacer cambios para poder revertir si algo falla.</p>
+        </div>
+    </div>
+
+    <!-- MODAL 12: Proteger tu PC de Malware -->
+    <div id="modal-12" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>🛡️ Proteger tu PC de Malware</h2>
+            <h4>Tipos de amenazas más comunes</h4>
+            <ul>
+                <li><strong>Virus:</strong> Se adjuntan a archivos legítimos y se propagan al ejecutarlos.</li>
+                <li><strong>Ransomware:</strong> Encripta tus archivos y pide rescate. Muy peligroso.</li>
+                <li><strong>Spyware:</strong> Espía tu actividad, roba contraseñas y datos bancarios.</li>
+                <li><strong>Adware:</strong> Muestra publicidad invasiva y redirige tu navegador.</li>
+                <li><strong>Troyanos:</strong> Se disfrazan de programas legítimos pero ejecutan código malicioso.</li>
+            </ul>
+            <h4>Medidas de protección esenciales</h4>
+            <ul>
+                <li><strong>Windows Defender:</strong> Es suficiente para la mayoría. Mantenlo actualizado y activo.</li>
+                <li><strong>Malwarebytes Free:</strong> Excelente complemento para escaneos manuales.</li>
+                <li><strong>uBlock Origin:</strong> Extensión de navegador que bloquea anuncios maliciosos.</li>
+                <li><strong>Firewall activo:</strong> Mantén el Firewall de Windows siempre encendido.</li>
+            </ul>
+            <h4>Buenas prácticas</h4>
+            <p><strong>1.</strong> No descargues software de páginas dudosas (usa siempre la web oficial).</p>
+            <p><strong>2.</strong> No abras adjuntos de correos sospechosos.</p>
+            <p><strong>3.</strong> Usa contraseñas fuertes y únicas para cada servicio.</p>
+            <p><strong>4.</strong> Mantén Windows y tus programas actualizados.</p>
+            <p><strong>5.</strong> Activa la autenticación en dos factores (2FA) donde sea posible.</p>
+        </div>
+    </div>
+
+    <!-- MODAL 13: Overclocking Básico -->
+    <div id="modal-13" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>🚀 Overclocking Básico: CPU y GPU</h2>
+            <h4>¿Qué es el overclocking?</h4>
+            <p>Es el proceso de aumentar la frecuencia de reloj de tu CPU o GPU más allá de los valores de fábrica para obtener mayor rendimiento. Es como "acelerar" tu hardware de forma gratuita, pero requiere entender los límites térmicos y de estabilidad.</p>
+            <h4>Overclocking de GPU (más seguro)</h4>
+            <ul>
+                <li><strong>Herramienta:</strong> MSI Afterburner (gratuita y compatible con todas las GPUs).</li>
+                <li><strong>Core Clock:</strong> Aumenta de 25 MHz en 25 MHz. Prueba estabilidad con cada aumento.</li>
+                <li><strong>Memory Clock:</strong> Aumenta de 50 MHz en 50 MHz.</li>
+                <li><strong>Power Limit:</strong> Sube al máximo permitido por el software.</li>
+                <li><strong>Test:</strong> Usa FurMark o 3DMark para verificar estabilidad.</li>
+            </ul>
+            <h4>Overclocking de CPU (avanzado)</h4>
+            <p>Solo disponible en CPUs desbloqueadas (Intel serie K, AMD Ryzen). Se configura desde la BIOS aumentando el multiplicador y ajustando el voltaje (Vcore). Requiere buena refrigeración.</p>
+            <h4>Señales de inestabilidad</h4>
+            <ul>
+                <li>Pantallazos azules (BSOD)</li>
+                <li>Artefactos visuales en juegos (líneas, colores extraños)</li>
+                <li>Reinicios aleatorios</li>
+                <li>Temperaturas superiores a 90°C</li>
+            </ul>
+            <p><strong>Regla de oro:</strong> Si ves cualquier inestabilidad, reduce la frecuencia o aumenta ligeramente el voltaje (sin exceder los límites seguros).</p>
+        </div>
+    </div>
+
+    <!-- MODAL 14: Cable Management -->
+    <div id="modal-14" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>🔌 Cable Management: Organiza tu PC</h2>
+            <h4>¿Por qué importa organizar los cables?</h4>
+            <p>Un buen cable management no es solo estético: mejora el flujo de aire, reduce temperaturas, facilita el mantenimiento y previene desconexiones accidentales. Un PC organizado es un PC que dura más.</p>
+            <h4>Herramientas necesarias</h4>
+            <ul>
+                <li><strong>Bridas/Zip ties:</strong> Para agrupar cables.</li>
+                <li><strong>Velcro straps:</strong> Reutilizables, ideales para ajustes frecuentes.</li>
+                <li><strong>Extensiones modulares:</strong> Cables personalizados que mejoran la estética.</li>
+            </ul>
+            <h4>Pasos para organizar</h4>
+            <p><strong>1.</strong> Desconecta todos los cables y planifica la ruta de cada uno.</p>
+            <p><strong>2.</strong> Pasa los cables por la parte trasera del case siempre que sea posible.</p>
+            <p><strong>3.</strong> Usa los ojales y canales de gestión de cables del case.</p>
+            <p><strong>4.</strong> Agrupa cables del mismo tipo juntos (SATA, ventiladores, etc.).</p>
+            <p><strong>5.</strong> Asegura con bridas o velcro en puntos estratégicos.</p>
+            <h4>Consejos extra</h4>
+            <ul>
+                <li>No tengas cables cerca de los ventiladores (pueden enredarse).</li>
+                <li>Deja algo de holgura para futuros cambios de hardware.</li>
+                <li>Si tu case no tiene espacio trasero, al menos mantén los cables alejados de las zonas de ventilación.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MODAL 15: Backups -->
+    <div id="modal-15" class="aprende-modal">
+        <div class="aprende-modal-content">
+            <button class="aprende-modal-close" onclick="aprende_closeModal()">✕</button>
+            <h2>💾 Backups: Protege tus Datos</h2>
+            <h4>¿Por qué son importantes los backups?</h4>
+            <p>Tus datos son irremplazables: fotos familiares, documentos de trabajo, proyectos personales. Un fallo de disco, un ransomware o un error humano pueden borrar todo en segundos. Los backups son tu red de seguridad.</p>
+            <h4>Estrategia 3-2-1 (la mejor práctica)</h4>
+            <ul>
+                <li><strong>3 copias:</strong> de tus datos importantes.</li>
+                <li><strong>2 medios diferentes:</strong> (disco externo + nube, por ejemplo).</li>
+                <li><strong>1 copia offsite:</strong> fuera de tu ubicación física (la nube cuenta).</li>
+            </ul>
+            <h4>Herramientas recomendadas</h4>
+            <ul>
+                <li><strong>Windows Backup:</strong> Integrado en Windows, básico pero funcional.</li>
+                <li><strong>Macrium Reflect Free:</strong> Crea imágenes completas del sistema.</li>
+                <li><strong>Google Drive / OneDrive:</strong> 15 GB / 5 GB gratis para archivos en la nube.</li>
+                <li><strong>Syncthing:</strong> Sincronización peer-to-peer, privada y gratuita.</li>
+            </ul>
+            <h4>¿Con qué frecuencia hacer backup?</h4>
+            <ul>
+                <li><strong>Archivos importantes:</strong> Diariamente o con sincronización automática.</li>
+                <li><strong>Imagen de sistema completa:</strong> Mensualmente o después de cambios grandes.</li>
+                <li><strong>Proyecto en curso:</strong> Cada vez que hagas cambios significativos.</li>
+            </ul>
+            <h4>Tip final</h4>
+            <p><strong>Un backup que no has probado restaurar no es un backup.</strong> Periodicamente verifica que puedes recuperar tus archivos desde tus copias de seguridad.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>RU - Real Utility</h4>
+                <p>Tu plataforma de optimización y aprendizaje tecnológico.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="Optimizaciones.html">Optimizaciones</a></li>
+                    <li><a href="Aprende.html">Aprende</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Redes Sociales</h4>
+                <div class="footer-socials">
+                    <a href="https://instagram.com" target="_blank">Instagram</a>
+                    <a href="https://twitter.com" target="_blank">Twitter</a>
+                    <a href="https://youtube.com" target="_blank">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RU - Real Utility. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE FUNCIONALIDAD DE MODALES Y FILTROS -->
+    <script>
+        // Función para abrir un modal específico
+        function aprende_openModal(modalId) {
+            // Muestra el overlay (fondo oscuro)
+            document.getElementById('aprende-modal-overlay').style.display = 'block';
+            // Muestra el modal específico
+            document.getElementById(modalId).style.display = 'block';
+            // Previene scroll de la página
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Función para cerrar el modal actual
+        function aprende_closeModal() {
+            // Oculta el overlay
+            document.getElementById('aprende-modal-overlay').style.display = 'none';
+            // Oculta todos los modales
+            const modals = document.querySelectorAll('.aprende-modal');
+            modals.forEach(modal => modal.style.display = 'none');
+            // Permite scroll de la página
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal al hacer clic en el overlay
+        document.getElementById('aprende-modal-overlay').addEventListener('click', aprende_closeModal);
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                aprende_closeModal();
+            }
+        });
+
+        // Filtrado de tarjetas por categoría
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.aprende-filter-btn');
+            const cards = document.querySelectorAll('.aprende-card');
+            const searchInput = document.getElementById('aprende-search');
+
+            // Evento para botones de filtro
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remueve clase active de todos los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Añade clase active al botón clickeado
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Filtra las tarjetas
+                    cards.forEach(card => {
+                        if (category === 'todos' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Evento para búsqueda
+            searchInput.addEventListener('keyup', function() {
+                const searchTerm = this.value.toLowerCase();
+                cards.forEach(card => {
+                    const title = card.querySelector('.aprende-card-title').textContent.toLowerCase();
+                    const desc = card.querySelector('.aprende-card-desc').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Scripts de Sesión y Tema -->
+    <script src="../JS/supabase.js"></script>
+    <script src="../JS/sesion.js"></script>
+    <script src="../JS/tema.js"></script>
+</body>
+
+</html>

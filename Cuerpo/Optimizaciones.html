@@ -1,0 +1,323 @@
+﻿<body class="dark-mode">
+    <!-- GUARD DE SESIÓN -->
+    <script>
+        if (localStorage.getItem('loggedIn') !== 'true') {
+            location.href = 'login.html?redirect=' + encodeURIComponent(location.href.split('/').pop());
+        }
+    </script>
+    <title>Optimizaciones</title>
+    <link rel="stylesheet" href="../style/index.css">
+    <!-- Mini Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <div class="logo-wrapper" onclick="location.href='index.html'">
+                <div class="rubik-cube">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face left"></div>
+                    <div class="face right"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+                <span class="brand-name">RU - <span class="highlight">REAL UTILITY</span></span>
+            </div>
+            <input type="checkbox" id="burger-toggle" class="burger-checkbox">
+            <label for="burger-toggle" class="burger-label">
+                <span></span><span></span><span></span>
+            </label>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Optimizaciones.html">Optimización</a></li>
+                <li><a href="Programas.html">Programas</a></li>
+                <li><a href="Sistemas.html">Sistemas</a></li>
+                <li><a href="Aprende.html">Aprende</a></li>
+                <li><a href="QuienSoy.html">¿Quién soy?</a></li>
+                <li><a href="solicitudes.html">Solicitudes</a></li>
+            </ul>
+            <div class="nav-actions" id="nav-actions-container">
+                <div id="auth-buttons-nav" style="display: flex; align-items: center; gap: 1.25rem;">
+                    <a href="login.html" class="btn-text">Acceder</a>
+                    <a href="register.html" class="btn-primary">Registrarse</a>
+                </div>
+                <div class="theme-switch-wrapper">
+                    <div class="toggle">
+                        <input type="checkbox" id="dark-mode-toggle-nav" aria-label="Alternar modo oscuro">
+                        <label for="dark-mode-toggle-nav"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- =============================================
+         HERO BANNER
+         ============================================= -->
+    <section class="opt-hero">
+        <div class="opt-hero-glow"></div>
+        <div class="opt-hero-inner">
+            <span class="opt-chip">🔥 OPTIMIZACIÓN</span>
+            <h1 class="opt-title">Lleva tu equipo al<br><span>máximo rendimiento</span></h1>
+            <p class="opt-desc">Scripts verificados para PC y Móvil. Ejecuta como Administrador y crea un punto de
+                restauración antes de aplicar.</p>
+        </div>
+    </section>
+
+    <!-- =============================================
+         TABS PC / MÓVIL  (CSS-only)
+         ============================================= -->
+    <div class="opt-tabs-wrapper">
+        <input type="radio" name="opt-tab" id="opt-tab-pc" class="opt-tab-radio" checked>
+        <input type="radio" name="opt-tab" id="opt-tab-mobile" class="opt-tab-radio">
+
+        <nav class="opt-tab-bar">
+            <label for="opt-tab-pc" class="opt-tab-label">
+                <span class="opt-tab-emoji">🖥️</span> Computadora
+            </label>
+            <label for="opt-tab-mobile" class="opt-tab-label">
+                <span class="opt-tab-emoji">📱</span> Móvil
+            </label>
+        </nav>
+
+        <!-- ==========================================
+             PANEL PC
+             ========================================== -->
+        <div class="opt-panel opt-panel-pc">
+
+            <!-- PACKS -->
+            <h2 class="opt-heading">Packs de Optimización</h2>
+            <div class="opt-packs">
+                <!-- PACK FREE -->
+                <div class="opt-pack opt-pack-free">
+                    <div class="opt-pack-ribbon">GRATIS</div>
+                    <div class="opt-pack-icon">🛡️</div>
+                    <h3>Pack Free</h3>
+                    <p class="opt-pack-price"></p>
+                    <ul>
+                        <li>Limpieza poco profunda</li>
+                        <li>Reducción de procesos bases</li>
+                        <li>Scripts bajo nivel</li>
+                        <li>Plan energético estable</li>
+                        <li>Stop backgrounds</li>
+                    </ul>
+                    <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Pack_Free_PC.bat" download class="opt-pack-btn" id="btn-descarga-free">Descargar</a>
+                </div>
+                <!-- PACK PREMIUM -->
+                <div class="opt-pack opt-pack-premium">
+                    <div class="opt-pack-ribbon opt-ribbon-gold">PREMIUM</div>
+                    <div class="opt-pack-icon">👑</div>
+                    <h3>Pack Premium</h3>
+                    <p class="opt-pack-price opt-price-gold">PRO <span>/ acceso total</span></p>
+                    <ul>
+                        <li>Limpieza extrema</li>
+                        <li>.reg y bat's completos</li>
+                        <li>Reducción de consumo programas</li>
+                        <li>Asignación de svhost según tu memoria</li>
+                        <li>Gestión automática de residuos</li>
+                    </ul>
+                    <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Pack_Premium_PC.bat" download class="opt-pack-btn opt-btn-gold">Obtener</a>
+                </div>
+            </div>
+
+            <!-- INDIVIDUALES PC -->
+            <h2 class="opt-heading">Scripts Individuales</h2>
+            <div class="opt-cards-grid">
+                <!-- Speed Up RAM → OPT-RAM.zip -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/OPT-RAM.zip" download class="opt-card"><span class="opt-card-emoji">💾</span><strong>Speed Up RAM</strong><small>Libera memoria RAM rápidamente</small></a>
+                <!-- Clean Temp → Temporales.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Temporales.bat" download class="opt-card"><span class="opt-card-emoji">🧹</span><strong>Clean Temp</strong><small>Elimina archivos temporales</small></a>
+                <!-- DNS Flush → DnsJumper.zip -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/DnsJumper.zip" download class="opt-card"><span class="opt-card-emoji">🌐</span><strong>DNS Flush</strong><small>Limpia caché de DNS</small></a>
+                <!-- Reg Fixer → TOTAL.reg -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/TOTAL.reg" download class="opt-card"><span class="opt-card-emoji">🔧</span><strong>Reg Fixer</strong><small>Repara el registro de Windows</small></a>
+                <!-- Win Startup → WinStartup.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/WinStartup.bat" download class="opt-card"><span class="opt-card-emoji">🚀</span><strong>Win Startup</strong><small>Optimiza el arranque del sistema</small></a>
+                <!-- Game Mode → Gaming.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Gaming.bat" download class="opt-card"><span class="opt-card-emoji">🎮</span><strong>Game Mode</strong><small>Activa configuración gaming</small></a>
+                <!-- SSD Trim → SSDTrim.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/SSDTrim.bat" download class="opt-card"><span class="opt-card-emoji">💿</span><strong>SSD Trim</strong><small>Optimiza la velocidad de tu SSD</small></a>
+                <!-- Latency Fix → Latencia.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Latencia.bat" download class="opt-card"><span class="opt-card-emoji">📡</span><strong>Latency Fix</strong><small>Reduce la latencia de red</small></a>
+                <!-- CPU Juegos Priority → processlassosetup64.exe -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/processlassosetup64.exe" download class="opt-card"><span class="opt-card-emoji">⚙️</span><strong>CPU Juegos Priority</strong><small>Prioriza procesos de juegos</small></a>
+                <!-- GPU Boost → GPUBoost.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/GPUBoost.bat" download class="opt-card"><span class="opt-card-emoji">🎨</span><strong>GPU Boost</strong><small>Mejora rendimiento de la GPU</small></a>
+                <!-- Cache Clear → CacheClear.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/CacheClear.bat" download class="opt-card"><span class="opt-card-emoji">📦</span><strong>Cache Clear</strong><small>Vacía la caché del sistema</small></a>
+                <!-- Log Delete → LogDelete.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/LogDelete.bat" download class="opt-card"><span class="opt-card-emoji">📋</span><strong>Log Delete</strong><small>Elimina logs antiguos</small></a>
+                <!-- Network Opt → Firemin_Setup.exe -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Firemin_Setup.exe" download class="opt-card"><span class="opt-card-emoji">🔌</span><strong>Network Opt</strong><small>Optimiza la configuración de red</small></a>
+                <!-- Input Lag → InputLag.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/InputLag.bat" download class="opt-card"><span class="opt-card-emoji">🕹️</span><strong>Input Lag</strong><small>Reduce el input lag</small></a>
+                <!-- Delay OS → DelayOS.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/DelayOS.bat" download class="opt-card"><span class="opt-card-emoji">⏱️</span><strong>Delay OS</strong><small>Minimiza delays del sistema</small></a>
+                <!-- Task Kill → TaskKill.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/TaskKill.bat" download class="opt-card"><span class="opt-card-emoji">❌</span><strong>Task Kill</strong><small>Cierra procesos innecesarios</small></a>
+                <!-- Firewall Opt → FirewallOpt.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/FirewallOpt.bat" download class="opt-card"><span class="opt-card-emoji">🔒</span><strong>Firewall Opt</strong><small>Optimiza reglas del firewall</small></a>
+                <!-- Bloat Remove → Blotware.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Blotware.bat" download class="opt-card"><span class="opt-card-emoji">🗑️</span><strong>Bloat Remove</strong><small>Elimina bloatware de Windows</small></a>
+                <!-- Power Plan → Plan de Energia CPU OPNW.zip -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Plan%20de%20Energia%20CPU%20OPNW.zip" download class="opt-card"><span class="opt-card-emoji">🔋</span><strong>Power Plan</strong><small>Plan de energía de alto rendimiento</small></a>
+                <!-- Perf Monitor → PerfMonitor.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/PerfMonitor.bat" download class="opt-card"><span class="opt-card-emoji">📊</span><strong>Perf Monitor</strong><small>Monitorea el rendimiento en vivo</small></a>
+                <!-- Defender Opt → Limitacion CPU Defender.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Limitacion%20CPU%20Defender.bat" download class="opt-card"><span class="opt-card-emoji">🛡️</span><strong>Defender Opt</strong><small>Optimiza Windows Defender</small></a>
+                <!-- Navegadores Timer → Firemin_Setup.exe -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Firemin_Setup.exe" download class="opt-card"><span class="opt-card-emoji">💻</span><strong>Navegadores Timer</strong><small>Optimizacion para navegadores</small></a>
+                <!-- Audio Boost → AudioBoost.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/AudioBoost.bat" download class="opt-card"><span class="opt-card-emoji">🔊</span><strong>Audio Boost</strong><small>Mejora la calidad de audio</small></a>
+                <!-- Index Repair → Index.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Index.bat" download class="opt-card"><span class="opt-card-emoji">📁</span><strong>Index Repair</strong><small>Repara el índice de búsqueda</small></a>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PANEL MÓVIL
+             ========================================== -->
+        <div class="opt-panel opt-panel-mobile">
+
+            <!-- PACKS -->
+            <h2 class="opt-heading">Packs de Optimización Móvil</h2>
+            <div class="opt-packs">
+                <div class="opt-pack opt-pack-free">
+                    <div class="opt-pack-ribbon">GRATIS</div>
+                    <div class="opt-pack-icon">📱</div>
+                    <h3>Pack Free</h3>
+                    <p class="opt-pack-price">$0 <span>/ para siempre</span></p>
+                    <ul>
+                        <li>Limpieza de caché básica</li>
+                        <li>Cierre de apps en segundo plano</li>
+                        <li>Optimización de batería</li>
+                        <li>Limpieza de archivos temporales</li>
+                        <li>Reducción de animaciones</li>
+                    </ul>
+                    <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Pack_Free_Movil.bat" download class="opt-pack-btn">Descargar</a>
+                </div>
+                <div class="opt-pack opt-pack-premium">
+                    <div class="opt-pack-ribbon opt-ribbon-gold">PREMIUM</div>
+                    <div class="opt-pack-icon">⚡</div>
+                    <h3>Pack Premium</h3>
+                    <p class="opt-pack-price opt-price-gold">PRO <span>/ acceso total</span></p>
+                    <ul>
+                        <li>ADB scripts avanzados</li>
+                        <li>Desbloqueo de rendimiento total</li>
+                        <li>Eliminación de bloatware raíz</li>
+                        <li>Overclock seguro de CPU</li>
+                        <li>Gestión completa de permisos</li>
+                    </ul>
+                    <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Pack_Premium_Movil.bat" download class="opt-pack-btn opt-btn-gold">Obtener</a>
+                </div>
+            </div>
+
+            <!-- INDIVIDUALES MÓVIL -->
+            <h2 class="opt-heading">Scripts Individuales Móvil</h2>
+            <div class="opt-cards-grid">
+                <!-- Battery Saver → BatterySaver_Movil.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/BatterySaver_Movil.bat" download class="opt-card"><span class="opt-card-emoji">🔋</span><strong>Battery Saver</strong><small>Extiende la duración de tu batería</small></a>
+                <!-- WiFi Boost → WiFiBoost_Movil.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/WiFiBoost_Movil.bat" download class="opt-card"><span class="opt-card-emoji">📶</span><strong>WiFi Boost</strong><small>Mejora la señal WiFi</small></a>
+                <!-- Cache Clean → CacheClean_Movil.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/CacheClean_Movil.bat" download class="opt-card"><span class="opt-card-emoji">🧹</span><strong>Cache Clean</strong><small>Limpia caché de todas las apps</small></a>
+                <!-- Sleep Apps → SleepApps_Movil.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/SleepApps_Movil.bat" download class="opt-card"><span class="opt-card-emoji">💤</span><strong>Sleep Apps</strong><small>Duerme apps en segundo plano</small></a>
+                <!-- Bloat Remove → Debloat_Movil.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/Debloat_Movil.bat" download class="opt-card"><span class="opt-card-emoji">🚫</span><strong>Bloat Remove</strong><small>Elimina apps preinstaladas</small></a>
+                <!-- Dark Mode → DarkMode_Movil.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/DarkMode_Movil.bat" download class="opt-card"><span class="opt-card-emoji">🌙</span><strong>Dark Mode</strong><small>Fuerza modo oscuro en apps</small></a>
+                <!-- RAM Cleaner → RAMFree_Movil.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/RAMFree_Movil.bat" download class="opt-card"><span class="opt-card-emoji">📲</span><strong>RAM Cleaner</strong><small>Libera RAM del dispositivo</small></a>
+                <!-- Fast Charge → FastCharge_Movil.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/FastCharge_Movil.bat" download class="opt-card"><span class="opt-card-emoji">⚡</span><strong>Fast Charge</strong><small>Optimiza la velocidad de carga</small></a>
+                <!-- Signal Fix → SignalFix_Movil.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/SignalFix_Movil.bat" download class="opt-card"><span class="opt-card-emoji">📡</span><strong>Signal Fix</strong><small>Mejora señal celular</small></a>
+                <!-- Audio Boost → AudioBoost.bat (no hay versión móvil específica) -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/AudioBoost.bat" download class="opt-card"><span class="opt-card-emoji">🔊</span><strong>Audio Boost</strong><small>Amplifica volumen del dispositivo</small></a>
+                <!-- Game Mode → GameMode_Movil.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/GameMode_Movil.bat" download class="opt-card"><span class="opt-card-emoji">🎮</span><strong>Game Mode</strong><small>Modo gaming para móviles</small></a>
+                <!-- Photo Clean → PhotoClean_Movil.bat -->
+                <a href="https://huggingface.co/datasets/arecsss/ru_optimizaciones/resolve/main/PhotoClean_Movil.bat" download class="opt-card"><span class="opt-card-emoji">📸</span><strong>Photo Clean</strong><small>Limpia fotos duplicadas</small></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="social-media">
+                <a href="https://www.tiktok.com/@arecsss495" target="_blank" class="social-item">
+                    <img src="../img/tiktok.webp" alt="TikTok" class="social-icon">
+                    <span>@arecsss495</span>
+                </a>
+                <a href="https://www.instagram.com/arecsss_495" target="_blank" class="social-item">
+                    <img src="../img/instagram.webp" alt="Instagram" class="social-icon">
+                    <span>@arecsss_495</span>
+                </a>
+                <a href="https://youtube.com/@arecsss495" target="_blank" class="social-item">
+                    <img src="../img/youtube.webp" alt="YouTube" class="social-icon">
+                    <span>@arecsss495</span>
+                </a>
+            </div>
+            <div class="linksitos">
+                <a href="politica-privacidad.html">Política de Privacidad</a>
+                <span class="separator">|</span>
+                <a href="Descargo.html">Descargo de Responsabilidad</a>
+                <span class="separator">|</span>
+                <a href="Contacto.html">Contacto</a>
+            </div>
+            <div class="footer-copyright">© 2026 Juan Rubio | Derechos reservados.</div>
+        </div>
+    </footer>
+
+    <script src="../JS/tema.js"></script>
+
+    <!-- SCRIPT DE DESCARGA FORZADA BASADO EN FETCH Y BLOBS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const downloadCards = document.querySelectorAll('.opt-card[href^="https://huggingface.co"], .opt-pack-btn[href^="https://huggingface.co"]');
+
+            downloadCards.forEach(card => {
+                card.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const fileUrl = this.getAttribute('href');
+                    const fileName = fileUrl.split('/').pop().split('?')[0];
+
+                    this.style.opacity = '0.7';
+                    this.style.pointerEvents = 'none';
+
+                    fetch(fileUrl)
+                        .then(response => {
+                            if (!response.ok) throw new Error('Error en la descarga: ' + response.statusText);
+                            return response.blob();
+                        })
+                        .then(blob => {
+                            const blobUrl = window.URL.createObjectURL(blob);
+                            const tempLink = document.createElement('a');
+                            tempLink.href = blobUrl;
+                            tempLink.setAttribute('download', fileName);
+                            tempLink.style.display = 'none';
+                            document.body.appendChild(tempLink);
+                            tempLink.click();
+                            setTimeout(() => {
+                                document.body.removeChild(tempLink);
+                                window.URL.revokeObjectURL(blobUrl);
+                                card.style.opacity = '1';
+                                card.style.pointerEvents = 'auto';
+                            }, 100);
+                        })
+                        .catch(error => {
+                            console.error('Error descargando archivo:', error);
+                            alert('Error al descargar el archivo. Por favor, intenta de nuevo.');
+                            card.style.opacity = '1';
+                            card.style.pointerEvents = 'auto';
+                        });
+                });
+            });
+        });
+    </script>
+    <!-- PocketBase SDK -->
+    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@vlatest/dist/pocketbase.umd.js"></script>
+    <script src="../JS/poketbase.js"></script>
+</body>
+
+</html>

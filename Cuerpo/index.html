@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>R.U | Real Utility</title>
+
+    <!-- Pre-carga del logo para que aparezca lo antes posible -->
+    <link rel="preload" as="image" href="../img/logo.webp">
+    <link rel="stylesheet" href="../style/index.css">
+
+    <link rel="icon" href="../img/logo.webp" sizes="32x32" type="image/webp">
+    <link rel="icon" href="../img/logo.webp" sizes="192x192" type="image/webp">
+    <link rel="apple-touch-icon" href="../img/logo.webp">
+
+    <!-- Cargar Supabase con 'defer' para no bloquear la carga visual de la página -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+</head>
+
+<body>
+    <nav class="nav-header">
+        <div class="nav-container">
+            <div class="logo-wrapper" onclick="location.href = 'index.html'">
+                <div class="rubik-cube">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face left"></div>
+                    <div class="face right"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+                <span class="brand-name">RU - <span class="highlight">REAL UTILITY</span></span>
+            </div>
+
+            <input type="checkbox" id="burger-toggle" class="burger-checkbox">
+            <label for="burger-toggle" class="burger-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Optimizaciones.html">Optimización</a></li>
+                <li><a href="Programas.html">Programas</a></li>
+                <li><a href="Sistemas.html">Sistemas</a></li>
+                <li><a href="Aprende.html">Aprende</a></li>
+                <li><a href="QuienSoy.html">¿Quién soy?</a></li>
+                <li><a href="solicitudes.html">Solicitudes</a></li>
+            </ul>
+
+            <div class="nav-actions" id="nav-actions-container">
+                <div id="auth-buttons-nav" style="display: flex; align-items: center; gap: 1.25rem;">
+                    <a href="login.html" class="btn-text">Acceder</a>
+                    <a href="register.html" class="btn-primary">Registrarse</a>
+                </div>
+
+                <!-- Interruptor de Sol y Luna -->
+                <div class="theme-switch-wrapper">
+                    <div class="toggle">
+                        <input type="checkbox" id="dark-mode-toggle-nav" aria-label="Alternar modo oscuro">
+                        <label for="dark-mode-toggle-nav"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="main-header">
+        <div class="header-bg">
+            <!-- Optimización: El video ahora tiene 'preload="none"' para no gastar datos al inicio y se carga solo cuando es necesario -->
+            <video class="header-video" autoplay loop muted playsinline preload="none">
+                <source src="../img/fondoheader.webm" type="video/webm">
+                <div class="animated-gradient"></div>
+            </video>
+            <div class="header-overlay"></div>
+        </div>
+
+
+        <div class="header-content">
+            <div class="head">
+                <h1 class="h1-RU">R.U <br>
+                    Real Utility
+                </h1>
+                <div class="RU-logo">
+                    <div class="my-loader">
+                        <div class="rubiks-cube">
+                            <div class="face front">
+                                <div style="background: #ff3d00;" class="cube"></div>
+                                <div style="background: #ffeb3b;" class="cube"></div>
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #2196f3;" class="cube"></div>
+                                <div style="background: #ffffff;" class="cube"></div>
+                                <div style="background: #ffeb3b;" class="cube"></div>
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #2196f3;" class="cube"></div>
+                                <div style="background: #ff3d00;" class="cube"></div>
+                            </div>
+
+                            <div class="face back">
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #ff3d00;" class="cube"></div>
+                                <div style="background: #ffeb3b;" class="cube"></div>
+                                <div style="background: #2196f3;" class="cube"></div>
+                                <div style="background: #ffffff;" class="cube"></div>
+                                <div style="background: #ff3d00;" class="cube"></div>
+                                <div style="background: #ffeb3b;" class="cube"></div>
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #2196f3;" class="cube"></div>
+                            </div>
+                            <div class="face left">
+                                <div style="background: #ffeb3b;" class="cube"></div>
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #2196f3;" class="cube"></div>
+                                <div style="background: #ff3d00;" class="cube"></div>
+                                <div style="background: #ffffff;" class="cube"></div>
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #2196f3;" class="cube"></div>
+                                <div style="background: #ffeb3b;" class="cube"></div>
+                                <div style="background: #ff3d00;" class="cube"></div>
+                            </div>
+                            <div class="face right">
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #ff3d00;" class="cube"></div>
+                                <div style="background: #ffeb3b;" class="cube"></div>
+                                <div style="background: #2196f3;" class="cube"></div>
+                                <div style="background: #ffffff;" class="cube"></div>
+                                <div style="background: #ff3d00;" class="cube"></div>
+                                <div style="background: #ffeb3b;" class="cube"></div>
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #2196f3;" class="cube"></div>
+                            </div>
+                            <div class="face top">
+                                <div style="background: #2196f3;" class="cube"></div>
+                                <div style="background: #ffeb3b;" class="cube"></div>
+                                <div style="background: #ff3d00;" class="cube"></div>
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #ffffff;" class="cube"></div>
+                                <div style="background: #ffeb3b;" class="cube"></div>
+                                <div style="background: #ff3d00;" class="cube"></div>
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #2196f3;" class="cube"></div>
+                            </div>
+                            <div class="face bottom">
+                                <div style="background: #ffffff;" class="cube"></div>
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #2196f3;" class="cube"></div>
+                                <div style="background: #ff3d00;" class="cube"></div>
+                                <div style="background: #ffeb3b;" class="cube"></div>
+                                <div style="background: #4caf50;" class="cube"></div>
+                                <div style="background: #2196f3;" class="cube"></div>
+                                <div style="background: #ffffff;" class="cube"></div>
+                                <div style="background: #ff3d00;" class="cube"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="hero-content">
+            <h2 class="hero-subtitle">Sin basura. Sin comandos. Sin esperas.</h2> <br> <br>
+            <p class="hero-text">
+                Olvida los botones falsos y el miedo a la terminal. Tu solucion esta aqui <br>
+                Este es tu lugar seguro para la instalacion de herramientas y optimizaciones <br>
+                reales para tu equipo sin anuncios ni distracciones. <br> <br>
+                <strong id="registertxt">Registrate y descubre el mundo que te espera.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- MISIÓN Y VISIÓN -->
+    <section class="mision-vision-section" id="mision-vision">
+        <h2 class="section-heading">Nuestra Misión y Visión</h2>
+        <div class="mv-cards">
+            <div class="mv-card mv-mision">
+                <div class="mv-icon">🎯</div>
+                <h3>Misión</h3>
+                <p>
+                    Brindar a cada usuario un espacio confiable y libre de engaños donde pueda descargar
+                    herramientas, optimizaciones y programas reales para su equipo. Nuestra razón de ser
+                    es eliminar la frustración de los botones falsos, los comandos confusos y las páginas
+                    llenas de publicidad, ofreciendo soluciones directas, seguras y verificadas que cualquier
+                    persona pueda usar sin importar su nivel de experiencia.
+                </p>
+            </div>
+            <div class="mv-card mv-vision">
+                <div class="mv-icon">🚀</div>
+                <h3>Visión</h3>
+                <p>
+                    Convertirnos en la plataforma de referencia en habla hispana para la instalación,
+                    optimización y aprendizaje tecnológico. Aspiramos a construir una comunidad donde
+                    miles de personas encuentren todo lo que necesitan para sacar el máximo provecho
+                    de su PC, con contenido educativo de calidad, herramientas actualizadas y un entorno
+                    transparente que genere confianza y crecimiento mutuo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO EXPLICATIVO -->
+    <section class="video-section" id="video-explicativo">
+        <h2 class="section-heading">Descubre todo lo que puedes hacer</h2>
+        <p class="video-description">
+            Mira este video y conoce todas las herramientas, optimizaciones y recursos que
+            Real Utility tiene para ti. ¡Tu PC merece lo mejor!
+        </p>
+        <div class="video-wrapper">
+            <!-- Optimización: El video explicativo ahora tiene 'loading="lazy"' para no cargar hasta que el usuario llegue a él -->
+            <video src="../img/realvideo.mp4" title="Video explicativo de Real Utility" controls
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" id="video-explicativo-iframe" loading="lazy">
+            </video>
+        </div>
+    </section>
+
+
+    <!--Los botones de navegacion principales -->
+    <main>
+        <ul>
+            <li class="boton-contenedor">
+                <a href="Programas.html" class="boton-enlace programas-hover">
+                    <!-- Optimización: 'loading="lazy"' para que las imágenes de los botones carguen solo al hacer scroll -->
+                    <img class="buttons-icons" src="../img/installer.webp" alt="Instaladores Icono" width="88"
+                        height="88" loading="lazy">
+                    <p class="navegadores-texto">Programas</p>
+                </a>
+            </li>
+            <li class="boton-contenedor">
+                <a href="Aprende.html" class="boton-enlace aprende-hover">
+                    <img class="buttons-icons-aprende" src="../img/recomendaciones.webp"
+                        alt="Recomendaciones de PCs Icono" width="134" height="88" loading="lazy">
+                    <p class="navegadores-texto-p">Aprende</p>
+                </a>
+            </li>
+            <li class="boton-contenedor">
+                <a href="Optimizaciones.html" class="boton-enlace Optimizaciones-hover">
+                    <img class="buttons-icons" src="../img/rendimiento.webp" alt="Herramientas Icono" loading="lazy">
+                    <p class="navegadores-texto">Optimizaciones</p>
+                </a>
+            </li>
+            <li class="boton-contenedor">
+                <a href="QuienSoy.html" class="boton-enlace rendimiento-hover">
+                    <img class="buttons-icons" src="../img/quien-soy.webp" alt="Rendimiento Icono" width="88"
+                        height="88" loading="lazy">
+                    <p class="navegadores-texto">Quien soy?</p>
+                </a>
+            </li>
+            <li class="boton-contenedor">
+                <a href="Sistemas.html" class="boton-enlace sistemas-hover">
+                    <img class="buttons-icons" src="../img/sistemas-op.webp" alt="Rendimiento Icono" width="88"
+                        height="88" loading="lazy">
+                    <p class="navegadores-texto">Sistemas</p>
+                </a>
+            </li>
+            <li class="boton-contenedor">
+                <a href="solicitudes.html" class="boton-enlace solicitudes-hover">
+                    <img class="buttons-icons" src="../img/solicitudes.webp" alt="Extras Icono" width="88" height="88"
+                        loading="lazy">
+                    <p class="navegadores-texto">Solicitudes, tikets y chat</p>
+                </a>
+            </li>
+        </ul>
+    </main>
+
+    <!--los links de mis redes sociales (pronto tendre no personales jajajaasd) -->
+    <footer>
+        <div class="footer-inner">
+            <div class="social-media">
+                <a href="https://www.tiktok.com/@arecsss495" target="_blank" class="social-item">
+                    <img src="../img/tiktok.webp" alt="TikTok" class="social-icon" loading="lazy" />
+                    <span>@arecsss495</span>
+                </a>
+
+                <a href="https://www.instagram.com/arecsss_495" target="_blank" class="social-item">
+                    <img src="../img/instagram.webp" alt="Instagram" class="social-icon" loading="lazy" />
+                    <span>@arecsss_495</span>
+                </a>
+
+                <a href="https://youtube.com/@arecsss495" target="_blank" class="social-item">
+                    <img src="../img/youtube.webp" alt="YouTube" class="social-icon" loading="lazy" />
+                    <span>@arecsss495</span>
+                </a>
+            </div>
+
+            <div class="linksitos">
+                <a href="politica-privacidad.html">Política de Privacidad</a>
+                <span class="separator">|</span>
+                <a href="Descargo.html">Descargo de Responsabilidad</a>
+                <span class="separator">|</span>
+                <a href="Contacto.html">Contacto</a>
+            </div>
+
+            <div class="footer-copyright">
+                © 2026 Juan Rubio | Derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carga del script unificado de tema y sesión -->
+    <script src="../JS/tema.js"></script>
+
+    <!-- Lógica específica de index.html para control de acceso y páginas protegidas -->
+    <script type="module">
+        // Importamos la función de cerrar sesión desde nuestro archivo centralizado de Supabase
+        import { cerrarSesion } from '../JS/supabase.js';
+
+        document.addEventListener('DOMContentLoaded', function () {
+            /* ============================================================
+               CONTROL DE SESIÓN Y VINCULACIÓN DINÁMICA (ESPECÍFICO DE INDEX)
+               ============================================================ */
+            var logged = localStorage.getItem('loggedIn') === 'true'; 
+            var authSection = document.querySelector('.auth-section');           
+            var authButtonsNav = document.getElementById('auth-buttons-nav');    
+            var misionVision = document.getElementById('mision-vision');         
+            var videoSection = document.getElementById('video-explicativo');     
+            var registertxt = document.getElementById('registertxt');            
+
+            // Lista de páginas que requieren que el usuario esté logueado
+            var paginasProtegidas = [                                            
+                'Programas.html',
+                'Optimizaciones.html',
+                'Sistemas.html',
+                'Aprende.html',
+                'solicitudes.html'
+            ];
+
+            if (logged) {
+                // Si el usuario está logueado, ocultamos elementos innecesarios para una experiencia más limpia
+                if (misionVision) misionVision.classList.add('hidden');          
+                if (videoSection) videoSection.classList.add('hidden');          
+                if (authSection) authSection.classList.add('hidden');            
+                if (registertxt) registertxt.classList.add('hidden');            
+
+                // Cambiamos los botones de acceso por el de cerrar sesión
+                if (authButtonsNav) {
+                    authButtonsNav.innerHTML = '<a href="#" id="logout-btn-header" class="logout-link">Cerrar sesión</a>';
+                    document.getElementById('logout-btn-header').addEventListener('click', async function (e) {
+                        e.preventDefault();
+                        await cerrarSesion(); // Llamamos a la función de Supabase para cerrar sesión correctamente
+                    });
+                }
+
+            } else {
+                // Si no está logueado, activamos el modo landing
+                document.body.classList.add('landing');                          
+
+                // Interceptamos clics en páginas protegidas para redirigir al login
+                document.addEventListener('click', function (e) {               
+                    var link = e.target.closest('a');                            
+                    if (!link) return;                                           
+
+                    var href = link.getAttribute('href');                        
+                    if (!href) return;                                           
+
+                    var nombreArchivo = href.split('/').pop().split('?')[0].split('#')[0];
+
+                    var esProtegida = paginasProtegidas.some(function (p) {
+                        return p.toLowerCase() === nombreArchivo.toLowerCase();
+                    });
+
+                    if (esProtegida) {
+                        e.preventDefault();                                     
+                        location.href = 'login.html?redirect=' + encodeURIComponent(nombreArchivo);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

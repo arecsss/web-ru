@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistemas Operativos - RU</title>
+
+    <link rel="stylesheet" href="../style/index.css" />
+
+    <!-- Fuente -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Iconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body class="dark-mode">
+    <script>
+      if (localStorage.getItem("loggedIn") !== "true") {
+        location.href =
+          "login.html?redirect=" +
+          encodeURIComponent(location.href.split("/").pop());
+      }
+    </script>
+
+    <!-- NAVBAR -->
+    <nav class="nav-header">
+      <div class="nav-container">
+        <div class="logo-wrapper" onclick="location.href = 'index.html'">
+          <div class="rubik-cube">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+          </div>
+          <span class="brand-name"
+            >RU - <span class="highlight">REAL UTILITY</span></span
+          >
+        </div>
+
+        <input type="checkbox" id="burger-toggle" class="burger-checkbox" />
+        <label for="burger-toggle" class="burger-label">
+          <span></span><span></span><span></span>
+        </label>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="Optimizaciones.html">Optimización</a></li>
+          <li><a href="Programas.html">Programas</a></li>
+          <li><a href="Sistemas.html">Sistemas</a></li>
+          <li><a href="Aprende.html">Aprende</a></li>
+          <li><a href="QuienSoy.html">¿Quién soy?</a></li>
+          <li><a href="solicitudes.html">Solicitudes</a></li>
+        </ul>
+
+        <div class="nav-actions" id="nav-actions-container">
+          <div id="auth-buttons-nav">
+            <a href="login.html" class="btn-text">Acceder</a>
+            <a href="register.html" class="btn-primary">Registrarse</a>
+          </div>
+
+          <div class="theme-switch-wrapper">
+            <div class="toggle">
+              <input type="checkbox" id="dark-mode-toggle-nav" />
+              <label for="dark-mode-toggle-nav"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTENIDO REDISEÑADO -->
+    <main class="sys-page">
+      <!-- ① HERO ANIMADO -->
+      <section class="sys-hero" id="sys-hero">
+        <div class="sys-hero-bg"></div>
+        <div class="sys-hero-content">
+          <h1 class="sys-hero-title">
+            Sistemas <span class="sys-glow">Operativos</span> Hub
+          </h1>
+          <p class="sys-hero-subtitle">
+            Tu centro de descargas seguras, noticias y recursos para elegir,
+            instalar y optimizar el sistema operativo perfecto para tu equipo.
+          </p>
+          <div class="sys-hero-stats">
+            <div class="sys-stat">
+              <span class="sys-stat-number">15+</span>
+              <span class="sys-stat-label">ISOs Disponibles</span>
+            </div>
+            <div class="sys-stat">
+              <span class="sys-stat-number">8+</span>
+              <span class="sys-stat-label">Distros Linux</span>
+            </div>
+            <div class="sys-stat">
+              <span class="sys-stat-number">5+</span>
+              <span class="sys-stat-label">Builds Comunidad</span>
+            </div>
+          </div>
+          <a href="#sys-downloads" class="sys-hero-btn"
+            ><i class="fas fa-arrow-down"></i> Explorar descargas</a
+          >
+        </div>
+      </section>
+
+      <!-- ② ¿QUÉ ES UN SO? — Bloque educativo -->
+      <section class="sys-education" id="sys-education">
+        <div class="sys-edu-inner">
+          <div class="sys-edu-icon"><i class="fas fa-laptop-code"></i></div>
+          <div class="sys-edu-text">
+            <h2>¿Qué es un Sistema Operativo?</h2>
+            <p>
+              Un <strong>sistema operativo (SO)</strong> es el software
+              principal que gestiona todo el hardware y los programas de tu
+              computadora. Sin él, tu PC no enciende. Es el intermediario entre
+              tú y tu máquina: controla la memoria, el procesador, los discos,
+              las conexiones de red y mucho más.
+            </p>
+            <p>
+              Elegir el SO correcto puede marcar la diferencia entre un equipo
+              lento y frustrante o una experiencia rápida y fluida. Aquí te
+              ayudamos a encontrar la opción ideal según tu hardware, uso y
+              necesidades.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ③ CARDS DE DESCARGAS MEJORADAS -->
+      <section class="sys-downloads" id="sys-downloads">
+        <h2 class="sys-section-title">Elige tu sistema operativo</h2>
+        <p class="sys-section-desc">
+          Tres categorías para cubrir cualquier necesidad: builds de la
+          comunidad, ISOs oficiales de Microsoft y distribuciones Linux.
+        </p>
+
+        <div class="sys-cards-grid">
+          <!-- Card 1: Comunidad -->
+          <article class="sys-card sys-card-reveal" data-reveal>
+            <div class="sys-card-icon"><i class="fas fa-users-cog"></i></div>
+            <img
+              src="../img/atlas.webp"
+              alt="Sistemas hechos por la comunidad"
+              loading="lazy"
+            />
+            <div class="sys-card-body">
+              <h3>Sistemas de la Comunidad</h3>
+              <p>
+                Builds modificadas por desarrolladores independientes, diseñadas
+                para exprimir el rendimiento al máximo. Ideales para gaming, PCs
+                con pocos recursos o usuarios que buscan un Windows ultraligero
+                sin servicios innecesarios.
+              </p>
+              <ul class="sys-card-features">
+                <li>
+                  <i class="fas fa-check-circle"></i> Menor consumo de RAM y CPU
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Servicios innecesarios
+                  eliminados
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Optimizadas para FPS en
+                  juegos
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Compatibles con hardware
+                  antiguo
+                </li>
+              </ul>
+              <a href="#" class="sys-card-btn"
+                ><i class="fas fa-download"></i> Ver descargas</a
+              >
+            </div>
+          </article>
+
+          <!-- Card 2: Microsoft Oficial -->
+          <article class="sys-card sys-card-reveal" data-reveal>
+            <div class="sys-card-icon"><i class="fab fa-microsoft"></i></div>
+            <img
+              src="../img/windows.webp"
+              alt="ISOs oficiales de Windows"
+              loading="lazy"
+            />
+            <div class="sys-card-body">
+              <h3>ISOs Oficiales de Windows</h3>
+              <p>
+                Imágenes limpias directamente de Microsoft. Son las versiones
+                más estables con soporte completo de actualizaciones, drivers y
+                compatibilidad con cualquier programa. La opción segura para
+                instalaciones sin modificar.
+              </p>
+              <ul class="sys-card-features">
+                <li>
+                  <i class="fas fa-check-circle"></i> Soporte oficial de
+                  Microsoft
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Actualizaciones
+                  automáticas
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Compatibilidad total con
+                  software
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Ideal para trabajo y
+                  estudio
+                </li>
+              </ul>
+              <a href="#" class="sys-card-btn"
+                ><i class="fas fa-download"></i> Ver descargas</a
+              >
+            </div>
+          </article>
+
+          <!-- Card 3: Linux -->
+          <article class="sys-card sys-card-reveal" data-reveal>
+            <div class="sys-card-icon"><i class="fab fa-linux"></i></div>
+            <img
+              src="../img/linux.webp"
+              alt="Distribuciones Linux"
+              loading="lazy"
+            />
+            <div class="sys-card-body">
+              <h3>Distribuciones Linux</h3>
+              <p>
+                Sistemas operativos gratuitos, seguros y de código abierto.
+                Perfectos para revivir PCs viejas, aprender programación o
+                simplemente disfrutar de un entorno libre de telemetría. Hay
+                distros para cada nivel de experiencia.
+              </p>
+              <ul class="sys-card-features">
+                <li>
+                  <i class="fas fa-check-circle"></i> 100% gratis y open-source
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Ultra ligero para hardware
+                  antiguo
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Sin telemetría ni rastreo
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Comunidad activa de
+                  soporte
+                </li>
+              </ul>
+              <a href="#" class="sys-card-btn"
+                ><i class="fas fa-download"></i> Ver descargas</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ④ TABLA COMPARATIVA -->
+      <section class="sys-compare" id="sys-compare">
+        <h2 class="sys-section-title">Comparativa rápida</h2>
+        <p class="sys-section-desc">
+          ¿No tienes claro cuál es la mejor opción? Esta tabla te ayuda a
+          decidir de un vistazo.
+        </p>
+        <div class="sys-table-wrapper">
+          <table class="sys-table">
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th><i class="fab fa-microsoft"></i> Windows Oficial</th>
+                <th><i class="fas fa-users-cog"></i> Build Comunidad</th>
+                <th><i class="fab fa-linux"></i> Linux</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Peso de la ISO</td>
+                <td>~5.5 GB</td>
+                <td>~3 GB</td>
+                <td>~2 GB</td>
+              </tr>
+              <tr>
+                <td>Consumo de RAM (idle)</td>
+                <td>~3.5 GB</td>
+                <td>~1.5 GB</td>
+                <td>~800 MB</td>
+              </tr>
+              <tr>
+                <td>Compatibilidad software</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+              </tr>
+              <tr>
+                <td>Privacidad</td>
+                <td>⭐⭐</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+              </tr>
+              <tr>
+                <td>Gaming</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+              </tr>
+              <tr>
+                <td>Hardware antiguo</td>
+                <td>⭐⭐</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+              </tr>
+              <tr>
+                <td>Facilidad de uso</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ⑤ NOTICIAS — Carrusel de tarjetas horizontal -->
+      <section class="sys-news" id="sys-news">
+        <div class="sys-news-header">
+          <div>
+            <h2 class="sys-section-title" style="text-align:left">Noticias de Sistemas Operativos</h2>
+            <p class="sys-section-desc" style="text-align:left;margin:0">Lo último del mundo de los SO, actualizaciones y tendencias.</p>
+          </div>
+          <div class="sys-news-nav">
+            <button class="sys-news-arrow" id="carouselPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+            <button class="sys-news-arrow" id="carouselNext" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <div class="sys-news-track-wrapper">
+          <div class="sys-news-track" id="carouselTrack">
+
+            <article class="sys-news-card">
+              <div class="sys-news-card-img">
+                <img src="../img/windows.webp" alt="Windows 11 24H2" loading="lazy" />
+                <span class="sys-news-badge">Windows</span>
+              </div>
+              <div class="sys-news-card-body">
+                <span class="sys-news-date"><i class="far fa-calendar-alt"></i> Mar 2026</span>
+                <h3>Windows 11 24H2 mejora la gestión de energía</h3>
+                <p>La nueva compilación reduce el uso de batería hasta un 15% optimizando procesos en segundo plano.</p>
+                <a href="#" class="sys-news-link">Leer más <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <article class="sys-news-card">
+              <div class="sys-news-card-img">
+                <img src="../img/linux.webp" alt="Linux Mint 22" loading="lazy" />
+                <span class="sys-news-badge sys-news-badge-green">Linux</span>
+              </div>
+              <div class="sys-news-card-body">
+                <span class="sys-news-date"><i class="far fa-calendar-alt"></i> Feb 2026</span>
+                <h3>Linux Mint 22 consolida su posición como la distro más amigable</h3>
+                <p>Cinnamon modernizado y mejor soporte Flatpak. Ideal para quienes migran desde Windows.</p>
+                <a href="#" class="sys-news-link">Leer más <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <article class="sys-news-card">
+              <div class="sys-news-card-img">
+                <img src="../img/atlas.webp" alt="AtlasOS" loading="lazy" />
+                <span class="sys-news-badge sys-news-badge-purple">Comunidad</span>
+              </div>
+              <div class="sys-news-card-body">
+                <span class="sys-news-date"><i class="far fa-calendar-alt"></i> Feb 2026</span>
+                <h3>AtlasOS y ReviOS: más FPS con menos procesos</h3>
+                <p>Builds que eliminan servicios innecesarios para liberar recursos en juegos competitivos.</p>
+                <a href="#" class="sys-news-link">Leer más <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <article class="sys-news-card">
+              <div class="sys-news-card-img">
+                <img src="../img/windows.webp" alt="Windows 12" loading="lazy" />
+                <span class="sys-news-badge">Windows</span>
+              </div>
+              <div class="sys-news-card-body">
+                <span class="sys-news-date"><i class="far fa-calendar-alt"></i> Ene 2026</span>
+                <h3>Rumores de Windows 12: IA integrada y nuevo diseño</h3>
+                <p>Filtraciones sugieren IA en el escritorio y rediseño visual con transparencias avanzadas.</p>
+                <a href="#" class="sys-news-link">Leer más <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <article class="sys-news-card">
+              <div class="sys-news-card-img">
+                <img src="../img/linux.webp" alt="Ubuntu 24.04" loading="lazy" />
+                <span class="sys-news-badge sys-news-badge-green">Linux</span>
+              </div>
+              <div class="sys-news-card-body">
+                <span class="sys-news-date"><i class="far fa-calendar-alt"></i> Ene 2026</span>
+                <h3>Ubuntu 24.04 LTS disponible con soporte de 12 años</h3>
+                <p>Kernel 6.8, mejor rendimiento en GNOME y soporte de seguridad extendido hasta 2036.</p>
+                <a href="#" class="sys-news-link">Leer más <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="sys-news-dots" id="carouselDots"></div>
+      </section>
+
+      <!-- ⑥ CONSEJOS ANTES DE INSTALAR -->
+      <section class="sys-tips" id="sys-tips">
+        <h2 class="sys-section-title">Antes de instalar un SO</h2>
+        <p class="sys-section-desc">
+          Sigue estos consejos para evitar errores comunes y proteger tus datos
+          durante la instalación.
+        </p>
+
+        <div class="sys-tips-grid">
+          <div class="sys-tip-card sys-card-reveal" data-reveal>
+            <div class="sys-tip-icon"><i class="fas fa-save"></i></div>
+            <h4>Haz un respaldo</h4>
+            <p>
+              Copia tus archivos importantes a un disco externo o la nube antes
+              de formatear. Una vez borrado, no hay vuelta atrás.
+            </p>
+          </div>
+          <div class="sys-tip-card sys-card-reveal" data-reveal>
+            <div class="sys-tip-icon"><i class="fas fa-fingerprint"></i></div>
+            <h4>Verifica el hash</h4>
+            <p>
+              Compara el SHA-256 de la ISO descargada con el publicado en la
+              página oficial. Si no coincide, la descarga está corrupta.
+            </p>
+          </div>
+          <div class="sys-tip-card sys-card-reveal" data-reveal>
+            <div class="sys-tip-icon"><i class="fas fa-usb"></i></div>
+            <h4>USB booteable</h4>
+            <p>
+              Usa Rufus o Ventoy con un USB de 8 GB mínimo. Asegúrate de
+              seleccionar GPT o MBR según tu placa base (UEFI o Legacy).
+            </p>
+          </div>
+          <div class="sys-tip-card sys-card-reveal" data-reveal>
+            <div class="sys-tip-icon"><i class="fas fa-wifi"></i></div>
+            <h4>Drivers listos</h4>
+            <p>
+              Ten a mano los drivers de red y chipset en un USB aparte. Sin
+              internet después del formateo, no podrás descargar nada.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ⑦ PREGUNTAS FRECUENTES (conservado) -->
+      <section class="sys-faq" id="sys-faq">
+        <h2 class="sys-section-title">Preguntas frecuentes</h2>
+        <div class="sys-faq-list">
+          <details class="sys-faq-item" open>
+            <summary>
+              <i class="fas fa-question-circle"></i> ¿Cómo sé si una ISO está
+              íntegra?
+            </summary>
+            <p>
+              Compara el hash SHA-256 del archivo con el publicado. Si coincide,
+              la descarga está completa y sin alteraciones.
+            </p>
+          </details>
+          <details class="sys-faq-item">
+            <summary>
+              <i class="fas fa-question-circle"></i> ¿Qué necesito para
+              reinstalar Windows?
+            </summary>
+            <p>
+              USB de 8 GB o más, ISO, herramienta booteable (Rufus/Ventoy) y
+              copia de seguridad de tus datos importantes.
+            </p>
+          </details>
+          <details class="sys-faq-item">
+            <summary>
+              <i class="fas fa-question-circle"></i> ¿Qué sistema recomiendas
+              para PC vieja?
+            </summary>
+            <p>
+              Linux Mint XFCE o una build de Windows optimizada. Si priorizas
+              compatibilidad de programas, Windows; si priorizas ligereza,
+              Linux.
+            </p>
+          </details>
+          <details class="sys-faq-item">
+            <summary>
+              <i class="fas fa-question-circle"></i> ¿Es seguro usar builds de
+              la comunidad?
+            </summary>
+            <p>
+              Sí, siempre que descargues de fuentes verificadas como AtlasOS o
+              ReviOS. Evita ISOs de foros desconocidos o links de dudosa
+              procedencia.
+            </p>
+          </details>
+          <details class="sys-faq-item">
+            <summary>
+              <i class="fas fa-question-circle"></i> ¿Puedo probar Linux sin
+              borrar Windows?
+            </summary>
+            <p>
+              ¡Sí! Puedes usar un Live USB para probar Linux sin instalar nada,
+              o configurar dual boot para tener ambos sistemas en el mismo
+              disco.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- ⑧ CTA (conservado) -->
+      <section class="sys-cta" id="sys-cta">
+        <div class="sys-cta-inner">
+          <div class="sys-cta-icon"><i class="fas fa-headset"></i></div>
+          <h2>¿No sabes cuál elegir?</h2>
+          <p>
+            Envíame las especificaciones de tu hardware en solicitudes y te
+            recomiendo la opción exacta para tu equipo. ¡Sin costo ni
+            compromiso!
+          </p>
+          <a href="solicitudes.html" class="sys-cta-btn"
+            ><i class="fas fa-paper-plane"></i> Ir a Solicitudes</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER ESTÁNDAR -->
+    <footer>
+      <div class="footer-inner">
+        <div class="social-media">
+          <a
+            href="https://www.tiktok.com/@arecsss495"
+            target="_blank"
+            class="social-item"
+          >
+            <img src="../img/tiktok.webp" alt="TikTok" class="social-icon" />
+            <span>@arecsss495</span>
+          </a>
+          <a
+            href="https://www.instagram.com/arecsss_495"
+            target="_blank"
+            class="social-item"
+          >
+            <img
+              src="../img/instagram.webp"
+              alt="Instagram"
+              class="social-icon"
+            />
+            <span>@arecsss_495</span>
+          </a>
+          <a
+            href="https://youtube.com/@arecsss495"
+            target="_blank"
+            class="social-item"
+          >
+            <img src="../img/youtube.webp" alt="YouTube" class="social-icon" />
+            <span>@arecsss495</span>
+          </a>
+        </div>
+
+        <div class="linksitos">
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <span class="separator">|</span>
+          <a href="Descargo.html">Descargo de Responsabilidad</a>
+          <span class="separator">|</span>
+          <a href="Contacto.html">Contacto</a>
+        </div>
+
+        <div class="footer-copyright">
+          © 2026 Juan Rubio | Derechos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <script src="../JS/tema.js"></script>
+    <script>
+      /* --- Carrusel de noticias horizontal --- */
+      (function () {
+        var track = document.getElementById("carouselTrack");
+        if (!track) return;
+
+        var cards = track.querySelectorAll(".sys-news-card");
+        var prevBtn = document.getElementById("carouselPrev");
+        var nextBtn = document.getElementById("carouselNext");
+        var dotsContainer = document.getElementById("carouselDots");
+        var current = 0;
+        var autoTimer;
+
+        function getPerView() {
+          if (window.innerWidth <= 600) return 1;
+          if (window.innerWidth <= 900) return 2;
+          return 3;
+        }
+
+        function getMaxIndex() {
+          return Math.max(0, cards.length - getPerView());
+        }
+
+        function buildDots() {
+          if (!dotsContainer) return;
+          dotsContainer.innerHTML = "";
+          var total = getMaxIndex() + 1;
+          for (var i = 0; i < total; i++) {
+            var dot = document.createElement("span");
+            dot.className = "sys-news-dot" + (i === current ? " active" : "");
+            dot.setAttribute("data-index", i);
+            dot.addEventListener("click", function () {
+              current = parseInt(this.getAttribute("data-index"), 10);
+              update();
+              restartAuto();
+            });
+            dotsContainer.appendChild(dot);
+          }
+        }
+
+        function update() {
+          var perView = getPerView();
+          var gap = 24;
+          var cardEl = cards[0];
+          var cardW = cardEl.offsetWidth + gap;
+          track.style.transform = "translateX(-" + (current * cardW) + "px)";
+
+          if (dotsContainer) {
+            var allDots = dotsContainer.querySelectorAll(".sys-news-dot");
+            allDots.forEach(function (d, i) {
+              d.classList.toggle("active", i === current);
+            });
+          }
+        }
+
+        function next() {
+          current = current >= getMaxIndex() ? 0 : current + 1;
+          update();
+        }
+
+        function prev() {
+          current = current <= 0 ? getMaxIndex() : current - 1;
+          update();
+        }
+
+        function restartAuto() {
+          clearInterval(autoTimer);
+          autoTimer = setInterval(next, 5000);
+        }
+
+        if (nextBtn) nextBtn.addEventListener("click", function () { next(); restartAuto(); });
+        if (prevBtn) prevBtn.addEventListener("click", function () { prev(); restartAuto(); });
+
+        buildDots();
+        update();
+        restartAuto();
+
+        var resizeTimer;
+        window.addEventListener("resize", function () {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function () {
+            if (current > getMaxIndex()) current = getMaxIndex();
+            buildDots();
+            update();
+          }, 150);
+        });
+      })();
+
+      /* --- Reveal animación al scroll --- */
+      (function () {
+        var items = document.querySelectorAll(".sys-card-reveal[data-reveal]");
+        if (!items.length || !("IntersectionObserver" in window)) {
+          items.forEach(function (el) { el.classList.add("is-visible"); });
+          return;
+        }
+        var obs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              obs.unobserve(entry.target);
+            });
+          },
+          { root: null, rootMargin: "0px 0px -40px 0px", threshold: 0.12 }
+        );
+        items.forEach(function (el) { obs.observe(el); });
+      })();
+    </script>
+  </body>
+</html>

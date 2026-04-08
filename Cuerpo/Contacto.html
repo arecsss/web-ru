@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto - RU</title>
+    <link rel="stylesheet" href="../style/index.css" />
+  </head>
+
+  <body class="dark-mode">
+    <!-- Mini Header de RU - Real Utility -->
+    <nav class="nav-header">
+      <div class="nav-container">
+        <div class="logo-wrapper" onclick="location.href = 'index.html'">
+          <div class="rubik-cube">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+          </div>
+          <span class="brand-name"
+            >RU - <span class="highlight">REAL UTILITY</span></span
+          >
+        </div>
+
+        <!-- Hamburger Checkbox Hack -->
+        <input type="checkbox" id="burger-toggle" class="burger-checkbox" />
+        <label for="burger-toggle" class="burger-label">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="Optimizaciones.html">Optimización</a></li>
+          <li><a href="Programas.html">Programas</a></li>
+          <li><a href="Sistemas.html">Sistemas</a></li>
+          <li><a href="Aprende.html">Aprende</a></li>
+          <li><a href="QuienSoy.html">¿Quién soy?</a></li>
+          <li><a href="solicitudes.html">Solicitudes</a></li>
+        </ul>
+
+        <div class="nav-actions" id="nav-actions-container">
+          <div
+            id="auth-buttons-nav"
+            style="display: flex; align-items: center; gap: 1.25rem"
+          >
+            <a href="login.html" class="btn-text">Acceder</a>
+            <a href="register.html" class="btn-primary">Registrarse</a>
+          </div>
+
+          <div class="theme-switch-wrapper">
+            <div class="toggle">
+              <input
+                type="checkbox"
+                id="dark-mode-toggle-nav"
+                aria-label="Alternar modo oscuro"
+              />
+              <label for="dark-mode-toggle-nav"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container" style="margin-top: 100px; min-height: 60vh">
+      <h1>Contacto</h1>
+      <p>Puedes marcar al número de teléfono del equipo de soporte técnico.</p>
+      <p><strong>Tiempo de respuesta:</strong> aproximadamente 24 horas.</p>
+    </div>
+
+    <!-- FOOTER ESTÁNDAR -->
+    <footer>
+      <div class="footer-inner">
+        <div class="social-media">
+          <a
+            href="https://www.tiktok.com/@arecsss495"
+            target="_blank"
+            class="social-item"
+          >
+            <img src="../img/tiktok.webp" alt="TikTok" class="social-icon" />
+            <span>@arecsss495</span>
+          </a>
+          <a
+            href="https://www.instagram.com/arecsss_495"
+            target="_blank"
+            class="social-item"
+          >
+            <img
+              src="../img/instagram.webp"
+              alt="Instagram"
+              class="social-icon"
+            />
+            <span>@arecsss_495</span>
+          </a>
+          <a
+            href="https://youtube.com/@arecsss495"
+            target="_blank"
+            class="social-item"
+          >
+            <img src="../img/youtube.webp" alt="YouTube" class="social-icon" />
+            <span>@arecsss495</span>
+          </a>
+        </div>
+
+        <div class="linksitos">
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <span class="separator">|</span>
+          <a href="Descargo.html">Descargo de Responsabilidad</a>
+          <span class="separator">|</span>
+          <a href="Contacto.html">Contacto</a>
+        </div>
+
+        <div class="footer-copyright">
+          © 2026 Juan Rubio | Derechos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <!-- LÓGICA DE TEMA Y SESIÓN -->
+    <script>
+      (function () {
+        var localTheme = localStorage.getItem("theme");
+        var sysTheme = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        if (localTheme === "dark-mode" || (!localTheme && sysTheme)) {
+          document.body.classList.add("dark-mode");
+        }
+      })();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var toggleNav = document.getElementById("dark-mode-toggle-nav");
+        if (document.body.classList.contains("dark-mode")) {
+          if (toggleNav) toggleNav.checked = true;
+        }
+
+        if (toggleNav) {
+          toggleNav.addEventListener("change", function (e) {
+            var isDark = e.target.checked;
+            if (isDark) {
+              document.body.classList.add("dark-mode");
+              localStorage.setItem("theme", "dark-mode");
+            } else {
+              document.body.classList.remove("dark-mode");
+              localStorage.setItem("theme", "light-mode");
+            }
+          });
+        }
+
+        var logged = localStorage.getItem("loggedIn") === "true";
+        var authButtonsNav = document.getElementById("auth-buttons-nav");
+
+        if (logged && authButtonsNav) {
+          authButtonsNav.innerHTML = `<a href="#" id="logout-btn-header" class="logout-link">Cerrar sesión</a>`;
+          document
+            .getElementById("logout-btn-header")
+            .addEventListener("click", function (e) {
+              e.preventDefault();
+              localStorage.removeItem("loggedIn");
+              location.reload();
+            });
+        }
+      });
+    </script>
+  </body>
+</html>

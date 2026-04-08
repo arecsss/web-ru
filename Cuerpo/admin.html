@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | RU</title>
+    <!-- Vinculación al CSS centralizado (Buenas prácticas universitarias) -->
+    <link rel="stylesheet" href="../style/index.css">
+    <!-- Carga de Supabase con 'defer' para optimizar la velocidad de carga inicial -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+</head>
+<body class="dark-mode">
+    <!-- Barra de navegación del panel de administración -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <div class="logo-wrapper" onclick="location.href='index.html'">
+                <div class="rubik-cube">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face left"></div>
+                    <div class="face right"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+                <span class="brand-name">RU - <span class="highlight">ADMIN</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Volver a la Web</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mensaje de seguridad si el usuario no tiene acceso administrativo -->
+    <div id="admin-login-msg">
+        <h2>Acceso Restringido</h2>
+        <p>Solo el administrador puede ver esta página.</p>
+        <a href="login.html" class="btn-primary">Iniciar Sesión</a>
+    </div>
+
+    <!-- Contenido principal del Panel de Administración (Oculto por defecto) -->
+    <div id="admin-content" class="admin-container">
+        <h1 class="ru-solicitudes-title">Panel de <span class="ru-accent">Control</span></h1>
+        
+        <!-- Sección de Estadísticas Rápidas -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span id="stat-users" class="stat-number">0</span>
+                <span class="stat-label">Usuarios Activos</span>
+            </div>
+            <div class="stat-card">
+                <span id="stat-tickets" class="stat-number">0</span>
+                <span class="stat-label">Tickets Totales</span>
+            </div>
+            <div class="stat-card">
+                <span id="stat-messages" class="stat-number">0</span>
+                <span class="stat-label">Mensajes en Chat</span>
+            </div>
+        </div>
+
+        <!-- Tabla para la gestión de Solicitudes/Tickets -->
+        <div class="admin-table-container">
+            <h2>Gestión de Solicitudes</h2>
+            <table id="tickets-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Asunto</th>
+                        <th>Usuario</th>
+                        <th>Mensaje</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tickets-body">
+                    <!-- Los tickets se inyectan aquí dinámicamente mediante JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- LÓGICA DE FUNCIONAMIENTO (JavaScript) -->
+    <script type="module">
+        // Importación de la conexión centralizada a Supabase
+        import { supabase } from '../JS/supabase.js';
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            // --- SEGURIDAD: Verificación de privilegios de administrador ---
+            // Definimos el correo autorizado para gestionar el panel
+            const ADMIN_EMAIL = 'jibarracuervo@gmail.com'; 
+            const userEmail = localStorage.getItem('userEmail');
+            const loggedIn = localStorage.getItem('loggedIn') === 'true';
+
+            // Solo mostramos el panel si el usuario está logueado y su correo coincide con el admin
+            if (loggedIn && userEmail === ADMIN_EMAIL) {
+                document.getElementById('admin-content').style.display = 'block';
+                document.getElementById('admin-login-msg').style.display = 'none';
+                
+                // Carga inicial de datos desde Supabase
+                loadStats();
+                loadTickets();
+            }
+
+            // --- FUNCIÓN: Cargar Estadísticas desde la Base de Datos ---
+            async function loadStats() {
+                // Contar total de tickets en la tabla 'solicitudes'
+                const { count: ticketCount } = await supabase
+                    .from('solicitudes')
+                    .select('*', { count: 'exact', head: true });
+                document.getElementById('stat-tickets').textContent = ticketCount || 0;
+
+                // Contar total de mensajes en la tabla 'mensajes_chat'
+                const { count: msgCount } = await supabase
+                    .from('mensajes_chat')
+                    .select('*', { count: 'exact', head: true });
+                document.getElementById('stat-messages').textContent = msgCount || 0;
+
+                // Contar usuarios únicos que han participado en el chat
+                const { data: userData } = await supabase.from('mensajes_chat').select('usuario_email');
+                const uniqueUsers = new Set(userData?.map(u => u.usuario_email));
+                document.getElementById('stat-users').textContent = uniqueUsers.size || 0;
+            }
+
+            // --- FUNCIÓN: Cargar y Renderizar Tickets ---
+            async function loadTickets() {
+                // Consultar todas las solicitudes ordenadas por fecha descendente
+                const { data: tickets, error } = await supabase
+                    .from('solicitudes')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) {
+                    console.error('Error cargando tickets:', error);
+                    return;
+                }
+
+                const tbody = document.getElementById('tickets-body');
+                tbody.innerHTML = ''; // Limpiar contenido previo
+
+                // Crear filas de la tabla para cada ticket
+                tickets.forEach(ticket => {
+                    const date = new Date(ticket.created_at).toLocaleDateString();
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${date}</td>
+                        <td><span class="badge badge-${ticket.tipo.toLowerCase()}">${ticket.tipo}</span></td>
+                        <td>${ticket.asunto}</td>
+                        <td>${ticket.email || 'Anónimo'}</td>
+                        <td>${ticket.mensaje}</td>
+                        <td>
+                            <button class="btn-delete" data-id="${ticket.id}">Eliminar</button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+                // Añadir funcionalidad de eliminación a los botones
+                document.querySelectorAll('.btn-delete').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        if (confirm('¿Estás seguro de que quieres eliminar este ticket?')) {
+                            // Eliminar registro de la tabla 'solicitudes' en Supabase
+                            const { error } = await supabase.from('solicitudes').delete().eq('id', id);
+                            if (!error) {
+                                e.target.closest('tr').remove(); // Eliminar fila visualmente
+                                loadStats(); // Recalcular estadísticas
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

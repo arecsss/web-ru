@@ -1,0 +1,1235 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programas | RU</title>
+    <link rel="stylesheet" href="../style/index.css" />
+    <link rel="icon" href="../img/logo.webp" sizes="32x32" type="image/webp" />
+  </head>
+
+  <body class="dark-mode">
+    <!-- [NUEVO] GUARD DE SESIÓN: Si no ha iniciado sesión, redirige a login con retorno a esta página -->
+    <script>
+      if (localStorage.getItem("loggedIn") !== "true") {
+        location.href =
+          "login.html?redirect=" +
+          encodeURIComponent(location.href.split("/").pop());
+      }
+    </script>
+    <nav class="nav-header">
+      <div class="nav-container">
+        <div class="logo-wrapper" onclick="location.href = 'index.html'">
+          <div class="rubik-cube">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+          </div>
+          <span class="brand-name"
+            >RU - <span class="highlight">REAL UTILITY</span></span
+          >
+        </div>
+
+        <!-- Hamburger Checkbox Hack -->
+        <input type="checkbox" id="burger-toggle" class="burger-checkbox" />
+        <label for="burger-toggle" class="burger-label">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="Optimizaciones.html">Optimización</a></li>
+          <li><a href="Programas.html">Programas</a></li>
+          <li><a href="Sistemas.html">Sistemas</a></li>
+          <li><a href="Aprende.html">Aprende</a></li>
+          <li><a href="QuienSoy.html">¿Quién soy?</a></li>
+          <li><a href="solicitudes.html">Solicitudes</a></li>
+        </ul>
+
+        <div class="nav-actions" id="nav-actions-container">
+          <div
+            id="auth-buttons-nav"
+            style="display: flex; align-items: center; gap: 1.25rem"
+          >
+            <a href="login.html" class="btn-text">Acceder</a>
+            <a href="register.html" class="btn-primary">Registrarse</a>
+          </div>
+
+          <div class="theme-switch-wrapper">
+            <div class="toggle">
+              <input
+                type="checkbox"
+                id="dark-mode-toggle-nav"
+                aria-label="Alternar modo oscuro"
+              />
+              <label for="dark-mode-toggle-nav"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========== LAYOUT PRINCIPAL ========== -->
+    <div class="pg-layout">
+      <!-- SIDEBAR DESKTOP (izquierda) -->
+      <nav
+        class="pg-sidebar"
+        id="desktopNav"
+        style="
+          background-image: url(&quot;../img/sidebar.webp&quot;);
+          background-size: cover;
+          background-position: center;
+          border-right: 4px solid #000000;
+        "
+      >
+        <h2 class="pg-sidebar-title">CATEGORÍAS</h2>
+        <input
+          type="search"
+          id="searchDesktop"
+          class="pg-search"
+          placeholder="Buscar..."
+          autocomplete="off"
+        />
+        <a href="#navegadores" class="pg-nav-link">Navegadores</a>
+        <a href="#gaming" class="pg-nav-link">Gaming</a>
+        <a href="#drivers" class="pg-nav-link">Drivers</a>
+        <a href="#utility" class="pg-nav-link">Utilidades</a>
+        <a href="#ofimatica" class="pg-nav-link">Ofimática</a>
+        <a href="#edicion" class="pg-nav-link">Edición</a>
+        <a href="#audio" class="pg-nav-link">Audio</a>
+        <a href="#seguridad" class="pg-nav-link">Seguridad</a>
+        <a href="#code" class="pg-nav-link">Code</a>
+      </nav>
+
+      <!-- CONTENIDO PRINCIPAL (derecha) -->
+      <main class="pg-main">
+        <!-- ===== NAVEGADORES ===== -->
+        <section id="navegadores" class="pg-seccion">
+          <h2 class="pg-seccion-titulo">NAVEGADORES</h2>
+          <div class="pg-grid" data-category="navegadores">
+            <!-- Agrega tus programas aquí. Ejemplo: -->
+            <a href="https://www.google.com/intl/es_es/chrome/" class="pg-card">
+              <img
+                src="../img/pg-chrome.webp"
+                alt="Chrome"
+                class="pg-card-icon"
+              />
+              <span>Chrome</span>
+            </a>
+            <a
+              href="https://www.mozilla.org/es-ES/firefox/new/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-firefox.webp"
+                alt="Firefox"
+                class="pg-card-icon"
+              />
+              <span>Firefox</span>
+            </a>
+            <a href="https://brave.com/es/download/" class="pg-card">
+              <img
+                src="../img/pg-brave.webp"
+                alt="Brave"
+                class="pg-card-icon"
+              />
+              <span>Brave</span>
+            </a>
+            <a href="https://www.opera.com/es-419/gx" class="pg-card">
+              <img
+                src="../img/pg-operagx.webp"
+                alt="Opera GX"
+                class="pg-card-icon"
+              />
+              <span>Opera GX</span>
+            </a>
+            <a href="https://www.duckduckgo.com/" class="pg-card">
+              <img
+                src="../img/pg-dukdukgo.webp"
+                alt="DuckDuckGo"
+                class="pg-card-icon"
+              />
+              <span>DuckDuckGo</span>
+            </a>
+            <a href="https://www.vivaldi.com/" class="pg-card">
+              <img
+                src="../img/pg-vivaldi.webp"
+                alt="Vivaldi"
+                class="pg-card-icon"
+              />
+              <span>Vivaldi</span>
+            </a>
+            <a href="https://www.microsoft.com/es-es/edge" class="pg-card">
+              <img src="../img/pg-edge.webp" alt="Edge" class="pg-card-icon" />
+              <span>Edge</span>
+            </a>
+            <a
+              href="https://safari.softonic.com/descargar?installerType=riseInstaller"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-safari.webp"
+                alt="Safari"
+                class="pg-card-icon"
+              />
+              <span>Safari</span>
+            </a>
+            <a href="https://www.torproject.org/download/" class="pg-card">
+              <img
+                src="../img/pg-torbrowser.webp"
+                alt="Tor Browser"
+                class="pg-card-icon"
+              />
+              <span>Tor Browser</span>
+            </a>
+            <a
+              href="https://www.chromium.org/getting-involved/download-chromium/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-chromium.webp"
+                alt="Chromium"
+                class="pg-card-icon"
+              />
+              <span>Chromium</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- ===== GAMING ===== -->
+        <section id="gaming" class="pg-seccion">
+          <h2 class="pg-seccion-titulo pg-titulo-rojo">INSTALADORES GAMING</h2>
+          <div class="pg-grid" data-category="gaming">
+            <a
+              href="https://www.playvalorant.com/es-mx/download/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-valorant.webp"
+                alt="Valorant"
+                class="pg-card-icon"
+              />
+              <span>Valorant</span>
+            </a>
+            <a href="https://store.steampowered.com/about/" class="pg-card">
+              <img
+                src="../img/pg-steam.webp"
+                alt="Steam"
+                class="pg-card-icon"
+              />
+              <span>Steam</span>
+            </a>
+            <a
+              href="https://store.epicgames.com/es-ES/download"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-epicgames.webp"
+                alt="Epic Games"
+                class="pg-card-icon"
+              />
+              <span>Epic Games</span>
+            </a>
+            <a href="https://www.ea.com/es-es/ea-app" class="pg-card">
+              <img
+                src="../img/pg-eagames.webp"
+                alt="EA Games"
+                class="pg-card-icon"
+              />
+              <span>EA Games</span>
+            </a>
+            <a
+              href="https://www.ubisoft.com/es-mx/store/download"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-ubisoft.webp"
+                alt="Ubisoft"
+                class="pg-card-icon"
+              />
+              <span>Ubisoft</span>
+            </a>
+            <a href="https://www.blizzard.com/es-es/download" class="pg-card">
+              <img
+                src="../img/pg-battlenet.webp"
+                alt="Battle.net"
+                class="pg-card-icon"
+              />
+              <span>Battle.net</span>
+            </a>
+            <a
+              href="https://www.nvidia.com/es-es/geforce-now/download/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-geforcenow.webp"
+                alt="GeForce Now"
+                class="pg-card-icon"
+              />
+              <span>GeForce Now</span>
+            </a>
+            <a
+              href="https://www.msi.com/Landing/afterburner/download"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-msiafterburner.webp"
+                alt="MSI Afterburner"
+                class="pg-card-icon"
+              />
+              <span>MSI Afterburner</span>
+            </a>
+            <a href="https://www.razer.com/cortex/download" class="pg-card">
+              <img
+                src="../img/pg-razercortex.webp"
+                alt="Razer Cortex"
+                class="pg-card-icon"
+              />
+              <span>Razer Cortex</span>
+            </a>
+            <a href="https://www.gogalaxy.com/en/" class="pg-card">
+              <img
+                src="../img/pg-goggalaxy.webp"
+                alt="GOG Galaxy"
+                class="pg-card-icon"
+              />
+              <span>GOG Galaxy</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- ===== DRIVERS ===== -->
+        <section id="drivers" class="pg-seccion">
+          <h2 class="pg-seccion-titulo">INSTALADORES DRIVERS</h2>
+          <div class="pg-grid" data-category="drivers">
+            <a
+              href="https://www.iobit.com/es/driver-booster.php"
+              class="pg-card"
+            >
+              <img
+                src="../img/driver-booster.webp"
+                alt="Driver Booster"
+                class="pg-card-icon"
+              />
+              <span>Driver Booster</span>
+            </a>
+            <a
+              href="https://www.iobit.com/es/snappy-drivers.php"
+              class="pg-card"
+            >
+              <img
+                src="../img/Snappy-driver.webp"
+                alt="Snappy Drivers"
+                class="pg-card-icon"
+              />
+              <span>Snappy Drivers</span>
+            </a>
+            <a
+              href="https://www.nvidia.com/Download/index.aspx?lang=es"
+              class="pg-card"
+            >
+              <img
+                src="../img/nvidia-app.webp"
+                alt="Nvidia Drivers"
+                class="pg-card-icon"
+              />
+              <span>Nvidia Drivers</span>
+            </a>
+            <a href="https://www.driveridentifier.com/" class="pg-card">
+              <img
+                src="../img/pg-driveridentifier.webp"
+                alt="Driver identifier"
+                class="pg-card-icon"
+              />
+              <span>Driver identifier</span>
+            </a>
+            <a
+              href="https://www.3dpchip.com/3dp-chip-download/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-3dpn.webp"
+                alt="3DP Net"
+                class="pg-card-icon"
+              />
+              <span>3DP Net</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- ===== UTILIDADES ===== -->
+        <section id="utility" class="pg-seccion">
+          <h2 class="pg-seccion-titulo">UTILIDADES</h2>
+          <div class="pg-grid" data-category="utility">
+            <a href="https://rufus.ie/es/" class="pg-card">
+              <img
+                src="../img/pg-rufus.webp"
+                alt="Rufus"
+                class="pg-card-icon"
+              />
+              <span>Rufus</span>
+            </a>
+
+            <a href="https://www.ventoy.net/en/download.html" class="pg-card">
+              <img
+                src="../img/pg-ventoy.webp"
+                alt="Ventoy"
+                class="pg-card-icon"
+              />
+              <span>Ventoy</span>
+            </a>
+            <a
+              href="https://www.teamviewer.com/es/download/windows/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-teamviewer.webp"
+                alt="TeamViewer"
+                class="pg-card-icon"
+              />
+              <span>TeamViewer</span>
+            </a>
+            <a href="https://anydesk.com/es/downloads/windows" class="pg-card">
+              <img
+                src="../img/pg-anydesk.webp"
+                alt="AnyDesk"
+                class="pg-card-icon"
+              />
+              <span>AnyDesk</span>
+            </a>
+            <a href="https://justgetflux.com/" class="pg-card">
+              <img src="../img/pg-flux.webp" alt="F.lux" class="pg-card-icon" />
+              <span>F.lux</span>
+            </a>
+            <a
+              href="https://www.revouninstaller.com/es/revo-uninstaller-free-download/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-revo.webp"
+                alt="Revo Uninstaller"
+                class="pg-card-icon"
+              />
+              <span>Revo Uninstaller</span>
+            </a>
+            <a
+              href="https://github.com/microsoft/PowerToys/releases"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-powertoys.webp"
+                alt="PowerToys"
+                class="pg-card-icon"
+              />
+              <span>PowerToys</span>
+            </a>
+            <a
+              href="https://www.cpuid.com/softwares/cpu-z.html"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-cpu-z.webp"
+                alt="CPU-Z"
+                class="pg-card-icon"
+              />
+              <span>CPU-Z</span>
+            </a>
+            <a href="https://www.voidtools.com/es-es/" class="pg-card">
+              <img
+                src="../img/pg-everything.webp"
+                alt="Everything"
+                class="pg-card-icon"
+              />
+              <span>Everything</span>
+            </a>
+            <a href="https://www.aida64.com/downloads" class="pg-card">
+              <img
+                src="../img/pg-aida64.webp"
+                alt="AIDA64"
+                class="pg-card-icon"
+              />
+              <span>AIDA64</span>
+            </a>
+            <a
+              href="https://crystalmark.info/en/software/crystaldiskmark/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-crystaldisk.webp"
+                alt="CrystalDiskMark"
+                class="pg-card-icon"
+              />
+              <span>CrystalDiskMark</span>
+            </a>
+            <a
+              href="https://github.com/Chuyu-Team/Dism-Multi-language/releases"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-dism++.webp"
+                alt="Dism++"
+                class="pg-card-icon"
+              />
+              <span>Dism++</span>
+            </a>
+            <a
+              href="https://www.sordum.org/7952/dns-jumper-v2-3/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-dnsjumper.webp"
+                alt="DNS Jumper"
+                class="pg-card-icon"
+              />
+              <span>DNS Jumper</span>
+            </a>
+            <a
+              href="https://www.techpowerup.com/download/techpowerup-gpu-z/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-gpu-z.webp"
+                alt="GPU-Z"
+                class="pg-card-icon"
+              />
+              <span>GPU-Z</span>
+            </a>
+            <a
+              href="https://www.partitionwizard.com/free-partition-manager.html"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-partitionwizard.webp"
+                alt="Partition Wizard"
+                class="pg-card-icon"
+              />
+              <span>Partition Wizard</span>
+            </a>
+            <a
+              href="https://cms.lucashale.com/timer-resolution/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-timeresolution.webp"
+                alt="Timer Resolution"
+                class="pg-card-icon"
+              />
+              <span>Timer Resolution</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- ===== OFIMATICA ===== -->
+        <section id="ofimatica" class="pg-seccion">
+          <h2 class="pg-seccion-titulo">OFIMÁTICA</h2>
+          <div class="pg-grid" data-category="ofimatica">
+            <a
+              href="https://es.libreoffice.org/descarga/libreoffice/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-libreoffice.webp"
+                alt="LibreOffice"
+                class="pg-card-icon"
+              />
+              <span>LibreOffice</span>
+            </a>
+
+            <a href="https://es.wps.com/" class="pg-card">
+              <img
+                src="../img/pg-wps.webp"
+                alt="WPS Office"
+                class="pg-card-icon"
+              />
+              <span>WPS Office</span>
+            </a>
+
+            <a href="https://www.openoffice.org/es/" class="pg-card">
+              <img
+                src="../img/pg-openoffice.webp"
+                alt="OpenOffice"
+                class="pg-card-icon"
+              />
+              <span>OpenOffice</span>
+            </a>
+
+            <a href="https://www.onlyoffice.com/es/" class="pg-card">
+              <img
+                src="../img/pg-onlyoffice.webp"
+                alt="OnlyOffice"
+                class="pg-card-icon"
+              />
+              <span>OnlyOffice</span>
+            </a>
+
+            <a href="https://www.office.com/" class="pg-card">
+              <img
+                src="../img/pg-microsoft-365.webp"
+                alt="Microsoft 365 Online"
+                class="pg-card-icon"
+              />
+              <span>Microsoft 365 Online</span>
+            </a>
+
+            <a href="https://docs.google.com/" class="pg-card">
+              <img
+                src="../img/pg-googledocs.webp"
+                alt="Google Docs"
+                class="pg-card-icon"
+              />
+              <span>Google Docs</span>
+            </a>
+
+            <a href="https://get.adobe.com/es/reader/" class="pg-card">
+              <img
+                src="../img/pg-adobereader.webp"
+                alt="Adobe Reader"
+                class="pg-card-icon"
+              />
+              <span>Adobe Reader</span>
+            </a>
+
+            <a href="https://www.sumatrapdfreader.org/" class="pg-card">
+              <img
+                src="../img/pg-sumatrapdf.webp"
+                alt="Sumatra PDF"
+                class="pg-card-icon"
+              />
+              <span>Sumatra PDF</span>
+            </a>
+
+            <a href="https://www.foxit.com/pdf-reader/" class="pg-card">
+              <img
+                src="../img/pg-foxitpdf.webp"
+                alt="Foxit PDF Reader"
+                class="pg-card-icon"
+              />
+              <span>Foxit PDF</span>
+            </a>
+
+            <a href="https://tools.pdf24.org/es/creator" class="pg-card">
+              <img
+                src="../img/pg-pdf24.webp"
+                alt="PDF24 Creator"
+                class="pg-card-icon"
+              />
+              <span>PDF24 Creator</span>
+            </a>
+
+            <a href="https://winrar.es/descargas" class="pg-card">
+              <img
+                src="../img/pg-winrar.webp"
+                alt="WinRAR"
+                class="pg-card-icon"
+              />
+              <span>WinRAR</span>
+            </a>
+
+            <a href="https://www.7-zip.org/" class="pg-card">
+              <img src="../img/pg-7zip.webp" alt="7-Zip" class="pg-card-icon" />
+              <span>7-Zip</span>
+            </a>
+
+            <a href="https://www.scribus.net/downloads/" class="pg-card">
+              <img
+                src="../img/pg-scribus.webp"
+                alt="Scribus"
+                class="pg-card-icon"
+              />
+              <span>Scribus</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- ===== EDICION ===== -->
+        <section id="edicion" class="pg-seccion">
+          <h2 class="pg-seccion-titulo">EDICIÓN</h2>
+          <div class="pg-grid" data-category="edicion">
+            <a href="https://kdenlive.org/es/" class="pg-card">
+              <img
+                src="../img/pg-kdenlive.webp"
+                alt="Kdenlive"
+                class="pg-card-icon"
+              />
+              <span>Kdenlive</span>
+            </a>
+            <a href="https://www.capcut.com/" class="pg-card">
+              <img
+                src="../img/pg-capcut.webp"
+                alt="CapCut"
+                class="pg-card-icon"
+              />
+              <span>CapCut</span>
+            </a>
+            <a
+              href="https://www.blackmagicdesign.com/products/davinciresolve"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-davinciresolver.webp"
+                alt="DaVinci Resolve"
+                class="pg-card-icon"
+              />
+              <span>DaVinci Resolve</span>
+            </a>
+            <a href="https://shotcut.org/" class="pg-card">
+              <img
+                src="../img/pg-shotcut.webp"
+                alt="Shotcut"
+                class="pg-card-icon"
+              />
+              <span>Shotcut</span>
+            </a>
+            <a
+              href="https://apps.microsoft.com/detail/9p1j8s7ccwwt"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-clipchamp.webp"
+                alt="Clipchamp"
+                class="pg-card-icon"
+              />
+              <span>Clipchamp</span>
+            </a>
+            <a href="https://www.blender.org/" class="pg-card">
+              <img
+                src="../img/pg-blender.webp"
+                alt="Blender"
+                class="pg-card-icon"
+              />
+              <span>Blender</span>
+            </a>
+            <a href="https://www.gimp.org/" class="pg-card">
+              <img src="../img/pg-gimp.webp" alt="GIMP" class="pg-card-icon" />
+              <span>GIMP</span>
+            </a>
+            <a href="https://www.getpaint.net/" class="pg-card">
+              <img
+                src="../img/pg-paintnet.webp"
+                alt="Paint.NET"
+                class="pg-card-icon"
+              />
+              <span>Paint.NET</span>
+            </a>
+            <a
+              href="https://krita.org/es/download/krita-desktop/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-krita.webp"
+                alt="Krita"
+                class="pg-card-icon"
+              />
+              <span>Krita</span>
+            </a>
+            <a href="https://inkscape.org/es/" class="pg-card">
+              <img
+                src="../img/pg-inkscape.webp"
+                alt="Inkscape"
+                class="pg-card-icon"
+              />
+              <span>Inkscape</span>
+            </a>
+            <a href="https://www.photopea.com/" class="pg-card">
+              <img
+                src="../img/pg-photopea.webp"
+                alt="Photopea"
+                class="pg-card-icon"
+              />
+              <span>Photopea</span>
+            </a>
+            <a href="https://www.canva.com/" class="pg-card">
+              <img
+                src="../img/pg-canva.webp"
+                alt="Canva"
+                class="pg-card-icon"
+              />
+              <span>Canva</span>
+            </a>
+            <a href="https://www.affinity.studio/" class="pg-card">
+              <img
+                src="../img/pg-affinity.webp"
+                alt="Affinity"
+                class="pg-card-icon"
+              />
+              <span>Affinity</span>
+            </a>
+            <a href="https://www.audacityteam.org/" class="pg-card">
+              <img
+                src="../img/pg-audacity.webp"
+                alt="Audacity"
+                class="pg-card-icon"
+              />
+              <span>Audacity</span>
+            </a>
+            <a href="https://obsproject.com/es/download" class="pg-card">
+              <img
+                src="../img/pg-obs.webp"
+                alt="OBS Studio"
+                class="pg-card-icon"
+              />
+              <span>OBS Studio</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- ===== AUDIO ===== -->
+        <section id="audio" class="pg-seccion">
+          <h2 class="pg-seccion-titulo">AUDIO</h2>
+          <div class="pg-grid" data-category="audio">
+            <!-- Agrega tus programas aquí --><a
+              href="https://www.spotify.com/download/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-spotify.webp"
+                alt="Spotify"
+                class="pg-card-icon"
+              />
+              <span>Spotify</span>
+            </a>
+
+            <a href="https://www.deezer.com/" class="pg-card">
+              <img
+                src="../img/pg-deezer.webp"
+                alt="Deezer"
+                class="pg-card-icon"
+              />
+              <span>Deezer</span>
+            </a>
+            <a
+              href="https://apps.microsoft.com/detail/9pfhdd62mxs1"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-applemusic.webp"
+                alt="Apple Music"
+                class="pg-card-icon"
+              />
+              <span>Apple Music</span>
+            </a>
+
+            <a href="https://www.apple.com/itunes/" class="pg-card">
+              <img
+                src="../img/pg-itunes.webp"
+                alt="iTunes"
+                class="pg-card-icon"
+              />
+              <span>iTunes</span>
+            </a>
+
+            <a href="https://www.videolan.org/vlc/" class="pg-card">
+              <img
+                src="../img/pg-vlc.webp"
+                alt="VLC Player"
+                class="pg-card-icon"
+              />
+              <span>VLC Player</span>
+            </a>
+
+            <a href="https://www.aimp.ru/" class="pg-card">
+              <img src="../img/pg-aimp.webp" alt="AIMP" class="pg-card-icon" />
+              <span>AIMP</span>
+            </a>
+
+            <a href="https://www.foobar2000.org/download" class="pg-card">
+              <img
+                src="../img/pg-foobar2000.webp"
+                alt="Foobar2000"
+                class="pg-card-icon"
+              />
+              <span>Foobar2000</span>
+            </a>
+
+            <a href="https://www.audacityteam.org/" class="pg-card">
+              <img
+                src="../img/pg-audacity.webp"
+                alt="Audacity"
+                class="pg-card-icon"
+              />
+              <span>Audacity</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- ===== SEGURIDAD ===== -->
+        <section id="seguridad" class="pg-seccion">
+          <h2 class="pg-seccion-titulo">SEGURIDAD</h2>
+          <div class="pg-grid" data-category="seguridad">
+            <a href="https://bitwarden.com/download/" class="pg-card">
+              <img
+                src="../img/pg-bitwarden.webp"
+                alt="Bitwarden"
+                class="pg-card-icon"
+              />
+              <span>Bitwarden</span>
+            </a>
+
+            <a href="https://protonvpn.com/download" class="pg-card">
+              <img
+                src="../img/pg-protonvpn.webp"
+                alt="Proton VPN"
+                class="pg-card-icon"
+              />
+              <span>Proton VPN</span>
+            </a>
+
+            <a href="https://www.malwarebytes.com/" class="pg-card">
+              <img
+                src="../img/pg-malwarebytes.webp"
+                alt="Malwarebytes"
+                class="pg-card-icon"
+              />
+              <span>Malwarebytes</span>
+            </a>
+
+            <a
+              href="https://www.avast.com/es-es/free-antivirus-download"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-avastfree.webp"
+                alt="Avast Free Antivirus"
+                class="pg-card-icon"
+              />
+              <span>Avast Free</span>
+            </a>
+
+            <a href="https://www.kaspersky.es/free-antivirus" class="pg-card">
+              <img
+                src="../img/pg-kaspersky.webp"
+                alt="Kaspersky Free"
+                class="pg-card-icon"
+              />
+              <span>Kaspersky Free</span>
+            </a>
+
+            <a
+              href="https://www.1password.com/downloads/windows/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-1password.webp"
+                alt="1Password"
+                class="pg-card-icon"
+              />
+              <span>1Password</span>
+            </a>
+
+            <a
+              href="https://www.cpuid.com/softwares/hwmonitor.html"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-hwmonitor.webp"
+                alt="HWMonitor"
+                class="pg-card-icon"
+              />
+              <span>HWMonitor</span>
+            </a>
+
+            <a
+              href="https://crystalmark.info/en/software/crystaldiskinfo/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-crystaldisk.webp"
+                alt="CrystalDiskInfo"
+                class="pg-card-icon"
+              />
+              <span>CrystalDiskInfo</span>
+            </a>
+
+            <a href="https://www.bleachbit.org/download" class="pg-card">
+              <img
+                src="../img/pg-bleachbit.webp"
+                alt="BleachBit"
+                class="pg-card-icon"
+              />
+              <span>BleachBit</span>
+            </a>
+
+            <a href="https://www.glasswire.com/download/" class="pg-card">
+              <img
+                src="../img/pg-glasswire.webp"
+                alt="GlassWire"
+                class="pg-card-icon"
+              />
+              <span>GlassWire</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- ===== CODE ===== -->
+        <section id="code" class="pg-seccion">
+          <h2 class="pg-seccion-titulo">CODE</h2>
+          <div class="pg-grid" data-category="code">
+            <a href="https://www.python.org/downloads/" class="pg-card">
+              <img
+                src="../img/pg-python.webp"
+                alt="Python"
+                class="pg-card-icon"
+              />
+              <span>Python</span>
+            </a>
+
+            <a href="https://nodejs.org/" class="pg-card">
+              <img
+                src="../img/pg-nodejs.webp"
+                alt="Node.js"
+                class="pg-card-icon"
+              />
+              <span>Node.js</span>
+            </a>
+
+            <a href="https://code.visualstudio.com/" class="pg-card">
+              <img
+                src="../img/pg-vscode.webp"
+                alt="VS Code"
+                class="pg-card-icon"
+              />
+              <span>VS Code</span>
+            </a>
+
+            <a href="https://claude.com/product/claude-code" class="pg-card">
+              <img
+                src="../img/pg-claudecode.webp"
+                alt="Claude Code"
+                class="pg-card-icon"
+              />
+              <span>Claude Code</span>
+            </a>
+
+            <a href="https://antigravity.google/" class="pg-card">
+              <img
+                src="../img/pg-antigravity.webp"
+                alt="Antigravity"
+                class="pg-card-icon"
+              />
+              <span>Antigravity</span>
+            </a>
+
+            <a href="https://git-scm.com/" class="pg-card">
+              <img src="../img/pg-git.webp" alt="Git" class="pg-card-icon" />
+              <span>Git</span>
+            </a>
+
+            <a href="https://desktop.github.com/" class="pg-card">
+              <img
+                src="../img/pg-githubdesktop.webp"
+                alt="GitHub Desktop"
+                class="pg-card-icon"
+              />
+              <span>GitHub Desktop</span>
+            </a>
+
+            <a href="https://notepad-plus-plus.org/downloads/" class="pg-card">
+              <img
+                src="../img/pg-notepad++.webp"
+                alt="Notepad++"
+                class="pg-card-icon"
+              />
+              <span>Notepad++</span>
+            </a>
+
+            <a href="https://www.sublimetext.com/" class="pg-card">
+              <img
+                src="../img/pg-sublinetext.webp"
+                alt="Sublime Text"
+                class="pg-card-icon"
+              />
+              <span>Sublime Text</span>
+            </a>
+
+            <a href="https://www.jetbrains.com/idea/" class="pg-card">
+              <img
+                src="../img/pg-intellijidea.webp"
+                alt="IntelliJ IDEA"
+                class="pg-card-icon"
+              />
+              <span>IntelliJ IDEA</span>
+            </a>
+
+            <a
+              href="https://www.docker.com/products/docker-desktop/"
+              class="pg-card"
+            >
+              <img
+                src="../img/pg-docker.webp"
+                alt="Docker Desktop"
+                class="pg-card-icon"
+              />
+              <span>Docker</span>
+            </a>
+
+            <a href="https://www.postman.com/downloads/" class="pg-card">
+              <img
+                src="../img/pg-postman.webp"
+                alt="Postman"
+                class="pg-card-icon"
+              />
+              <span>Postman</span>
+            </a>
+
+            <a href="https://dbeaver.io/download/" class="pg-card">
+              <img
+                src="../img/pg-dbaver.webp"
+                alt="DBeaver"
+                class="pg-card-icon"
+              />
+              <span>DBeaver</span>
+            </a>
+
+            <a href="https://getcomposer.org/download/" class="pg-card">
+              <img
+                src="../img/pg-composer.webp"
+                alt="Composer"
+                class="pg-card-icon"
+              />
+              <span>Composer</span>
+            </a>
+
+            <a href="https://www.npmjs.com/" class="pg-card">
+              <img src="../img/pg-npm.webp" alt="npm" class="pg-card-icon" />
+              <span>npm</span>
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- FOOTER ESTÁNDAR -->
+    <footer>
+      <div class="footer-inner">
+        <div class="social-media">
+          <a
+            href="https://www.tiktok.com/@arecsss495"
+            target="_blank"
+            class="social-item"
+          >
+            <img src="../img/tiktok.webp" alt="TikTok" class="social-icon" />
+            <span>@arecsss495</span>
+          </a>
+          <a
+            href="https://www.instagram.com/arecsss_495"
+            target="_blank"
+            class="social-item"
+          >
+            <img
+              src="../img/instagram.webp"
+              alt="Instagram"
+              class="social-icon"
+            />
+            <span>@arecsss_495</span>
+          </a>
+          <a
+            href="https://youtube.com/@arecsss495"
+            target="_blank"
+            class="social-item"
+          >
+            <img src="../img/youtube.webp" alt="YouTube" class="social-icon" />
+            <span>@arecsss495</span>
+          </a>
+        </div>
+
+        <div class="linksitos">
+          <a href="politica-privacidad.html">Política de Privacidad</a>
+          <span class="separator">|</span>
+          <a href="Descargo.html">Descargo de Responsabilidad</a>
+          <span class="separator">|</span>
+          <a href="Contacto.html">Contacto</a>
+        </div>
+
+        <div class="footer-copyright">
+          © 2026 Juan Rubio | Derechos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+      (function () {
+        var localTheme = localStorage.getItem("theme");
+        var sysTheme = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        if (localTheme === "dark-mode" || (!localTheme && sysTheme)) {
+          document.body.classList.add("dark-mode");
+        }
+      })();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var toggleNav = document.getElementById("dark-mode-toggle-nav");
+        if (document.body.classList.contains("dark-mode")) {
+          if (toggleNav) toggleNav.checked = true;
+        }
+
+        if (toggleNav) {
+          toggleNav.addEventListener("change", function (e) {
+            var isDark = e.target.checked;
+            if (isDark) {
+              document.body.classList.add("dark-mode");
+              localStorage.setItem("theme", "dark-mode");
+            } else {
+              document.body.classList.remove("dark-mode");
+              localStorage.setItem("theme", "light-mode");
+            }
+          });
+        }
+
+        var logged = localStorage.getItem("loggedIn") === "true";
+        var authButtonsNav = document.getElementById("auth-buttons-nav");
+
+        if (logged && authButtonsNav) {
+          authButtonsNav.innerHTML = `<a href="#" id="logout-btn-header" class="btn-text logout-link">Cerrar sesión</a>`;
+          document
+            .getElementById("logout-btn-header")
+            .addEventListener("click", function (e) {
+              e.preventDefault();
+              localStorage.removeItem("loggedIn");
+              location.reload();
+            });
+        }
+
+        // --- Busqueda ---
+        function buscar(texto) {
+          var cards = document.querySelectorAll(".pg-card");
+          texto = texto.toLowerCase();
+          var firstVisible = null;
+
+          cards.forEach(function (card) {
+            var nombre = card.textContent.toLowerCase();
+            if (nombre.includes(texto)) {
+              card.style.display = "";
+              if (!firstVisible) firstVisible = card;
+            } else {
+              card.style.display = "none";
+            }
+          });
+
+          if (texto.trim() !== "" && firstVisible) {
+            var yOffset = -120;
+            var y =
+              firstVisible.getBoundingClientRect().top +
+              window.scrollY +
+              yOffset;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          } else if (texto.trim() === "") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }
+
+        var searchDesktop = document.getElementById("searchDesktop");
+        if (searchDesktop) {
+          searchDesktop.addEventListener("input", function () {
+            buscar(this.value);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
