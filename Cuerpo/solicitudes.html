@@ -166,6 +166,8 @@
 
           <div class="ru-divider"></div>
 
+
+
           <h3 class="ru-mini-title">Estado del chat</h3>
           <p id="ru-chat-state" class="ru-muted">
             Cargando...
@@ -331,16 +333,21 @@
             submitBtn.disabled = true;
 
             var fd = new FormData(form);
+            var tipo = String(fd.get("tipo") || "");
             var payload = {
-              tipo: String(fd.get("tipo") || ""),
               asunto: String(fd.get("asunto") || ""),
               mensaje: String(fd.get("mensaje") || ""),
               email: String(fd.get("email") || userEmail || ""),
               sistema: String(fd.get("sistema") || ""),
             };
 
-            // Inserción de datos en la tabla 'solicitudes' de Supabase
-            const { error } = await supabase.from('solicitudes').insert([payload]);
+            // Determinar la tabla destino según el tipo seleccionado
+            let tablaDestino = 'sugerencias';
+            if (tipo === 'Queja') tablaDestino = 'quejas';
+            if (tipo === 'Solicitud') tablaDestino = 'solicitudes_servicio';
+
+            // Inserción de datos en la tabla correspondiente de Supabase
+            const { error } = await supabase.from(tablaDestino).insert([payload]);
 
             if (error) {
               setStatus("Error al enviar. Intenta de nuevo.", "err");
@@ -478,6 +485,8 @@
         }
 
         syncChatLockUI();
+
+
 
         if (logged) {
           loadMessages();

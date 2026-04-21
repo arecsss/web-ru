@@ -38,7 +38,7 @@
     </div>
 
     <!-- Contenido principal del Panel de Administración (Oculto por defecto) -->
-    <div id="admin-content" class="admin-container">
+    <div id="admin-content" class="admin-container" style="display: none;">
         <h1 class="ru-solicitudes-title">Panel de <span class="ru-accent">Control</span></h1>
         
         <!-- Sección de Estadísticas Rápidas -->
@@ -59,7 +59,7 @@
 
         <!-- Tabla para la gestión de Solicitudes/Tickets -->
         <div class="admin-table-container">
-            <h2>Gestión de Solicitudes</h2>
+            <h2>Gestión de Mensajes Recibidos</h2>
             <table id="tickets-table">
                 <thead>
                     <tr>
@@ -85,84 +85,108 @@
 
         document.addEventListener('DOMContentLoaded', async function() {
             // --- SEGURIDAD: Verificación de privilegios de administrador ---
-            // Definimos el correo autorizado para gestionar el panel
             const ADMIN_EMAIL = 'jibarracuervo@gmail.com'; 
             const userEmail = localStorage.getItem('userEmail');
             const loggedIn = localStorage.getItem('loggedIn') === 'true';
 
-            // Solo mostramos el panel si el usuario está logueado y su correo coincide con el admin
             if (loggedIn && userEmail === ADMIN_EMAIL) {
                 document.getElementById('admin-content').style.display = 'block';
                 document.getElementById('admin-login-msg').style.display = 'none';
                 
-                // Carga inicial de datos desde Supabase
+                // Carga inicial de datos
                 loadStats();
-                loadTickets();
+                loadAllData();
+
+                // --- SUSCRIPCIÓN EN TIEMPO REAL ---
+                // Escuchar cambios en las 3 tablas para actualizar el panel al instante
+                const tables = ['sugerencias', 'quejas', 'solicitudes_servicio'];
+                tables.forEach(table => {
+                    supabase
+                        .channel(`public:${table}`)
+                        .on('postgres_changes', { event: '*', schema: 'public', table: table }, payload => {
+                            console.log(`Cambio detectado en ${table}:`, payload);
+                            loadStats();
+                            loadAllData();
+                        })
+                        .subscribe();
+                });
             }
 
-            // --- FUNCIÓN: Cargar Estadísticas desde la Base de Datos ---
+            // --- FUNCIÓN: Cargar Estadísticas ---
             async function loadStats() {
-                // Contar total de tickets en la tabla 'solicitudes'
-                const { count: ticketCount } = await supabase
-                    .from('solicitudes')
-                    .select('*', { count: 'exact', head: true });
-                document.getElementById('stat-tickets').textContent = ticketCount || 0;
+                // Contar total combinando las 3 tablas
+                const [sug, que, sol] = await Promise.all([
+                    supabase.from('sugerencias').select('*', { count: 'exact', head: true }),
+                    supabase.from('quejas').select('*', { count: 'exact', head: true }),
+                    supabase.from('solicitudes_servicio').select('*', { count: 'exact', head: true })
+                ]);
+                
+                const totalTickets = (sug.count || 0) + (que.count || 0) + (sol.count || 0);
+                document.getElementById('stat-tickets').textContent = totalTickets;
 
-                // Contar total de mensajes en la tabla 'mensajes_chat'
+                // Contar mensajes de chat
                 const { count: msgCount } = await supabase
                     .from('mensajes_chat')
                     .select('*', { count: 'exact', head: true });
                 document.getElementById('stat-messages').textContent = msgCount || 0;
 
-                // Contar usuarios únicos que han participado en el chat
+                // Contar usuarios únicos
                 const { data: userData } = await supabase.from('mensajes_chat').select('usuario_email');
                 const uniqueUsers = new Set(userData?.map(u => u.usuario_email));
                 document.getElementById('stat-users').textContent = uniqueUsers.size || 0;
             }
 
-            // --- FUNCIÓN: Cargar y Renderizar Tickets ---
-            async function loadTickets() {
-                // Consultar todas las solicitudes ordenadas por fecha descendente
-                const { data: tickets, error } = await supabase
-                    .from('solicitudes')
-                    .select('*')
-                    .order('created_at', { ascending: false });
+            // --- FUNCIÓN: Cargar y Combinar Datos de las 3 Tablas ---
+            async function loadAllData() {
+                const [sug, que, sol] = await Promise.all([
+                    supabase.from('sugerencias').select('*'),
+                    supabase.from('quejas').select('*'),
+                    supabase.from('solicitudes_servicio').select('*')
+                ]);
 
-                if (error) {
-                    console.error('Error cargando tickets:', error);
-                    return;
-                }
+                // Etiquetar y combinar
+                let allItems = [
+                    ...(sug.data || []).map(i => ({ ...i, tipo: 'Sugerencia' })),
+                    ...(que.data || []).map(i => ({ ...i, tipo: 'Queja' })),
+                    ...(sol.data || []).map(i => ({ ...i, tipo: 'Solicitud' }))
+                ];
 
+                // Ordenar por fecha descendente
+                allItems.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+                renderTable(allItems);
+            }
+
+            function renderTable(items) {
                 const tbody = document.getElementById('tickets-body');
-                tbody.innerHTML = ''; // Limpiar contenido previo
+                tbody.innerHTML = '';
 
-                // Crear filas de la tabla para cada ticket
-                tickets.forEach(ticket => {
-                    const date = new Date(ticket.created_at).toLocaleDateString();
+                items.forEach(item => {
+                    const date = new Date(item.created_at).toLocaleDateString();
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                         <td>${date}</td>
-                        <td><span class="badge badge-${ticket.tipo.toLowerCase()}">${ticket.tipo}</span></td>
-                        <td>${ticket.asunto}</td>
-                        <td>${ticket.email || 'Anónimo'}</td>
-                        <td>${ticket.mensaje}</td>
+                        <td><span class="badge badge-${item.tipo.toLowerCase()}">${item.tipo}</span></td>
+                        <td>${item.asunto}</td>
+                        <td>${item.email || 'Anónimo'}</td>
+                        <td>${item.mensaje}</td>
                         <td>
-                            <button class="btn-delete" data-id="${ticket.id}">Eliminar</button>
+                            <button class="btn-delete" data-id="${item.id}" data-table="${item.tipo === 'Sugerencia' ? 'sugerencias' : item.tipo === 'Queja' ? 'quejas' : 'solicitudes_servicio'}">Eliminar</button>
                         </td>
                     `;
                     tbody.appendChild(tr);
                 });
 
-                // Añadir funcionalidad de eliminación a los botones
+                // Funcionalidad de eliminación
                 document.querySelectorAll('.btn-delete').forEach(btn => {
                     btn.addEventListener('click', async (e) => {
                         const id = e.target.getAttribute('data-id');
-                        if (confirm('¿Estás seguro de que quieres eliminar este ticket?')) {
-                            // Eliminar registro de la tabla 'solicitudes' en Supabase
-                            const { error } = await supabase.from('solicitudes').delete().eq('id', id);
+                        const table = e.target.getAttribute('data-table');
+                        if (confirm('¿Estás seguro de que quieres eliminar este registro?')) {
+                            const { error } = await supabase.from(table).delete().eq('id', id);
                             if (!error) {
-                                e.target.closest('tr').remove(); // Eliminar fila visualmente
-                                loadStats(); // Recalcular estadísticas
+                                loadStats();
+                                loadAllData();
                             }
                         }
                     });
