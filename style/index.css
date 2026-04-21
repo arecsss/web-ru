@@ -52,7 +52,7 @@ html {
   opacity: 1;
 }
 
-/* En el index el toggle va dentro del top-bar, asÃƒÂ­ que anulamos el fixed */
+/* En el index el toggle va dentro del top-bar, asÃƒÆ’Ã‚Â­ que anulamos el fixed */
 .top-bar .theme-switch-wrapper {
   position: relative;
   top: auto;
@@ -112,7 +112,7 @@ html {
 }
 
 /* ============================================
-   CABECERA REDISEÃƒâ€˜ADA
+   CABECERA REDISEÃƒÆ’Ã¢â‚¬ËœADA
    ============================================ */
 
 .main-header {
@@ -168,7 +168,7 @@ html {
   }
 }
 
-/* Estilos para el enlace de "Cerrar sesiÃƒÂ³n" */
+/* Estilos para el enlace de "Cerrar sesiÃƒÆ’Ã‚Â³n" */
 .logout-link {
   color: white;
   text-decoration: none;
@@ -533,7 +533,7 @@ footer {
 }
 
 /* ============================================
-   PAGINAS INTERNAS (Descargo, PolÃƒÂ­tica, etc)
+   PAGINAS INTERNAS (Descargo, PolÃƒÆ’Ã‚Â­tica, etc)
    ============================================ */
 
 .container {
@@ -1180,8 +1180,8 @@ body.dark-mode .logout-link:hover {
 }
 
 /* ============================================
-   PAGINA ¿QUIEN SOY? (Quiensoy.html)
-   Rediseñada: mejor distribución y separación
+   PAGINA Â¿QUIEN SOY? (Quiensoy.html)
+   RediseÃ±ada: mejor distribuciÃ³n y separaciÃ³n
    ============================================ */
 
 .qs-pagina {
@@ -1246,7 +1246,7 @@ body.dark-mode .logout-link:hover {
   color: #fff;
 }
 
-/* Mapa de Google - sección separada */
+/* Mapa de Google - secciÃ³n separada */
 .qs-mapa-seccion {
   margin: 0;
   padding: 56px 56px 60px;
@@ -1278,7 +1278,7 @@ body.dark-mode .logout-link:hover {
   filter: brightness(0.8);
 }
 
-/* SECCIÓN DE REDES - bien separada */
+/* SECCIÃ“N DE REDES - bien separada */
 .qs-redes-container {
   display: flex;
   justify-content: center;
@@ -1345,7 +1345,7 @@ body.dark-mode .logout-link:hover {
   font-size: 0px;
 }
 
-/* Colores específicos de fondo para el hover (BG) */
+/* Colores especÃ­ficos de fondo para el hover (BG) */
 .discord .BG {
   background: #5865f2;
 }
@@ -1436,7 +1436,7 @@ body.dark-mode .logout-link:hover {
   border: 2px solid #4e95f1;
   /* Borde cian/azul */
   background-color: #2a2a2a;
-  /* Fondo gris sÃƒÂ³lido */
+  /* Fondo gris sÃƒÆ’Ã‚Â³lido */
   border-radius: 8px;
   text-align: center;
   font-weight: 700;
@@ -1453,13 +1453,13 @@ body.dark-mode .logout-link:hover {
   border-color: #e00303;
 }
 
-/*/* Barra de búsqueda - Mejorada con mejor visibilidad */
+/*/* Barra de bÃºsqueda - Mejorada con mejor visibilidad */
 .pg-search {
   width: 100%;
   padding: 12px;
   border-radius: 8px;
   background: #1a1a1a;
-  /* Fondo sólido oscuro en lugar de negro puro */
+  /* Fondo sÃ³lido oscuro en lugar de negro puro */
   color: #fff;
   font-size: 0.85rem;
   outline: none;
@@ -1484,7 +1484,7 @@ body.dark-mode .logout-link:hover {
   padding: 40px 50px;
 }
 
-/* Cada secciÃƒÂ³n de categorÃƒÂ­a */
+/* Cada secciÃƒÆ’Ã‚Â³n de categorÃƒÆ’Ã‚Â­a */
 .pg-seccion {
   margin-bottom: 60px;
   scroll-margin-top: 90px;
@@ -1495,7 +1495,7 @@ body.dark-mode .logout-link:hover {
   font-weight: 900;
   margin-bottom: 30px;
   color: var(--color-tema);
-  /* Títulos ahora usan el color del tema (blanco en oscuro, negro en claro) */
+  /* TÃ­tulos ahora usan el color del tema (blanco en oscuro, negro en claro) */
   text-align: center;
   letter-spacing: 1px;
 }
@@ -1557,7 +1557,7 @@ body.dark-mode .pg-card {
 }
 
 /* ============================================
-   RESPONSIVE - TABLET (Ã¢â€°Â¤768px)
+   RESPONSIVE - TABLET (ÃƒÂ¢Ã¢â‚¬Â°Ã‚Â¤768px)
    ============================================ */
 
 @media (max-width: 768px) {
@@ -1676,7 +1676,7 @@ body.dark-mode .pg-card {
 }
 
 /* ============================================
-   RESPONSIVE - MÃƒâ€œVIL (Ã¢â€°Â¤480px)
+   RESPONSIVE - MÃƒÆ’Ã¢â‚¬Å“VIL (ÃƒÂ¢Ã¢â‚¬Â°Ã‚Â¤480px)
    ============================================ */
 
 @media (max-width: 480px) {
@@ -1792,7 +1792,7 @@ body.dark-mode .pg-card {
     font-size: 0.8rem;
   }
 
-  /* Landing mÃƒÂ³vil */
+  /* Landing mÃƒÆ’Ã‚Â³vil */
   body.landing .h1-RU {
     font-size: 3rem;
   }
@@ -2012,7 +2012,7 @@ body.dark-mode .pg-card {
   width: 20px;
 }
 
-/* --- BOTONES DE ACCIÃƒâ€œN (ACCESO Y REGISTRO PERO DEL MAIN) --- */
+/* --- BOTONES DE ACCIÃƒÆ’Ã¢â‚¬Å“N (ACCESO Y REGISTRO PERO DEL MAIN) --- */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -2044,7 +2044,7 @@ body.dark-mode .pg-card {
 }
 
 /* --- INTERRUPTOR DE TEMA (SOL/LUNA) --- 
-   Reutilizamos el diseÃƒÂ±o original pero lo adaptamos al header fijo */
+   Reutilizamos el diseÃƒÆ’Ã‚Â±o original pero lo adaptamos al header fijo */
 .nav-header .theme-switch-wrapper {
   position: relative;
   top: 0;
@@ -2145,13 +2145,13 @@ body.dark-mode .pg-card {
   }
 }
 
-/* --- COMPENSACIÃƒâ€œN DE LAYOUT ---
+/* --- COMPENSACIÃƒÆ’Ã¢â‚¬Å“N DE LAYOUT ---
    Evita que el co/* ============================================
-   PÃGINA OPTIMIZACIONES â€” REFINAMIENTO
+   PÃƒÂGINA OPTIMIZACIONES Ã¢â‚¬â€ REFINAMIENTO
    Prefijo: opt- (Optimizaciones)
    ============================================ */
 
-/* â€”â€”â€” HERO BANNER â€”â€”â€” */
+/* Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ HERO BANNER Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ */
 .opt-hero {
   position: relative;
   width: 100%;
@@ -2255,7 +2255,7 @@ body.dark-mode .pg-card {
   margin: 0 auto;
 }
 
-/* (CSS-only) â€”â€”â€” */
+/* (CSS-only) Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ */
 .opt-tabs-wrapper {
   width: 92%;
   max-width: 1200px;
@@ -2337,7 +2337,7 @@ body.dark-mode .pg-card {
   display: block;
 }
 
-/* â€”â€”â€” HEADINGS â€”â€”â€” */
+/* Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ HEADINGS Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ */
 .opt-heading {
   font-size: 1.6rem;
   font-weight: 900;
@@ -2358,7 +2358,7 @@ body.dark-mode .pg-card {
   border-radius: 3px;
 }
 
-/* â€”â€”â€” PRICING PACKS â€”â€”â€” */
+/* Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ PRICING PACKS Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ */
 .opt-packs {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2446,7 +2446,7 @@ body.dark-mode .pg-card {
 
 .opt-price-gold {
   color: var(--primary);
-  /* Color naranja solo en contextos específicos de precio premium */
+  /* Color naranja solo en contextos especÃ­ficos de precio premium */
 }
 
 .opt-pack ul {
@@ -2470,7 +2470,7 @@ body.dark-mode .pg-card {
 }
 
 .opt-pack-free ul li::before {
-  content: "★";
+  content: "â˜…";
   position: absolute;
   left: 0;
   top: 10px;
@@ -2480,7 +2480,7 @@ body.dark-mode .pg-card {
 }
 
 .opt-pack-premium ul li::before {
-  content: "★";
+  content: "â˜…";
   position: absolute;
   left: 0;
   top: 10px;
@@ -2519,7 +2519,7 @@ body.dark-mode .pg-card {
   box-shadow: 0 8px 24px rgba(0, 170, 255, 0.3);
 }
 
-/* â€”â€”â€” CARDS GRID â€”â€”â€” */
+/* Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ CARDS GRID Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ */
 .opt-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -2590,7 +2590,7 @@ body.dark-mode .pg-card {
 }
 
 /* ============================================
-   LIGHT MODE â€” OptimizaciÃ³n Hub
+   LIGHT MODE Ã¢â‚¬â€ OptimizaciÃƒÂ³n Hub
    ============================================ */
 body:not(.dark-mode) .opt-hero {
   background: linear-gradient(170deg, #f0f2f5 0%, #e8eaef 40%, #dfe3ea 100%);
@@ -2688,7 +2688,7 @@ body:not(.dark-mode) .opt-card:hover small {
 }
 
 /* ============================================
-   RESPONSIVE â€” OptimizaciÃ³n Hub
+   RESPONSIVE Ã¢â‚¬â€ OptimizaciÃƒÂ³n Hub
    ============================================ */
 @media (max-width: 900px) {
   .opt-title {
@@ -2772,7 +2772,7 @@ body:not(.dark-mode) .opt-card:hover small {
 }
 
 /* ============================================
-   PÁGINA APRENDE — MAGAZINE LAYOUT
+   PÃGINA APRENDE â€” MAGAZINE LAYOUT
    Prefijo: apr-
    ============================================ */
 
@@ -2783,7 +2783,7 @@ body:not(.dark-mode) .opt-card:hover small {
   color: #e2e2ea;
 }
 
-/* ——— ARTÍCULO DESTACADO (Hero-Magazine) ——— */
+/* â€”â€”â€” ARTÃCULO DESTACADO (Hero-Magazine) â€”â€”â€” */
 .apr-featured {
   display: flex;
   align-items: center;
@@ -2858,14 +2858,14 @@ body:not(.dark-mode) .opt-card:hover small {
   transform: rotate(10deg);
 }
 
-/* ——— CUERPO DIVIDIDO (List + Sidebar) ——— */
+/* â€”â€”â€” CUERPO DIVIDIDO (List + Sidebar) â€”â€”â€” */
 .apr-main-split {
   display: flex;
   gap: 50px;
   align-items: flex-start;
 }
 
-/* ——— MAIN LIST DE ARTÍCULOS ——— */
+/* â€”â€”â€” MAIN LIST DE ARTÃCULOS â€”â€”â€” */
 .apr-articles-list {
   flex: 1;
 }
@@ -2964,7 +2964,7 @@ body:not(.dark-mode) .opt-card:hover small {
   transform: translateX(4px);
 }
 
-/* ——— SIDEBAR (RUTAS) ——— */
+/* â€”â€”â€” SIDEBAR (RUTAS) â€”â€”â€” */
 .apr-sidebar {
   width: 320px;
   flex-shrink: 0;
@@ -3061,7 +3061,7 @@ body:not(.dark-mode) .opt-card:hover small {
   background: #a78bfa;
 }
 
-/* ——— MODO CLARO ——— */
+/* â€”â€”â€” MODO CLARO â€”â€”â€” */
 body:not(.dark-mode) .apr-content-wrapper {
   color: #1f2937;
 }
@@ -3166,7 +3166,7 @@ body:not(.dark-mode) .apr-btn-sub:hover {
   background: #7c3aed;
 }
 
-/* ——— RESPONSIVE MAGAZINE ——— */
+/* â€”â€”â€” RESPONSIVE MAGAZINE â€”â€”â€” */
 @media (max-width: 900px) {
   .apr-main-split {
     flex-direction: column;
@@ -3697,7 +3697,7 @@ body:not(.dark-mode) .apr-btn-sub:hover {
 }
 
 /* ============================================
-   SOLICITUDES (solicitudes.html) — layout + chat
+   SOLICITUDES (solicitudes.html) â€” layout + chat
    ============================================ */
 
 .ru-solicitudes-page {
@@ -4839,7 +4839,7 @@ body:not(.dark-mode) .apr-btn-sub:hover {
   }
 }
 
-/* Intro + cards con aparición de texto (Sistemas.html) */
+/* Intro + cards con apariciÃ³n de texto (Sistemas.html) */
 .sysv2-intro {
   margin: 8px 0 36px;
   padding: 26px 28px;
@@ -4966,7 +4966,7 @@ body:not(.dark-mode) .apr-btn-sub:hover {
 /* Estilos de Chat, Emojis y Admin ya integrados arriba */
 
 /* ============================================================
-   REPARACIÓN DE ESTILOS: PANEL DE ADMINISTRACIÓN (admin.html)
+   REPARACIÃ“N DE ESTILOS: PANEL DE ADMINISTRACIÃ“N (admin.html)
    ============================================================ */
 
 /* Contenedor principal del panel */
@@ -4977,7 +4977,7 @@ body:not(.dark-mode) .apr-btn-sub:hover {
   width: 90%;
 }
 
-/* Cuadrícula de tarjetas de estadísticas */
+/* CuadrÃ­cula de tarjetas de estadÃ­sticas */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -4985,7 +4985,7 @@ body:not(.dark-mode) .apr-btn-sub:hover {
   margin-bottom: 50px;
 }
 
-/* Diseño de cada tarjeta de estadística */
+/* DiseÃ±o de cada tarjeta de estadÃ­stica */
 .stat-card {
   background: #1e1e1e;
   padding: 30px 20px;
@@ -5016,7 +5016,7 @@ body:not(.dark-mode) .apr-btn-sub:hover {
   letter-spacing: 1px;
 }
 
-/* Estilos para la tabla de gestión de tickets */
+/* Estilos para la tabla de gestiÃ³n de tickets */
 .admin-table-container {
   background: #1e1e1e;
   border-radius: 16px;
@@ -5053,7 +5053,7 @@ th {
   letter-spacing: 1px;
 }
 
-/* Botón de eliminar ticket en la tabla */
+/* BotÃ³n de eliminar ticket en la tabla */
 .btn-delete {
   background: #ff4d4d;
   color: white;
@@ -5109,7 +5109,7 @@ th {
 }
 
 /* ============================================================
-   REPARACIÓN DE ESTILOS: SELECTOR DE EMOJIS (solicitudes.html)
+   REPARACIÃ“N DE ESTILOS: SELECTOR DE EMOJIS (solicitudes.html)
    ============================================================ */
 
 /* Contenedor del selector de emojis */
@@ -5148,7 +5148,7 @@ th {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Botón disparador del selector */
+/* BotÃ³n disparador del selector */
 .emoji-trigger {
   background: transparent;
   border: none;
@@ -5169,7 +5169,7 @@ th {
 }
 
 /* ============================================================
-   REDISEÑO AMIGABLE: SECCIÓN QUIÉN SOY (QuienSoy.html)
+   REDISEÃ‘O AMIGABLE: SECCIÃ“N QUIÃ‰N SOY (QuienSoy.html)
    ============================================================ */
 
 /* Contenedor principal con espaciado equilibrado */
@@ -5182,7 +5182,7 @@ th {
   gap: 30px;
 }
 
-/* Layout de rejilla para la biografía y el GIF - Más compacto */
+/* Layout de rejilla para la biografÃ­a y el GIF - MÃ¡s compacto */
 .qs-grid-bio {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
@@ -5194,7 +5194,7 @@ th {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Estilo para el GIF/Foto - Tamaño controlado */
+/* Estilo para el GIF/Foto - TamaÃ±o controlado */
 .qs-foto-container {
   width: 100%;
   max-width: 350px;
@@ -5211,7 +5211,7 @@ th {
   display: block;
 }
 
-/* Títulos y textos amigables */
+/* TÃ­tulos y textos amigables */
 .qs-titulo-amigable {
   font-size: 2.5rem;
   font-weight: 800;
@@ -5225,14 +5225,14 @@ th {
   line-height: 1.6;
   margin-bottom: 20px;
   color: #d1d1d1;
-  text-align: left; /* Lectura más natural */
+  text-align: left; /* Lectura mÃ¡s natural */
 }
 
 .qs-texto-bio strong {
   color: var(--primary);
 }
 
-/* Sección del Mapa - Integración total */
+/* SecciÃ³n del Mapa - IntegraciÃ³n total */
 .qs-mapa-wrapper {
   background: #1a1a1a;
   border-radius: 20px;
@@ -5258,7 +5258,7 @@ th {
   padding: 20px 0;
 }
 
-/* Ajustes para móviles */
+/* Ajustes para mÃ³viles */
 @media (max-width: 850px) {
   .qs-grid-bio {
     grid-template-columns: 1fr;
@@ -5323,7 +5323,7 @@ th {
   padding: 0 20px 60px 20px;
 }
 
-/* Filtros y Búsqueda */
+/* Filtros y BÃºsqueda */
 .aprende-filters {
   margin-bottom: 50px;
   display: flex;
@@ -5575,7 +5575,7 @@ body.dark-mode .aprende-card {
    MODALES DE APRENDE.HTML
    ============================================ */
 
-/* Overlay oscuro que aparece detrás del modal */
+/* Overlay oscuro que aparece detrÃ¡s del modal */
 .aprende-modal-overlay {
   display: none;
   position: fixed;
@@ -5608,7 +5608,7 @@ body.dark-mode .aprende-card {
   animation: slideUp 0.4s ease;
 }
 
-/* Botón para cerrar el modal */
+/* BotÃ³n para cerrar el modal */
 .aprende-modal-close {
   position: absolute;
   top: 15px;
@@ -5697,7 +5697,7 @@ body.dark-mode .aprende-card {
   }
 }
 
-/* Responsive para modales en móviles */
+/* Responsive para modales en mÃ³viles */
 @media (max-width: 768px) {
   .aprende-modal {
     max-width: 95%;
@@ -5743,7 +5743,7 @@ body.dark-mode .aprende-card {
 }
 
 /* ============================================
-   SISTEMAS.HTML - PÁGINA COMPLETA
+   SISTEMAS.HTML - PÃGINA COMPLETA
    ============================================ */
 
 /* ----- Page Container ----- */
@@ -5772,7 +5772,7 @@ body.dark-mode .aprende-card {
   line-height: 1.6;
 }
 
-/* ① HERO */
+/* â‘  HERO */
 .sys-hero {
   position: relative;
   width: 100%;
@@ -5918,7 +5918,7 @@ body.dark-mode .aprende-card {
   color: #fff;
 }
 
-/* ② EDUCATION BLOCK */
+/* â‘¡ EDUCATION BLOCK */
 .sys-education {
   width: 100%;
   max-width: 1100px;
@@ -5977,7 +5977,7 @@ body.dark-mode .aprende-card {
   color: #ff6b00;
 }
 
-/* ③ DOWNLOAD CARDS */
+/* â‘¢ DOWNLOAD CARDS */
 .sys-downloads {
   width: 100%;
   max-width: 1200px;
@@ -6129,7 +6129,7 @@ body.dark-mode .aprende-card {
   transform: translateY(0);
 }
 
-/* ④ COMPARISON TABLE */
+/* â‘£ COMPARISON TABLE */
 .sys-compare {
   width: 100%;
   max-width: 1100px;
@@ -6193,7 +6193,7 @@ body.dark-mode .aprende-card {
   border-bottom: none;
 }
 
-/* ⑤ NEWS — Horizontal Card Carousel */
+/* â‘¤ NEWS â€” Horizontal Card Carousel */
 .sys-news {
   width: 100%;
   max-width: 1200px;
@@ -6391,7 +6391,7 @@ body.dark-mode .aprende-card {
   transform: scale(1.3);
 }
 
-/* ⑥ TIPS */
+/* â‘¥ TIPS */
 .sys-tips {
   width: 100%;
   max-width: 1100px;
@@ -6454,7 +6454,7 @@ body.dark-mode .aprende-card {
   line-height: 1.55;
 }
 
-/* ⑦ FAQ */
+/* â‘¦ FAQ */
 .sys-faq {
   width: 100%;
   max-width: 850px;
@@ -6507,7 +6507,7 @@ body.dark-mode .aprende-card {
 }
 
 .sys-faq-item[open] summary::after {
-  content: "−";
+  content: "âˆ’";
 }
 
 .sys-faq-item summary:hover {
@@ -6526,7 +6526,7 @@ body.dark-mode .aprende-card {
   line-height: 1.65;
 }
 
-/* ⑧ CTA */
+/* â‘§ CTA */
 .sys-cta {
   width: 100%;
   padding: 80px 20px;
@@ -6731,7 +6731,7 @@ body.dark-mode {
   --border: rgba(255, 255, 255, 0.1);
 }
 
-/* Estilos específicos para el enlace de logout en modo oscuro */
+/* Estilos especÃ­ficos para el enlace de logout en modo oscuro */
 body.dark-mode .logout-link {
   color: #ffffff;
   border-color: var(--primary);
@@ -6924,13 +6924,13 @@ body.dark-mode .btn-text:hover {
   color: var(--primary);
 }
 
-/* Mantener el menú superior en blanco (sin naranja) */
+/* Mantener el menÃº superior en blanco (sin naranja) */
 body.dark-mode .nav-links a,
 body.dark-mode .nav-links a:hover {
   color: #ffffff;
 }
 
-/* Programas: links laterales sin naranja + buscador más sólido */
+/* Programas: links laterales sin naranja + buscador mÃ¡s sÃ³lido */
 body.dark-mode .pg-nav-link {
   color: #ffffff;
   background-color: #2a2a2a;
@@ -6961,7 +6961,7 @@ body.dark-mode .opt-card strong {
   color: #ffffff;
 }
 
-/* Excepciones: estos textos sí deben verse naranjas */
+/* Excepciones: estos textos sÃ­ deben verse naranjas */
 body.dark-mode .highlight {
   color: var(--primary);
 }
@@ -6971,7 +6971,7 @@ body.dark-mode .ru-accent {
 }
 
 /* ============================================
-   QUIENSOY.HTML - PÁGINA COMPLETA
+   QUIENSOY.HTML - PÃGINA COMPLETA
    Prefijo: qs-
    ============================================ */
 
@@ -7067,7 +7067,7 @@ body.dark-mode .ru-accent {
   line-height: 1.6;
 }
 
-/* --- Sección Bio Grid --- */
+/* --- SecciÃ³n Bio Grid --- */
 .qs-grid-bio {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -7518,7 +7518,7 @@ body.dark-mode .ru-accent {
   background: #0088cc;
 }
 
-/* --- Mini Title (encuéntranos) --- */
+/* --- Mini Title (encuÃ©ntranos) --- */
 .ru-mini-title {
   font-size: 1.8rem;
   font-weight: 800;
@@ -8002,5 +8002,229 @@ body.dark-mode .bento-card {
   .bento-timeline,
   .bento-column-group {
     grid-column: span 1;
+  }
+}
+
+/* ============================================
+
+/* ============================================
+   PÃGINA DE CONTACTO
+   ============================================ */
+.contact-page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 100px auto 100px;
+  padding: 0 2rem;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.premium-title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    135deg,
+    var(--color-tema) 30%,
+    var(--primary) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Outfit", sans-serif;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+.contact-card {
+  background: var(--fondo-body);
+  border: 2px solid #000;
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-tema);
+  box-shadow: 8px 8px 0 #000;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-card:hover {
+  transform: translate(-10px, -10px);
+  box-shadow: 20px 20px 0 var(--primary);
+  border-color: var(--primary);
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: var(--glass);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+.card-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.contact-card h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.contact-card p {
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.card-hint {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.important-note-section {
+  margin-top: 4rem;
+}
+
+.note-box {
+  background: var(--glass);
+  border: 2px solid var(--border);
+  border-radius: 30px;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.note-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+  background: var(--primary);
+}
+
+.note-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.note-icon {
+  font-size: 2rem;
+}
+
+.note-header h2 {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--primary) !important;
+  font-family: "Outfit", sans-serif;
+}
+
+.note-content p {
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+.note-content ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.note-content li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--color-tema);
+}
+
+.note-content li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.note-content a {
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .contact-card {
+  border-color: var(--border);
+  background: #1e1e22;
+  box-shadow: 8px 8px 0 #000;
+}
+
+body.dark-mode .contact-card:hover {
+  border-color: var(--primary);
+}
+
+body.dark-mode .premium-title {
+  background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .premium-title {
+    font-size: 2.5rem;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .note-box {
+    padding: 1.5rem;
   }
 }
