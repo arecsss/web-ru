@@ -76,8 +76,14 @@
       }
 
       @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .contact-hero {
@@ -90,8 +96,13 @@
         font-size: 4rem;
         font-weight: 800;
         margin-bottom: 1rem;
-        background: linear-gradient(135deg, var(--color-tema) 30%, var(--primary) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--color-tema) 30%,
+          var(--primary) 100%
+        );
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         font-family: "Outfit", sans-serif;
       }
@@ -260,13 +271,19 @@
 
       body.dark-mode .premium-title {
         background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
-        -webkit-background-clip: text;
+        background-clip: text;
       }
 
       @media (max-width: 768px) {
-        .premium-title { font-size: 2.5rem; }
-        .contact-grid { grid-template-columns: 1fr; }
-        .note-box { padding: 1.5rem; }
+        .premium-title {
+          font-size: 2.5rem;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .note-box {
+          padding: 1.5rem;
+        }
       }
     </style>
 
@@ -274,7 +291,9 @@
       <!-- Hero Section -->
       <section class="contact-hero">
         <div class="content-wrapper">
-          <h1 class="premium-title">Contacto <span class="highlight">Personal</span></h1>
+          <h1 class="premium-title">
+            Contacto <span class="highlight">Personal</span>
+          </h1>
           <p class="hero-subtitle">
             ¿Tienes algo importante que tratar? Estoy aquí para escucharte.
             Utiliza estos canales directos para una comunicación más personal
@@ -285,7 +304,10 @@
 
       <!-- Contact Cards Grid -->
       <div class="contact-grid">
-        <a href="mailto:jibarracuervo@gmail.com" class="contact-card email-card">
+        <a
+          href="mailto:jibarracuervo@gmail.com"
+          class="contact-card email-card"
+        >
           <div class="card-icon">📧</div>
           <h3>Correo Electrónico</h3>
           <p>jibarracuervo@gmail.com</p>
@@ -337,8 +359,8 @@
             <ul>
               <li>
                 Has enviado un mensaje en el apartado de
-                <a href="solicitudes.html">Solicitudes</a> y tu ticket aún no
-                ha sido respondido (más de 48h).
+                <a href="solicitudes.html">Solicitudes</a> y tu ticket aún no ha
+                sido respondido (más de 48h).
               </li>
               <li>Deseas proponer una colaboración, patrocinio o alianza.</li>
               <li>
