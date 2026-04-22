@@ -123,7 +123,7 @@ html {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 .header-bg {
@@ -261,8 +261,34 @@ html {
 }
 
 .hero-content {
-  margin-bottom: 10vh;
+  margin-bottom: 2vh;
   text-align: center;
+  padding-top: 2rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+  letter-spacing: -1px;
+}
+
+.hero-text {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--text-muted, #9ca3af);
+}
+
+.hero-text strong {
+  color: var(--primary-color, #00d4ff);
+  font-weight: 600;
 }
 
 /* compact layout for landing page (not logged users) */
@@ -275,7 +301,16 @@ body.landing .h1-RU {
 }
 
 body.landing .hero-content {
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+body.landing .hero-title {
+  font-size: 2.5rem;
+}
+
+body.landing .hero-text {
+  font-size: 1.1rem;
 }
 
 body.landing .hero-subtitle {
@@ -437,13 +472,6 @@ main ul {
 .aprende-hover:hover {
   background-color: #6a0bad;
   box-shadow: 8px 8px 0 #a78bfa;
-  border-color: #000;
-  color: #fff;
-}
-
-.Optimizaciones-hover:hover {
-  background-color: #df0606;
-  box-shadow: 8px 8px 0 #f97316;
   border-color: #000;
   color: #fff;
 }
@@ -645,9 +673,9 @@ body.dark-mode .installer-hover:hover {
 }
 
 body.dark-mode .rendimiento-hover:hover {
-  background-color: #df0606 !important;
-  box-shadow: 10px 10px 0px #f97316 !important;
-  border-color: #f97316 !important;
+  background-color: #ca8a04 !important;
+  box-shadow: 10px 10px 0px #facc15 !important;
+  border-color: #facc15 !important;
 }
 
 body.dark-mode .sistemas-hover:hover {

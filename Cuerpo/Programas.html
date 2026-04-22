@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -10,13 +10,7 @@
 
   <body class="dark-mode">
     <!-- GUARD DE SESIÓN: Si no ha iniciado sesión, redirige a login con retorno a esta página -->
-    <script>
-      if (localStorage.getItem("loggedIn") !== "true") {
-        location.href =
-          "login.html?redirect=" +
-          encodeURIComponent(location.href.split("/").pop());
-      }
-    </script>
+    <script src="../JS/auth-guard.js"></script>
     <nav class="nav-header">
       <div class="nav-container">
         <div class="logo-wrapper" onclick="location.href = 'index.html'">
@@ -1151,85 +1145,7 @@
     </footer>
 
     <!-- ========== SCRIPTS ========== -->
-    <script>
-      (function () {
-        var localTheme = localStorage.getItem("theme");
-        var sysTheme = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        if (localTheme === "dark-mode" || (!localTheme && sysTheme)) {
-          document.body.classList.add("dark-mode");
-        }
-      })();
-
-      document.addEventListener("DOMContentLoaded", function () {
-        var toggleNav = document.getElementById("dark-mode-toggle-nav");
-        if (document.body.classList.contains("dark-mode")) {
-          if (toggleNav) toggleNav.checked = true;
-        }
-
-        if (toggleNav) {
-          toggleNav.addEventListener("change", function (e) {
-            var isDark = e.target.checked;
-            if (isDark) {
-              document.body.classList.add("dark-mode");
-              localStorage.setItem("theme", "dark-mode");
-            } else {
-              document.body.classList.remove("dark-mode");
-              localStorage.setItem("theme", "light-mode");
-            }
-          });
-        }
-
-        var logged = localStorage.getItem("loggedIn") === "true";
-        var authButtonsNav = document.getElementById("auth-buttons-nav");
-
-        if (logged && authButtonsNav) {
-          authButtonsNav.innerHTML = `<a href="#" id="logout-btn-header" class="btn-text logout-link">Cerrar sesión</a>`;
-          document
-            .getElementById("logout-btn-header")
-            .addEventListener("click", function (e) {
-              e.preventDefault();
-              localStorage.removeItem("loggedIn");
-              location.reload();
-            });
-        }
-
-        // --- Busqueda ---
-        function buscar(texto) {
-          var cards = document.querySelectorAll(".pg-card");
-          texto = texto.toLowerCase();
-          var firstVisible = null;
-
-          cards.forEach(function (card) {
-            var nombre = card.textContent.toLowerCase();
-            if (nombre.includes(texto)) {
-              card.style.display = "";
-              if (!firstVisible) firstVisible = card;
-            } else {
-              card.style.display = "none";
-            }
-          });
-
-          if (texto.trim() !== "" && firstVisible) {
-            var yOffset = -120;
-            var y =
-              firstVisible.getBoundingClientRect().top +
-              window.scrollY +
-              yOffset;
-            window.scrollTo({ top: y, behavior: "smooth" });
-          } else if (texto.trim() === "") {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }
-        }
-
-        var searchDesktop = document.getElementById("searchDesktop");
-        if (searchDesktop) {
-          searchDesktop.addEventListener("input", function () {
-            buscar(this.value);
-          });
-        }
-      });
-    </script>
+    <script src="../JS/theme-session.js"></script>
+    <script src="../JS/buscador-programas.js"></script>
   </body>
 </html>

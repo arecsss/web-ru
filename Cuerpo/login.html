@@ -15,12 +15,7 @@
     <script src="../JS/tema.js"></script>
 
     <!-- Lógica específica de login para redireccionar si ya está autenticado -->
-    <script>
-      // Si ya está autenticado, evitar acceder a esta página de login
-      if (localStorage.getItem("loggedIn") === "true") {
-        location.href = "index.html";
-      }
-    </script>
+    <script type="module" src="../JS/page-login.js"></script>
 
     <nav class="nav-header">
       <div class="nav-container">
@@ -77,16 +72,7 @@
           class="auth-error-msg"
         ></p>
 
-        <script>
-          // Muestra un mensaje si el usuario fue redirigido
-          var params = new URLSearchParams(window.location.search);
-          if (params.has("redirect")) {
-            var msgEl = document.getElementById("redirect-message");
-            msgEl.textContent =
-              "Inicia sesión para acceder a las características.";
-            msgEl.style.display = "block";
-          }
-        </script>
+
         <form id="login-form">
           <input type="email" id="email" placeholder="Correo electrónico" required />
           <input
@@ -118,45 +104,7 @@
       </div>
     </div>
 
-    <script type="module">
-      import { iniciarSesionConEmail } from '../JS/supabase.js';
 
-      document.addEventListener("DOMContentLoaded", function () {
-        var form = document.getElementById("login-form");
-        var errorMsg = document.getElementById("error-message");
-        var submitBtn = document.getElementById("submit-btn");
-
-        form.addEventListener("submit", async function (e) {
-          e.preventDefault();
-          errorMsg.style.display = "none";
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Cargando...";
-
-          var email = document.getElementById("email").value;
-          var password = document.getElementById("passwordview").value;
-
-          const { data, error } = await iniciarSesionConEmail(email, password);
-
-          if (error) {
-            errorMsg.textContent = "Error: " + error;
-            errorMsg.style.display = "block";
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Entrar";
-          } else {
-            localStorage.setItem("loggedIn", "true");
-            localStorage.setItem("userEmail", email);
-            /* Guardar el nombre del usuario obtenido desde Supabase */
-            if (data.userName) {
-              localStorage.setItem("userName", data.userName);
-            }
-
-            var params = new URLSearchParams(window.location.search);
-            var redirect = params.get("redirect");
-            location.href = redirect ? redirect : "index.html";
-          }
-        });
-      });
-    </script>
 
     <!-- Carga del script unificado de tema -->
     <script src="../JS/tema.js"></script>
