@@ -1,4 +1,4 @@
-* {
+﻿* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -2231,13 +2231,13 @@ body.dark-mode .pg-card {
   }
 }
 
-/* --- COMPENSACIÃƒÆ’Ã¢â‚¬Å“N DE LAYOUT ---
+/* --- COMPENSACION DE LAYOUT ---
    Evita que el co/* ============================================
-   PÃƒÂGINA OPTIMIZACIONES Ã¢â‚¬â€ REFINAMIENTO
+   PAGINA OPTIMIZACIONES  REFINAMIENTO
    Prefijo: opt- (Optimizaciones)
    ============================================ */
 
-/* Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ HERO BANNER Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ */
+/* HERO BANNER  */
 .opt-hero {
   position: relative;
   width: 100%;
@@ -2341,7 +2341,7 @@ body.dark-mode .pg-card {
   margin: 0 auto;
 }
 
-/* (CSS-only) Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ */
+/* (CSS-only)  */
 .opt-tabs-wrapper {
   width: 92%;
   max-width: 1200px;
@@ -2556,7 +2556,7 @@ body.dark-mode .pg-card {
 }
 
 .opt-pack-free ul li::before {
-  content: "â˜…";
+  content: "★";
   position: absolute;
   left: 0;
   top: 10px;
@@ -2566,7 +2566,7 @@ body.dark-mode .pg-card {
 }
 
 .opt-pack-premium ul li::before {
-  content: "â˜…";
+  content: "★";
   position: absolute;
   left: 0;
   top: 10px;
@@ -2605,7 +2605,7 @@ body.dark-mode .pg-card {
   box-shadow: 0 8px 24px rgba(0, 170, 255, 0.3);
 }
 
-/* Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ CARDS GRID Ã¢â‚¬â€Ã¢â‚¬â€Ã¢â‚¬â€ */
+/* CARDS GRID  */
 .opt-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -2676,7 +2676,7 @@ body.dark-mode .pg-card {
 }
 
 /* ============================================
-   LIGHT MODE Ã¢â‚¬â€ OptimizaciÃƒÂ³n Hub
+   LIGHT MODE  Optimizacion Hub
    ============================================ */
 body:not(.dark-mode) .opt-hero {
   background: linear-gradient(170deg, #f0f2f5 0%, #e8eaef 40%, #dfe3ea 100%);
@@ -2774,7 +2774,7 @@ body:not(.dark-mode) .opt-card:hover small {
 }
 
 /* ============================================
-   RESPONSIVE Ã¢â‚¬â€ OptimizaciÃƒÂ³n Hub
+   RESPONSIVE  Optimizacion Hub
    ============================================ */
 @media (max-width: 900px) {
   .opt-title {
@@ -2858,7 +2858,7 @@ body:not(.dark-mode) .opt-card:hover small {
 }
 
 /* ============================================
-   PÃGINA APRENDE â€” MAGAZINE LAYOUT
+   PAGINA APRENDE  MAGAZINE LAYOUT
    Prefijo: apr-
    ============================================ */
 
@@ -2869,7 +2869,7 @@ body:not(.dark-mode) .opt-card:hover small {
   color: #e2e2ea;
 }
 
-/* â€”â€”â€” ARTÃCULO DESTACADO (Hero-Magazine) â€”â€”â€” */
+/* ARTÍCULO DESTACADO (Hero-Magazine)  */
 .apr-featured {
   display: flex;
   align-items: center;
@@ -2944,14 +2944,14 @@ body:not(.dark-mode) .opt-card:hover small {
   transform: rotate(10deg);
 }
 
-/* â€”â€”â€” CUERPO DIVIDIDO (List + Sidebar) â€”â€”â€” */
+/* CUERPO DIVIDIDO (List + Sidebar)  */
 .apr-main-split {
   display: flex;
   gap: 50px;
   align-items: flex-start;
 }
 
-/* â€”â€”â€” MAIN LIST DE ARTÃCULOS â€”â€”â€” */
+/* MAIN LIST DE ARTÍCULOS  */
 .apr-articles-list {
   flex: 1;
 }
@@ -3050,7 +3050,7 @@ body:not(.dark-mode) .opt-card:hover small {
   transform: translateX(4px);
 }
 
-/* â€”â€”â€” SIDEBAR (RUTAS) â€”â€”â€” */
+/* SIDEBAR (RUTAS) */
 .apr-sidebar {
   width: 320px;
   flex-shrink: 0;
@@ -3147,7 +3147,7 @@ body:not(.dark-mode) .opt-card:hover small {
   background: #a78bfa;
 }
 
-/* â€”â€”â€” MODO CLARO â€”â€”â€” */
+/*  MODO CLARO  */
 body:not(.dark-mode) .apr-content-wrapper {
   color: #1f2937;
 }
@@ -3252,7 +3252,7 @@ body:not(.dark-mode) .apr-btn-sub:hover {
   background: #7c3aed;
 }
 
-/* â€”â€”â€” RESPONSIVE MAGAZINE â€”â€”â€” */
+/* RESPONSIVE MAGAZINE */
 @media (max-width: 900px) {
   .apr-main-split {
     flex-direction: column;
@@ -3783,7 +3783,7 @@ body:not(.dark-mode) .apr-btn-sub:hover {
 }
 
 /* ============================================
-   SOLICITUDES (solicitudes.html) â€” layout + chat
+   SOLICITUDES (solicitudes.html) layout + chat
    ============================================ */
 
 .ru-solicitudes-page {
@@ -8467,13 +8467,13 @@ th {
   position: relative;
   overflow: hidden;
   /* Gradiente diagonal profundo, oscuro */
-  background:
-    linear-gradient(135deg,
-      #0f0c29 0%,
-      #1a1040 30%,
-      #24243e 60%,
-      #0f0c29 100%
-    );
+  background: linear-gradient(
+    135deg,
+    #0f0c29 0%,
+    #1a1040 30%,
+    #24243e 60%,
+    #0f0c29 100%
+  );
 }
 
 /* Capa de puntos/malla muy sutil */
@@ -8481,8 +8481,11 @@ th {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.07) 1px,
+    transparent 1px
+  );
   background-size: 32px 32px;
   pointer-events: none;
   z-index: 0;
@@ -8499,7 +8502,7 @@ th {
   background: radial-gradient(
     ellipse at center,
     rgba(120, 80, 255, 0.18) 0%,
-    rgba(80, 120, 255, 0.10) 40%,
+    rgba(80, 120, 255, 0.1) 40%,
     transparent 70%
   );
   pointer-events: none;
@@ -8508,9 +8511,18 @@ th {
 }
 
 @keyframes sys-hero-glow {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.8; }
-  50%  { transform: translate(8%, 5%) scale(1.08); opacity: 1; }
-  100% { transform: translate(-4%, 10%) scale(0.95); opacity: 0.7; }
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(8%, 5%) scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-4%, 10%) scale(0.95);
+    opacity: 0.7;
+  }
 }
 
 /* El bg y el contenido encima de los pseudo-elementos */
@@ -8522,10 +8534,5 @@ th {
 
 /* Modo claro: versión más suave */
 body:not(.dark-mode) .sys-hero {
-  background:
-    linear-gradient(135deg,
-      #1a1a2e 0%,
-      #16213e 40%,
-      #0f3460 100%
-    );
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
 }
