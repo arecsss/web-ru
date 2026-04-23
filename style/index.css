@@ -2357,7 +2357,7 @@ body.dark-mode .pg-card {
   display: flex;
   justify-content: center;
   gap: 6px;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   background: #16161e;
   border-radius: 16px;
   padding: 6px;
@@ -8535,4 +8535,156 @@ th {
 /* Modo claro: versión más suave */
 body:not(.dark-mode) .sys-hero {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+}
+
+/* ============================================
+   LOADER TRANSFORMACIÓN: CELULAR ↔ PC
+   ============================================ */
+
+.loader-container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.1rem 0 1rem 0;
+  overflow: hidden;
+}
+
+.transform-loader {
+  position: relative;
+  width: 120px;
+  height: 90px;
+}
+
+.device {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* CELULAR */
+.device-phone {
+  width: 40px;
+  height: 65px;
+  background: linear-gradient(135deg, #ff6b00, #e56000);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+  animation: phonePulse 3s ease-in-out infinite;
+}
+
+.phone-screen {
+  width: 30px;
+  height: 45px;
+  background: #0a0a0f;
+  border-radius: 3px;
+  margin-bottom: 4px;
+}
+
+.phone-btn {
+  width: 8px;
+  height: 8px;
+  background: #ff6b00;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ff6b00;
+}
+
+/* PC */
+.device-desktop {
+  width: 90px;
+  height: 70px;
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+.monitor {
+  width: 80px;
+  height: 50px;
+  background: #0a0a0f;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  width: 70px;
+  height: 40px;
+  background: linear-gradient(45deg, #1a1a2e, #16213e);
+  border-radius: 2px;
+  animation: screenGlow 0.5s ease infinite alternate;
+}
+
+.stand {
+  width: 25px;
+  height: 12px;
+  background: #00d4ff;
+  margin-top: 2px;
+}
+
+/* ANIMACIONES */
+@keyframes phonePulse {
+  0%,
+  45% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(90deg);
+  }
+  55%,
+  95% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes desktopAppear {
+  0%,
+  45% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  50%,
+  95% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+@keyframes screenGlow {
+  0% {
+    background: linear-gradient(45deg, #1a1a2e, #16213e);
+  }
+  100% {
+    background: linear-gradient(45deg, #2a2a4e, #1a3a5e);
+  }
+}
+
+/* FASE 1: Solo celular (0-50%) */
+.device-desktop {
+  animation: desktopAppear 3s ease-in-out infinite;
 }
