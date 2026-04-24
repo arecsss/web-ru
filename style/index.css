@@ -8676,8 +8676,12 @@ body:not(.dark-mode) .sys-hero {
 }
 
 @keyframes screenGlow {
-  0% { background: linear-gradient(45deg, #1a1a2e, #16213e); }
-  100% { background: linear-gradient(45deg, #2a2a4e, #1a3a5e); }
+  0% {
+    background: linear-gradient(45deg, #1a1a2e, #16213e);
+  }
+  100% {
+    background: linear-gradient(45deg, #2a2a4e, #1a3a5e);
+  }
 }
 
 /* ============================================
@@ -8685,18 +8689,20 @@ body:not(.dark-mode) .sys-hero {
    ============================================ */
 
 .admin-link {
-  color: #ff6b00 !important;
+  color: black !important;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
+  padding: 6px 6px;
+  border-radius: 8px;
+  background-color: orangered;
 }
 
 .admin-link:hover {
   color: #00d4ff !important;
-}
-  100% {
-    background: linear-gradient(45deg, #2a2a4e, #1a3a5e);
-  }
+  transition: ease-in-out 0.2s;
+  transform: scale(1.2);
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
 
 /* FASE 1: Solo celular (0-50%) */
