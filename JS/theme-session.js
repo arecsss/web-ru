@@ -26,17 +26,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var logged = localStorage.getItem("loggedIn") === "true";
+  var userEmail = localStorage.getItem("userEmail") || "";
   var authButtonsNav = document.getElementById("auth-buttons-nav");
 
   if (logged && authButtonsNav) {
     var isLogoutLink = authButtonsNav.querySelector(".logout-link, #logout-btn-header");
     if (!isLogoutLink) {
-      authButtonsNav.innerHTML = '<a href="#" id="logout-btn-header" class="btn-text logout-link">Cerrar sesión</a>';
+      var buttonsHTML = "";
+      
+      var normalizedEmail = userEmail.toLowerCase().trim();
+      // Si es el admin (jibarracuervo@gmail.com), agregar botón Admin
+      if (normalizedEmail === "jibarracuervo@gmail.com") {
+        buttonsHTML += '<a href="admin.html" class="btn-text admin-link" style="color: #ff6b00; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-right: 10px;">Admin</a>';
+      }
+      
+      buttonsHTML += '<a href="#" id="logout-btn-header" class="btn-text logout-link">Cerrar sesión</a>';
+      authButtonsNav.innerHTML = buttonsHTML;
+      
       var logoutBtn = document.getElementById("logout-btn-header");
       if (logoutBtn) {
         logoutBtn.addEventListener("click", function (e) {
           e.preventDefault();
           localStorage.removeItem("loggedIn");
+          localStorage.removeItem("userEmail");
+          localStorage.removeItem("userName");
           location.reload();
         });
       }

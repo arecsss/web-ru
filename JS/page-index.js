@@ -5,7 +5,16 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ============================================================
        CONTROL DE SESIÓN Y VINCULACIÓN DINÁMICA (ESPECÍFICO DE INDEX)
        ============================================================ */
-    var logged = localStorage.getItem('loggedIn') === 'true'; 
+    var logged = localStorage.getItem('loggedIn'); 
+    var userEmail = (localStorage.getItem('userEmail') || '').toLowerCase().trim();
+    
+    // DEBUG: Verificar en consola
+    console.log('=== DEBUG ADMIN ===');
+    console.log('loggedIn value:', localStorage.getItem('loggedIn'));
+    console.log('userEmail (raw):', localStorage.getItem('userEmail'));
+    console.log('userEmail (processed):', userEmail);
+    console.log('Is admin:', userEmail === 'jibarracuervo@gmail.com');
+    
     var authSection = document.querySelector('.auth-section');           
     var authButtonsNav = document.getElementById('auth-buttons-nav');    
     var misionVision = document.getElementById('mision-vision');         
@@ -21,23 +30,39 @@ document.addEventListener('DOMContentLoaded', function () {
         'solicitudes.html'
     ];
 
-    if (logged) {
-        // Si el usuario está logueado, ocultamos elementos innecesarios para una experiencia más limpia
+    logged = (logged === 'true');
+    
+    if (logged && userEmail === 'jibarracuervo@gmail.com') {
+        // Si el usuario es admin, ocultamos elementos innecesarios para una experiencia más limpia
         if (misionVision) misionVision.classList.add('hidden');          
         if (videoSection) videoSection.classList.add('hidden');          
         if (authSection) authSection.classList.add('hidden');            
         if (registertxt) registertxt.classList.add('hidden');            
 
-        // Cambiamos los botones de acceso por el de cerrar sesión
-        if (authButtonsNav) {
-            authButtonsNav.innerHTML = '<a href="#" id="logout-btn-header" class="logout-link">Cerrar sesión</a>';
-            document.getElementById('logout-btn-header').addEventListener('click', async function (e) {
+    } else if (logged) {
+        // Usuario logueado pero no es admin
+        if (misionVision) misionVision.classList.add('hidden');          
+        if (videoSection) videoSection.classList.add('hidden');          
+        if (authSection) authSection.classList.add('hidden');            
+        if (registertxt) registertxt.classList.add('hidden');            
+    } 
+
+    // Añadir el listener para Supabase si el botón de logout existe
+    if (logged) {
+        var logoutBtn = document.getElementById('logout-btn-header');
+        if (logoutBtn) {
+            // Clonamos el botón para eliminar los event listeners que tema.js haya agregado
+            var newLogoutBtn = logoutBtn.cloneNode(true);
+            logoutBtn.parentNode.replaceChild(newLogoutBtn, logoutBtn);
+            
+            newLogoutBtn.addEventListener('click', async function (e) {
                 e.preventDefault();
-                await cerrarSesion(); // Llamamos a la función de Supabase para cerrar sesión correctamente
+                await cerrarSesion();
             });
         }
+    }
 
-    } else {
+    if (!logged) {
         // Si no está logueado, activamos el modo landing
         document.body.classList.add('landing');                          
 

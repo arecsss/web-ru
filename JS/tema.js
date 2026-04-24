@@ -69,11 +69,16 @@ document.addEventListener("DOMContentLoaded", function () {
   if (logged && authButtonsNav) {
     // Obtiene el nombre del usuario guardado
     var userName = localStorage.getItem("userName") || "Usuario";
+    var userEmail = (localStorage.getItem("userEmail") || "").toLowerCase().trim();
     
-    // Reemplaza los botones de login/registro con el botón de cerrar sesión
+    var adminBtn = userEmail === "jibarracuervo@gmail.com" 
+      ? '<a href="admin.html" class="btn-text admin-link" style="color: #ff6b00; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-right: 10px;">Admin</a>' 
+      : '';
+    
+    // Reemplaza los botones de login/registro con el botón de cerrar sesión y Admin si corresponde
     authButtonsNav.innerHTML = `
-      <span style="color: var(--text-muted); font-size: 0.95rem;">Hola, ${userName}</span>
-      <a href="#" id="logout-btn-header" class="logout-link">Cerrar sesión</a>
+      ${adminBtn}
+      <a href="#" id="logout-btn-header" class="btn-text logout-link">Cerrar sesión</a>
     `;
     
     // Añade evento al botón de cerrar sesión

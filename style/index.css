@@ -8676,9 +8676,24 @@ body:not(.dark-mode) .sys-hero {
 }
 
 @keyframes screenGlow {
-  0% {
-    background: linear-gradient(45deg, #1a1a2e, #16213e);
-  }
+  0% { background: linear-gradient(45deg, #1a1a2e, #16213e); }
+  100% { background: linear-gradient(45deg, #2a2a4e, #1a3a5e); }
+}
+
+/* ============================================
+   BOTÓN ADMIN EN NAV
+   ============================================ */
+
+.admin-link {
+  color: #ff6b00 !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.admin-link:hover {
+  color: #00d4ff !important;
+}
   100% {
     background: linear-gradient(45deg, #2a2a4e, #1a3a5e);
   }
