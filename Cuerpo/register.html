@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | R.U</title>
+
+    <link rel="stylesheet" href="../style/index.css">
+    <!-- Cargar Supabase desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <!-- Carga del script unificado de tema y sesión -->
+    <script src="../JS/tema.js"></script>
+
+    <!-- Lógica específica de registro para redireccionar si ya está autenticado -->
+    <script type="module" src="../JS/page-register.js"></script>
+
+    <nav class="nav-header">
+        <div class="nav-container">
+            <div class="logo-wrapper" onclick="location.href='index.html'">
+                <div class="rubik-cube">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face left"></div>
+                    <div class="face right"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+                <span class="brand-name">RU - <span class="highlight">REAL UTILITY</span></span>
+            </div>
+
+            <input type="checkbox" id="burger-toggle" class="burger-checkbox">
+            <label for="burger-toggle" class="burger-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="QuienSoy.html">¿Quién soy?</a></li>
+                <li><a href="solicitudes.html">Solicitudes</a></li>
+            </ul>
+
+            <div class="nav-actions" id="nav-actions-container">
+                <div class="theme-switch-wrapper">
+                    <div class="toggle">
+                        <input type="checkbox" id="dark-mode-toggle" aria-label="Alternar modo oscuro">
+                        <label for="dark-mode-toggle"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-page-container">
+        <div class="auth-card">
+            <h2>Crear Cuenta</h2>
+            <p id="redirect-message" class="auth-redirect-msg"></p>
+            <p id="error-message"    class="auth-error-msg"></p>
+            <p id="success-message"  class="auth-success-msg"></p>
+
+
+            <form id="register-form">
+                <input type="text" id="full-name" placeholder="Nombre completo" required>
+                <input type="email" id="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" id="regPassword" required>
+                <input type="password" placeholder="Confirmar contraseña" id="regConfirmPassword" required>
+
+                <div class="show-password-wrapper">
+                    <input type="checkbox" id="viewRegPass" aria-label="Mostrar contraseñas" onclick="
+                    var type = this.checked ? 'text' : 'password';
+                    document.getElementById('regPassword').type = type;
+                    document.getElementById('regConfirmPassword').type = type;
+                ">
+                    <label for="viewRegPass">Mostrar contraseñas</label>
+                </div>
+
+                <button type="submit" class="auth-submit register-submit" id="submit-btn">
+                    Registrarse
+                </button>
+            </form>
+
+            <a href="login.html" class="auth-switch">
+                ¿Ya tienes cuenta? Inicia sesión
+            </a>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

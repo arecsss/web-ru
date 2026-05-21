@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión | R.U</title>
+
+    <link rel="stylesheet" href="../style/index.css" />
+    <!-- Cargar Supabase desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+
+  <body>
+    <!-- Carga del script unificado de tema y sesión -->
+    <script src="../JS/tema.js"></script>
+
+    <!-- Lógica específica de login para redireccionar si ya está autenticado -->
+    <script type="module" src="../JS/page-login.js"></script>
+
+    <nav class="nav-header">
+      <div class="nav-container">
+        <div class="logo-wrapper" onclick="location.href = 'index.html'">
+          <div class="rubik-cube">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+          </div>
+          <span class="brand-name"
+            >RU - <span class="highlight">REAL UTILITY</span></span
+          >
+        </div>
+
+        <input type="checkbox" id="burger-toggle" class="burger-checkbox" />
+        <label for="burger-toggle" class="burger-label">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="QuienSoy.html">¿Quién soy?</a></li>
+          <li><a href="solicitudes.html">Solicitudes</a></li>
+        </ul>
+
+        <div class="nav-actions" id="nav-actions-container">
+          <div class="theme-switch-wrapper">
+            <div class="toggle">
+              <input
+                type="checkbox"
+                id="dark-mode-toggle"
+                aria-label="Alternar modo oscuro"
+              />
+              <label for="dark-mode-toggle"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="auth-page-container">
+      <div class="auth-card">
+        <h2>Iniciar Sesión</h2>
+        <p
+          id="redirect-message"
+          class="auth-redirect-msg"
+        ></p>
+        <p
+          id="error-message"
+          class="auth-error-msg"
+        ></p>
+
+
+        <form id="login-form">
+          <input type="email" id="email" placeholder="Correo electrónico" required />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            id="passwordview"
+            required
+          />
+
+          <div class="show-password-wrapper">
+            <input
+              type="checkbox"
+              id="viewPass"
+              aria-label="Mostrar contraseña"
+              onclick="
+                document.getElementById('passwordview').type = this.checked
+                  ? 'text'
+                  : 'password'
+              "
+            />
+            <label for="viewPass">Mostrar contraseña</label>
+          </div>
+          <button type="submit" class="auth-submit login-submit" id="submit-btn">Entrar</button>
+        </form>
+
+        <a href="register.html" class="auth-switch">
+          ¿No tienes cuenta? Regístrate
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- Carga del script unificado de tema -->
+    <script src="../JS/tema.js"></script>
+  </body>
+</html>
