@@ -8,7 +8,7 @@
     <link rel="icon" href="../img/logo.webp" sizes="32x32" type="image/webp" />
   </head>
 
-  <body class="dark-mode">
+  <body class="dark-mode page-programas">
     <!-- GUARD DE SESIÓN: Si no ha iniciado sesión, redirige a login con retorno a esta página -->
     <script src="../JS/auth-guard.js"></script>
 
@@ -71,31 +71,62 @@
     <!-- ========== LAYOUT PRINCIPAL ========== -->
     <div class="pg-layout">
       <!-- SIDEBAR DESKTOP (izquierda) -->
-      <nav
-        class="pg-sidebar"
-        id="desktopNav"
-      >
+      <nav class="pg-sidebar" id="desktopNav">
         <h2 class="pg-sidebar-title">CATEGORÍAS</h2>
-        <input
-          type="search"
-          id="searchDesktop"
-          class="pg-search"
-          placeholder="Buscar..."
-          autocomplete="off"
-        />
-        <a href="#navegadores" class="pg-nav-link">Navegadores</a>
-        <a href="#gaming" class="pg-nav-link">Gaming</a>
-        <a href="#drivers" class="pg-nav-link">Drivers</a>
-        <a href="#utility" class="pg-nav-link">Utilidades</a>
-        <a href="#ofimatica" class="pg-nav-link">Ofimática</a>
-        <a href="#edicion" class="pg-nav-link">Edición</a>
-        <a href="#audio" class="pg-nav-link">Audio</a>
-        <a href="#seguridad" class="pg-nav-link">Seguridad</a>
-        <a href="#code" class="pg-nav-link">Code</a>
+
+        <div class="pg-toolbar">
+          <input
+            type="search"
+            id="searchDesktop"
+            class="pg-search"
+            placeholder="Buscar programa..."
+            autocomplete="off"
+          />
+          <button
+            type="button"
+            class="pg-categories-toggle"
+            id="pgCategoriesToggle"
+            aria-expanded="false"
+            aria-controls="pgCategoriesPanel"
+            aria-label="Mostrar categorías"
+          >
+            <span>Categorías</span>
+            <svg
+              class="pg-categories-chevron"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <div class="pg-categories-panel" id="pgCategoriesPanel">
+          <a href="#navegadores" class="pg-nav-link">Navegadores</a>
+          <a href="#gaming" class="pg-nav-link">Gaming</a>
+          <a href="#drivers" class="pg-nav-link">Drivers</a>
+          <a href="#utility" class="pg-nav-link">Utilidades</a>
+          <a href="#ofimatica" class="pg-nav-link">Ofimática</a>
+          <a href="#edicion" class="pg-nav-link">Edición</a>
+          <a href="#audio" class="pg-nav-link">Audio</a>
+          <a href="#seguridad" class="pg-nav-link">Seguridad</a>
+          <a href="#code" class="pg-nav-link">Code</a>
+        </div>
       </nav>
 
       <!-- CONTENIDO PRINCIPAL (derecha) -->
       <main class="pg-main">
+        <p class="pg-empty" id="pgEmpty" role="status" hidden>
+          No hay programas con ese nombre. Prueba con otras palabras.
+        </p>
+
         <!-- ===== NAVEGADORES ===== -->
         <section id="navegadores" class="pg-seccion">
           <h2 class="pg-seccion-titulo">NAVEGADORES</h2>
