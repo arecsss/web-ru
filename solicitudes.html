@@ -339,24 +339,37 @@
             };
 
             // Determinar la tabla destino según el tipo seleccionado
-            let tablaDestino = 'sugerencias';
-            if (tipo === 'Queja') tablaDestino = 'quejasRU';
-            if (tipo === 'Solicitud') tablaDestino = 'solicitudes_servicio';
+           let tablaDestino = 'sugerencias';
+    let customClient = supabase; // Cliente por defecto (Proyecto Principal)
 
-            // Inserción de datos en la tabla correspondiente de Supabase
-            const { error } = await supabase.from(tablaDestino).insert([payload]);
+    if (tipo === 'Queja') {
+      // Configuración para el proyecto quejasRU
+      const QUEJAS_URL = 'https://sexgxuavzskferczhrpz.supabase.co';
+      const QUEJAS_ANON_KEY = 'sb_publishable_-rLTVMKV0oY1woH5HD5MUQ_KwCuWL7k'; 
+      
+      // Creamos la conexión al nuevo proyecto solo para quejas
+      const { createClient } = window.supabase;
+      customClient = createClient(QUEJAS_URL, QUEJAS_ANON_KEY );
+      tablaDestino = 'quejasRU';
+    } else if (tipo === 'Solicitud') {
+      tablaDestino = 'solicitudes_servicio';
+    }
 
-            if (error) {
-              setStatus("Error al enviar. Intenta de nuevo.", "err");
-              submitBtn.disabled = false;
-            } else {
-              form.reset();
-              setStatus("Enviado con éxito. Gracias.", "ok");
-              submitBtn.disabled = false;
-              setTimeout(() => setStatus(""), 3500);
-            }
-          });
-        }
+    // Enviamos a la tabla y proyecto correctos
+    const { error } = await customClient.from(tablaDestino).insert([payload]);
+    // ------------------------------------------
+
+    if (error) {
+      setStatus("Error al enviar. Intenta de nuevo.", "err");
+      submitBtn.disabled = false;
+    } else {
+      form.reset();
+      setStatus("Enviado con éxito. Gracias.", "ok");
+      submitBtn.disabled = false;
+      setTimeout(() => setStatus(""), 3500);
+    }
+  });
+}
 
         // --- LÓGICA DEL CHAT EN TIEMPO REAL ---
         var chatFab = document.getElementById("ru-chat-fab");
